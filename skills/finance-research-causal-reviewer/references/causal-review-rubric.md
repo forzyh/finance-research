@@ -46,6 +46,17 @@ For technology-strategy questions, separate announcement, engineering feasibilit
 
 Require philosophical framing to name its empirical anchor and limits. Reject “inevitable,” “terminal,” or civilizational claims unless the paper defines necessary conditions, exceptions, time horizon, and falsifiers. Historical analogy may generate hypotheses but cannot supply missing evidence.
 
+Run a distinct human-voice review:
+
+- flag openings that announce the article or invoke a generic era;
+- flag repeated “值得注意的是、这意味着、本质上、总体而言、首先、其次、最后” used as scaffolding;
+- flag serial “不是A而是B”, equal-length pro/con blocks, identical paragraph shapes, and conclusions repeated in every section;
+- flag abstract nouns without an acting subject, slogan-like headings, and generic future-facing endings;
+- distinguish necessary analytical symmetry from cosmetic symmetry;
+- require exact rewrites that preserve evidence, qualifications, and claim scope.
+
+Set `style_review.verdict` to `pass` only after public-facing prose reads as an authored argument. `publish_full` and `publish_note` cannot ship with `revise`.
+
 Ensure public wording distinguishes fact, inference, and judgment; preserves uncertainty; avoids internal fields and workflow jargon; and gives no personalized trading instruction.
 
 Only an `approved` claim with `summary_eligible: true` can enter the abstract or summary. A `qualified` claim may enter a note only with its exact required qualification and after any material change is re-reviewed.

@@ -44,6 +44,14 @@ def audit_report(report: dict, audit: dict) -> tuple[list[dict], list[dict]]:
     verdict = audit.get("verdict")
     if verdict not in VERDICTS:
         raise SystemExit(f"invalid audit verdict for {report.get('report_id')}: {verdict}")
+    style_review = audit.get("style_review")
+    if verdict in {"publish_full", "publish_note"} and (
+        not isinstance(style_review, dict)
+        or style_review.get("verdict") != "pass"
+        or style_review.get("preserves_claim_scope") is not True
+        or any(not isinstance(style_review.get(field), list) for field in ("formulaic_phrases", "voice_issues", "required_rewrites"))
+    ):
+        raise SystemExit(f"public research verdict lacks a passed style review for {report.get('report_id')}")
     if "summary_claim_ids" not in audit:
         raise SystemExit(f"audit missing summary_claim_ids for {report.get('report_id')}")
 

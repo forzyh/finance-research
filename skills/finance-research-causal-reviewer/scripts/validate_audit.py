@@ -16,7 +16,7 @@ REQUIRED = {
     "report_id", "topic_id", "author_id", "reviewer_id", "verdict", "claim_reviews",
     "approved_claim_ids", "rejected_claim_ids", "factual_conflicts",
     "causal_weaknesses", "required_edits", "public_safe_abstract",
-    "abstract_claim_ids", "summary_claim_ids",
+    "abstract_claim_ids", "summary_claim_ids", "style_review",
 }
 
 
@@ -79,6 +79,21 @@ def main() -> int:
         errors.append("non-reject verdict requires publication_quality_score from 0 to 100")
     if verdict == "reject" and quality_score is not None and not valid_quality_score:
         errors.append("publication_quality_score must be from 0 to 100 when present")
+
+    style_review = audit.get("style_review")
+    if not isinstance(style_review, dict):
+        errors.append("style_review must be an object")
+        style_review = {}
+    style_verdict = style_review.get("verdict")
+    if style_verdict not in {"pass", "revise"}:
+        errors.append("style_review.verdict must be pass or revise")
+    for field in ("formulaic_phrases", "voice_issues", "required_rewrites"):
+        if not isinstance(style_review.get(field), list):
+            errors.append(f"style_review.{field} must be an array")
+    if style_review.get("preserves_claim_scope") is not True:
+        errors.append("style_review.preserves_claim_scope must be true")
+    if verdict in {"publish_full", "publish_note"} and style_verdict != "pass":
+        errors.append("publish_full and publish_note require style_review.verdict pass")
 
     report_claim_ids = set()
     material_claim_ids = set()
@@ -188,6 +203,7 @@ def main() -> int:
         "material_claim_count": len(material_claim_ids),
         "approved_claim_count": len(approved),
         "summary_claim_count": len(summary),
+        "style_verdict": style_verdict,
         "errors": errors,
     }
     print(json.dumps(result, ensure_ascii=False, indent=2))

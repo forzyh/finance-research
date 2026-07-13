@@ -163,6 +163,29 @@ class WorkflowTests(unittest.TestCase):
             validate_publication.content_checks(bundle, report, errors)
             self.assertEqual(errors, [])
 
+    def test_publication_style_gate_rejects_formulaic_ai_prose(self):
+        errors = []
+        validate_publication.style_checks(
+            "在当今瞬息万变的时代，本文将深入探讨人工智能产业。"
+            "值得注意的是，行业既有机遇，也有挑战。值得注意的是，未来可期。",
+            errors,
+        )
+        self.assertTrue(any("本文将" in error for error in errors))
+        self.assertTrue(any("值得注意的是" in error for error in errors))
+        self.assertTrue(any("未来可期" in error for error in errors))
+
+    def test_publication_style_gate_accepts_natural_financial_prose(self):
+        errors = []
+        validate_publication.style_checks(
+            "科技股的卖压在周末冲突前已经出现。地缘风险放大了跌势，却不是起点："
+            "科创50在前一个交易日已经反转。眼下缺的是ETF申赎和融资数据，"
+            "这些数据将决定仓位解释能否继续成立。",
+            errors,
+        )
+        self.assertEqual(errors, [])
+        validate_publication.style_checks("英伟达作为AI芯片供应商，仍控制着通用训练市场的大部分生态。", errors)
+        self.assertEqual(errors, [])
+
     def test_renderer_requires_v2_bundle_and_explicit_preview(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -230,6 +253,45 @@ class WorkflowTests(unittest.TestCase):
             blocked = subprocess.run([sys.executable, str(validator), str(report_path)], text=True, capture_output=True)
             self.assertNotEqual(blocked.returncode, 0)
 
+    def test_causal_audit_validator_requires_style_pass_for_public_article(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            report_path = root / "report.json"
+            audit_path = root / "audit.json"
+            report_path.write_text(json.dumps({
+                "report_id": "r1", "topic_id": "t1", "author_id": "author-1",
+                "claims": [{"claim_id": "c1", "material": True}],
+            }), encoding="utf-8")
+            audit = {
+                "report_id": "r1", "topic_id": "t1", "author_id": "author-1", "reviewer_id": "reviewer-1",
+                "verdict": "publish_note", "publication_quality_score": 82,
+                "claim_reviews": [{
+                    "claim_id": "c1", "conclusion": "approved", "summary_eligible": False,
+                    "layers": {layer: {"result": "pass", "notes": "已核验"} for layer in ("L1", "L2", "L3", "L4")},
+                }],
+                "approved_claim_ids": ["c1"], "rejected_claim_ids": [],
+                "factual_conflicts": [], "causal_weaknesses": [], "required_edits": [],
+                "public_safe_abstract": "已核验摘要。", "abstract_claim_ids": [], "summary_claim_ids": [],
+                "style_review": {
+                    "verdict": "pass", "formulaic_phrases": [], "voice_issues": [],
+                    "required_rewrites": [], "preserves_claim_scope": True,
+                },
+            }
+            audit_path.write_text(json.dumps(audit), encoding="utf-8")
+            validator = ROOT / "skills/finance-research-causal-reviewer/scripts/validate_audit.py"
+            passed = subprocess.run(
+                [sys.executable, str(validator), str(audit_path), "--report", str(report_path)],
+                text=True, capture_output=True,
+            )
+            self.assertEqual(passed.returncode, 0, passed.stdout + passed.stderr)
+            audit["style_review"]["verdict"] = "revise"
+            audit_path.write_text(json.dumps(audit), encoding="utf-8")
+            blocked = subprocess.run(
+                [sys.executable, str(validator), str(audit_path), "--report", str(report_path)],
+                text=True, capture_output=True,
+            )
+            self.assertNotEqual(blocked.returncode, 0)
+
     def test_delivery_gate_requires_public_single_url(self):
         with tempfile.TemporaryDirectory() as temp:
             deploy = Path(temp) / "deploy.json"
@@ -278,6 +340,10 @@ class WorkflowTests(unittest.TestCase):
                     "summary_claim_ids": [f"{topic}-summary"] if topic == "t1" else [],
                     "abstract_claim_ids": [f"{topic}-summary"] if topic == "t1" else [],
                     "public_safe_abstract": "摘要",
+                    "style_review": {
+                        "verdict": "pass", "formulaic_phrases": [], "voice_issues": [],
+                        "required_rewrites": [], "preserves_claim_scope": True,
+                    },
                 }
                 (reports / topic / "report.json").write_text(json.dumps(report), encoding="utf-8")
                 (audits / topic / "audit.json").write_text(json.dumps(audit), encoding="utf-8")
@@ -296,6 +362,27 @@ class WorkflowTests(unittest.TestCase):
             self.assertEqual([row["claim_id"] for row in merged["approved_research_claims"]], ["t1-summary"])
             self.assertEqual(merged["editorial_blueprint"]["flagship"]["topic_id"], "t1")
             self.assertEqual(len(merged["editorial_blueprint"]["research_notes"]), 1)
+
+    def test_public_research_requires_passed_style_review(self):
+        report = {
+            "report_id": "r1", "topic_id": "t1", "author_id": "author-1",
+            "claims": [{"claim_id": "c1", "text": "结论", "material": True}],
+        }
+        audit = {
+            "report_id": "r1", "topic_id": "t1", "author_id": "author-1", "reviewer_id": "reviewer-1",
+            "verdict": "publish_note",
+            "claim_reviews": [{"claim_id": "c1", "conclusion": "approved", "summary_eligible": False}],
+            "approved_claim_ids": ["c1"], "summary_claim_ids": [], "abstract_claim_ids": [],
+        }
+        with self.assertRaises(SystemExit):
+            merge_research.audit_report(report, audit)
+        audit["style_review"] = {
+            "verdict": "pass", "formulaic_phrases": [], "voice_issues": [],
+            "required_rewrites": [], "preserves_claim_scope": True,
+        }
+        body, summary = merge_research.audit_report(report, audit)
+        self.assertEqual([row["claim_id"] for row in body], ["c1"])
+        self.assertEqual(summary, [])
 
 
 if __name__ == "__main__":

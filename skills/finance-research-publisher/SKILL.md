@@ -1,6 +1,6 @@
 ---
 name: finance-research-publisher
-description: Render the nine-part Chinese finance evening report, including a long-form “深度洞悉” essay and insight notes, into a polished responsive HTML page; publish it to Lark Miaoda with internet-public no-login access; and send a short URL-only cover email. Use only after factual, causal, abstraction, editorial, and publication checks have passed, or for local HTML preview and delivery validation without sending.
+description: Render the nine-part Chinese finance evening report, including a naturally written long-form “深度洞悉” essay and insight notes, into a polished responsive HTML page; publish it to Lark Miaoda with internet-public no-login access; and send a short URL-only cover email. Use only after factual, causal, abstraction, human-voice editorial, and publication checks have passed, or for local preview and delivery validation without sending.
 ---
 
 # Finance Research Publisher
@@ -76,6 +76,7 @@ Do not attach `report.html`.
 - Keep the email to title, date/window, a 100–300 Chinese-character introduction and one online URL.
 - Do not include the full report, Markdown source, tables or attachments in the email.
 - Reject public copy containing internal field names, paths, commands, raw codes, Python/JSON structures, Agent/process wording or English workflow states.
+- Reject copy that fails the human-voice gate: model self-reference, canned article announcements, generic era framing, repeated mechanical transitions, serial fake contrasts, or slogan endings. Do not mistake passing the static check for a completed editorial read.
 - Display market rows only as reader-facing name, price, change and percentage. Skip malformed rows.
 - Preserve facts, inference boundaries, sources and disclaimers; do not add investment advice.
 - Keep publishing and sending scripts inert during local preview or validation work.

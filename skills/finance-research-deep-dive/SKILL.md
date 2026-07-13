@@ -1,6 +1,6 @@
 ---
 name: finance-research-deep-dive
-description: Produce internal Chinese “深度洞悉” papers for selected market, strategic, technological, institutional, business-model, or societal questions. Use when Codex receives a scored assignment and must move from an observed trigger to an abstract principle, test competing mechanisms, trace value migration and second-order economic effects across near/medium/long horizons, apply a disciplined philosophical lens, and deliver a 3,000–5,000-character evidence-led paper with an auditable claim ledger.
+description: Produce natural, authored Chinese “深度洞悉” papers for selected market, strategic, technological, institutional, business-model, or societal questions. Use when Codex must move from an observed trigger to an abstract principle, test competing mechanisms, trace value migration and second-order effects across time, avoid formulaic AI prose and visible research scaffolding, and deliver a 3,000–5,000-character evidence-led paper with an auditable claim ledger.
 ---
 
 # Finance Research 深度洞悉
@@ -41,9 +41,10 @@ Copy `report_id`, `topic_id`, and `author_id` unchanged into the report. Reject 
 10. Apply a philosophical lens to scarcity, control, dependence, specialization, coordination, standardization, or power only after the empirical mechanism is established. Label normative claims and metaphors.
 11. Seek counterevidence and state what each hypothesis cannot explain. Treat “inevitable” as a thesis requiring unusually strong evidence.
 12. Form a probabilistic conclusion with explicit uncertainty and conditions for revision.
-13. Write a 3000–5000 Chinese-character internal article. Keep the main article within the limit; structured metadata and source records are separate.
-14. Build a claim ledger. Do not mark any claim `approved`; only `$finance-research-causal-reviewer` may approve claims.
-15. Run `python3 scripts/validate_research_report.py <report.json>`.
+13. Write a 3000–5000 Chinese-character internal article. Use the research contract as coverage, not as a visible form: combine adjacent ideas, vary paragraph length, and let the evidence determine emphasis. Do not expose every analytical field as a heading.
+14. Perform a human-voice edit. Replace generic transitions with factual links, remove false symmetry and repeated “不是A而是B” constructions, name actors and actions, and stop on a concrete consequence or open question rather than a slogan.
+15. Build a claim ledger. Do not mark any claim `approved`; only `$finance-research-causal-reviewer` may approve claims.
+16. Run `python3 scripts/validate_research_report.py <report.json>`.
 
 ## Required Output
 
@@ -65,6 +66,7 @@ The article must explain the question, not merely list information. Use the stru
 - Treat a price pattern as evidence about probabilities, not proof of intent or cause.
 - Treat company announcements as evidence of strategy, not proof of technical success, cost advantage, volume adoption, or incumbent displacement.
 - For valuation implications, expose the bridge from industry structure to revenue, margins, duration, capital intensity, and multiple; do not jump from “competition increases” to a target valuation.
+- Keep evidentiary caution inside the relevant sentence. Do not append the same “仍需观察/不能证明” disclaimer to every paragraph.
 - Tag a possible summary sentence with `summary_candidate: true`; this is a nomination, not approval.
 - Preserve unresolved conflicts for the reviewer instead of silently choosing a convenient version.
 
@@ -76,4 +78,6 @@ The article must explain the question, not merely list information. Use the stru
 - Do not infer political intent from market prices alone.
 - Do not use “必经之路”, “终局”, or “必然” without defining the domain, time horizon, necessary conditions, and plausible exceptions.
 - Do not mistake an evocative analogy for a historical base rate.
+- Do not open with “在当今……时代”, “本文将”, or a generic industry backdrop. Start with the concrete trigger, conflict, or unanswered question.
+- Do not force equal space for all hypotheses after the evidence has clearly separated them. Fairness requires accurate weighting, not visual symmetry.
 - Do not let the author perform the final causal audit of the same paper.

@@ -8,7 +8,9 @@ Require the assignment to provide immutable `report_id`, `topic_id`, and `author
 
 Write 3000–5000 Chinese-character equivalents in the `article` field. Count Chinese characters individually and English words or standalone numbers as one equivalent each. Exclude structured metadata and source records from the limit.
 
-## Article structure
+## Analytical coverage
+
+The following items must be covered, but they are not a mandatory heading list. Combine them into four to seven natural sections when that reads better. Do not make the public article look like a completed questionnaire.
 
 1. **Question, trigger, and provisional answer** — state the cutoff, question type, and what newly became observable.
 2. **Verified chronology** — distinguish ideas, announcements, investment, technical milestones, adoption, earnings effects, and price response.
@@ -22,6 +24,14 @@ Write 3000–5000 Chinese-character equivalents in the `article` field. Count Ch
 10. **Counterevidence, breakpoints, and alternatives** — state what the preferred thesis cannot explain and where the chain may fail.
 11. **Philosophical interpretation** — discuss scarcity, autonomy, specialization, coordination, dependence, or power as an interpretation grounded in the mechanism; distinguish empirical, normative, and metaphorical claims.
 12. **Probabilistic conclusion and future checks** — rank hypotheses and give confirmation/falsification windows suitable to the topic, not only the next trading day.
+
+## Authored voice
+
+Write like a knowledgeable person making a case to another knowledgeable person. Begin with the fact or tension that made the question worth asking. Let one strong example carry more weight than a list of five weak examples. Use concrete subjects and verbs. Vary sentence and paragraph length. A short sentence may carry the conclusion.
+
+Avoid announcing the essay, summarizing every section twice, or manufacturing balance with “一方面、另一方面”. Do not repeat “值得注意的是、这意味着、本质上、总体而言” as connective tissue. Avoid serial “不是A而是B” formulations. Put uncertainty next to the claim it limits, then move on.
+
+The philosophy section should feel earned by the preceding evidence. Do not change tone into a grand speech. End with a concrete breakpoint, stakeholder consequence, or unresolved choice.
 
 ## Abstraction discipline
 

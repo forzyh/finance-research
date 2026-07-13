@@ -1,4 +1,4 @@
 interface:
   display_name: "财经深度洞悉"
-  short_description: "从具体事件提炼一般原则，并推演跨层机制与长期经济影响"
-  default_prompt: "Use $finance-research-deep-dive to write a 3,000-5,000-character 深度洞悉 paper with mechanisms, value migration, horizons, and falsifiers."
+  short_description: "撰写证据扎实、节奏自然、有作者判断且没有模板腔的深度洞悉文章"
+  default_prompt: "Use $finance-research-deep-dive to write a natural, authored 深度洞悉 paper with concrete mechanisms, uneven evidence weighting, and no formulaic AI prose."

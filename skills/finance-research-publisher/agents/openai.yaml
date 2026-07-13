@@ -1,4 +1,4 @@
 interface:
   display_name: "财经洞悉晚报发布器"
-  short_description: "渲染深度洞悉长文版面，并执行公开访问与短邮件投递闸门"
-  default_prompt: "Use $finance-research-publisher to render the reviewed nine-part insight report and enforce public URL-only delivery gates."
+  short_description: "渲染自然中文洞悉长文，并执行内容质量和公开投递双重闸门"
+  default_prompt: "Use $finance-research-publisher to render the human-edited insight report and enforce content-style and public URL-only delivery gates."

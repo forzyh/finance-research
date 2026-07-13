@@ -1,4 +1,4 @@
 interface:
   display_name: "每日财经深度洞悉工作流"
-  short_description: "编排收盘晚报、前沿洞悉、独立审稿、网页发布与投递全流程"
-  default_prompt: "Use $finance-research-workflow to orchestrate a post-close report with market analysis, frontier insight research, causal review, and publication gates."
+  short_description: "编排研究、真人风格审稿、自然中文终稿与公开发布全流程"
+  default_prompt: "Use $finance-research-workflow to orchestrate finance insight research, independent human-voice review, natural Chinese editing, and publication gates."

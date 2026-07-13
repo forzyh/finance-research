@@ -26,7 +26,7 @@ Do not expose the expected answer to the research agent. Do not let one research
 
 ## Audit contract
 
-Each audit has a verdict: `publish_full`, `publish_note`, `summary_only`, or `reject`. It lists approved claim IDs, rejected claim IDs, summary-eligible claim IDs, factual conflicts, causal weaknesses, required edits, a 0–100 `publication_quality_score`, and a public-safe abstract. Only IDs present in both the approved and summary-eligible sets may enter `approved_summary_claims` and its compatibility alias `approved_research_claims`; all approved body claims are stored separately in `approved_body_claims`.
+Each audit has a verdict: `publish_full`, `publish_note`, `summary_only`, or `reject`. It lists approved claim IDs, rejected claim IDs, summary-eligible claim IDs, factual conflicts, causal weaknesses, required edits, a `style_review`, a 0–100 `publication_quality_score`, and a public-safe abstract. `publish_full` and `publish_note` require `style_review.verdict: pass`. Only IDs present in both the approved and summary-eligible sets may enter `approved_summary_claims` and its compatibility alias `approved_research_claims`; all approved body claims are stored separately in `approved_body_claims`.
 
 The editor chooses the highest-quality `publish_full` report as the sole flagship. Additional `publish_full` reports are reduced to notes unless they are rejected for overlap. Publish at most two notes.
 
@@ -34,7 +34,7 @@ The editor chooses the highest-quality `publish_full` report as the sole flagshi
 
 The public report is ordered as: one-sentence conclusion; market path; core reasons; key news and hot stocks; technology subsectors; commodities and futures; world economy and geopolitics; 深度洞悉 with one flagship insight and up to two insight notes; future verification and sources.
 
-The public page and email must not contain paths, script names, JSON fields, raw confidence/status labels, agent instructions, source-layer labels, or delivery internals. Separate facts, inference, and judgment. Do not provide personalized investment advice.
+The public page and email must not contain paths, script names, JSON fields, raw confidence/status labels, agent instructions, source-layer labels, or delivery internals. Separate facts, inference, and judgment without repeatedly labeling them as a form. Use natural, specific Chinese; reject canned openings, mechanical transitions, cosmetic symmetry, repeated conclusions, and generic inspirational endings. Do not provide personalized investment advice.
 
 ## Run eligibility
 

@@ -1,6 +1,6 @@
 ---
 name: finance-research-workflow
-description: Orchestrate a post-close Chinese finance report with a “深度洞悉” track, from broad finance/frontier intake through four analysis desks, three-origin insight selection, one-to-three isolated insight agents, causal and abstraction review, summary backflow, editorial assembly, HTML QA, public Lark publication, and URL-only email delivery. Use for the complete Daily Finance Evening Report workflow, frontier-issue analysis, shadow runs, historical replays, or stage recovery under a 120-minute deadline.
+description: Orchestrate a post-close Chinese finance report with a “深度洞悉” track and a natural authored voice, from broad intake through isolated research agents, causal/abstraction/style review, summary backflow, editorial assembly, HTML QA, public Lark publication, and URL-only email delivery. Use for the complete Daily Finance Evening Report workflow, frontier-issue analysis, shadow runs, historical replays, or stage recovery under a 120-minute deadline.
 ---
 
 # Finance Research Workflow
@@ -21,10 +21,10 @@ The workflow owns orchestration and gates. Domain skills own analysis. The publi
 6. Merge raw anomalies, desk questions, and frontier questions. Run `scripts/normalize_candidates.py`, let `$finance-research-topic-selector` fill the canonical scores and rationales, then run `scripts/select_topics.py`; select zero to three eligible, non-overlapping topics. Never force a topic below the gate or require a same-day price move.
 7. Run `scripts/build_assignments.py`. Spawn one isolated insight agent per selected topic. Give each agent only its assignment packet, verified seed facts, observation cutoff, and `$finance-research-deep-dive` (the internal skill ID for 深度洞悉). Do not provide an expected conclusion.
 8. Require every insight agent to return a complete internal report and machine-readable claims, including the abstract principle, multi-horizon impact map, value migration, second-order effects, and philosophical limits. Late or incomplete reports cannot become the flagship article.
-9. Give each report and its sources to a separate causal-review pass using `$finance-research-causal-reviewer`. New facts, causal claims, abstraction steps, winner/loser implications, and valuation bridges must be approved before entering either the summary or public article.
+9. Give each report and its sources to a separate causal-review pass using `$finance-research-causal-reviewer`. New facts, causal claims, abstraction steps, winner/loser implications, valuation bridges, and the public-facing writing style must pass before entering either the summary or public article.
 10. Run `scripts/merge_research.py` to collect audit verdicts and approved claims. Use only `approved_summary_claims` when generating the summary; `approved_research_claims` is a compatibility alias and must be identical.
 11. Run `$finance-research-evening-editor`. Publish at most one full “旗舰洞悉” article and two “洞悉短评”; retain the required “深度洞悉” section with a restrained empty state when no report qualifies.
-12. Run `scripts/finalize_content.py`, then `scripts/validate_publication.py`. Only then invoke `$finance-research-publisher`. Require an anonymous, no-login public URL before sending the URL-only cover email.
+12. Run `scripts/finalize_content.py`, then `scripts/validate_publication.py`. The validator blocks explicit AI self-reference, canned openings/endings, and excessive formulaic scaffolding; human editorial review still owns cadence and judgment. Only then invoke `$finance-research-publisher`. Require an anonymous, no-login public URL before sending the URL-only cover email.
 
 ## Timing and degradation
 

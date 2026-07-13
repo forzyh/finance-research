@@ -27,10 +27,63 @@ FORBIDDEN = (
     "medium/high/low", "warming/cooling/reversal", "脚本名", "命令行参数", "JSON字段",
 )
 URL_RE = re.compile(r"https?://[^\s)>]+")
+STYLE_HARD_BANS = (
+    "作为一个AI助手", "作为一名AI助手", "作为AI助手", "作为人工智能助手",
+    "本文将", "本文旨在", "让我们一起",
+    "在当今瞬息万变", "在这个充满机遇与挑战", "未来可期",
+    "值得我们持续关注", "开启新的篇章",
+)
+STYLE_TIC_LIMITS = {
+    "值得注意的是": 1,
+    "需要指出的是": 1,
+    "不难发现": 0,
+    "毋庸置疑": 0,
+    "综上所述": 0,
+    "总体而言": 1,
+    "这意味着": 3,
+    "本质上": 2,
+    "换言之": 2,
+    "可以看出": 2,
+    "由此可见": 1,
+}
+STYLE_PARAGRAPH_OPENERS = (
+    "首先", "其次", "再次", "最后", "此外", "与此同时",
+    "值得注意的是", "需要指出的是", "更重要的是",
+)
 
 
 def fail(errors: list[str], message: str) -> None:
     errors.append(message)
+
+
+def style_checks(text: str, errors: list[str]) -> None:
+    for phrase in STYLE_HARD_BANS:
+        if phrase in text:
+            fail(errors, f"formulaic public-writing phrase is forbidden: {phrase}")
+    for phrase, limit in STYLE_TIC_LIMITS.items():
+        count = text.count(phrase)
+        if count > limit:
+            fail(errors, f"formulaic phrase is overused: {phrase} ({count}>{limit})")
+
+    paragraphs = []
+    for block in re.split(r"\n\s*\n", text):
+        value = block.strip()
+        if not value or value.startswith(("#", "- ", "* ", ">", "|", "```")):
+            continue
+        if re.match(r"^\d+[.)、]\s*", value):
+            continue
+        paragraphs.append(re.sub(r"\*\*|__", "", value))
+    opener_count = sum(paragraph.startswith(STYLE_PARAGRAPH_OPENERS) for paragraph in paragraphs)
+    opener_limit = max(4, int(len(paragraphs) * 0.2))
+    if opener_count > opener_limit:
+        fail(errors, f"too many prose paragraphs use mechanical transition openers: {opener_count}>{opener_limit}")
+
+    contrast_count = len(re.findall(r"(?:并非|不是)[^。；\n]{0,60}(?:而是|只是)", text))
+    if contrast_count > 4:
+        fail(errors, f"serial not-A-but-B constructions require rewrite: {contrast_count}>4")
+    label_count = len(re.findall(r"\*\*(?:事实|推断|判断)\*\*", text))
+    if label_count > 3:
+        fail(errors, f"mechanical fact/inference/judgment labels are overused: {label_count}>3")
 
 
 def content_checks(bundle: dict, report_path: Path, errors: list[str]) -> None:
@@ -51,11 +104,21 @@ def content_checks(bundle: dict, report_path: Path, errors: list[str]) -> None:
     flagship = blueprint.get("flagship")
     if flagship:
         report_id = str(flagship.get("report_id"))
-        if report_id not in reports or audits.get(report_id, {}).get("verdict") != "publish_full":
+        audit = audits.get(report_id, {})
+        if (
+            report_id not in reports
+            or audit.get("verdict") != "publish_full"
+            or (audit.get("style_review") or {}).get("verdict") != "pass"
+        ):
             fail(errors, "flagship is not backed by a publish_full audit")
     for note in as_list(blueprint.get("research_notes")):
         report_id = str(note.get("report_id"))
-        if report_id not in reports or audits.get(report_id, {}).get("verdict") not in {"publish_full", "publish_note"}:
+        audit = audits.get(report_id, {})
+        if (
+            report_id not in reports
+            or audit.get("verdict") not in {"publish_full", "publish_note"}
+            or (audit.get("style_review") or {}).get("verdict") != "pass"
+        ):
             fail(errors, "research note is not backed by an eligible audit")
     summary_ids = [row.get("claim_id") for row in as_list(bundle.get("approved_summary_claims"))]
     compatibility_ids = [row.get("claim_id") for row in as_list(bundle.get("approved_research_claims"))]
@@ -91,6 +154,7 @@ def content_checks(bundle: dict, report_path: Path, errors: list[str]) -> None:
     for token in FORBIDDEN:
         if token.lower() in lowered:
             fail(errors, f"forbidden implementation label in report: {token}")
+    style_checks(text, errors)
 
 
 def delivery_checks(deploy_path: Path, email_path: Path, errors: list[str]) -> None:

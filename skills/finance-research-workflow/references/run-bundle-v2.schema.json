@@ -75,7 +75,7 @@
       "type": "object",
       "required": [
         "report_id", "topic_id", "author_id", "reviewer_id", "verdict", "claim_reviews",
-        "approved_claim_ids", "rejected_claim_ids", "summary_claim_ids", "abstract_claim_ids"
+        "approved_claim_ids", "rejected_claim_ids", "summary_claim_ids", "abstract_claim_ids", "style_review"
       ],
       "properties": {
         "report_id": {"type": "string", "minLength": 1},
@@ -88,7 +88,19 @@
         "approved_claim_ids": {"type": "array", "items": {"type": "string"}},
         "rejected_claim_ids": {"type": "array", "items": {"type": "string"}},
         "summary_claim_ids": {"type": "array", "items": {"type": "string"}},
-        "abstract_claim_ids": {"type": "array", "items": {"type": "string"}}
+        "abstract_claim_ids": {"type": "array", "items": {"type": "string"}},
+        "style_review": {
+          "type": "object",
+          "required": ["verdict", "formulaic_phrases", "voice_issues", "required_rewrites", "preserves_claim_scope"],
+          "properties": {
+            "verdict": {"enum": ["pass", "revise"]},
+            "formulaic_phrases": {"type": "array", "items": {"type": "string"}},
+            "voice_issues": {"type": "array", "items": {"type": "string"}},
+            "required_rewrites": {"type": "array", "items": {"type": "string"}},
+            "preserves_claim_scope": {"const": true}
+          },
+          "additionalProperties": true
+        }
       },
       "additionalProperties": true
     }

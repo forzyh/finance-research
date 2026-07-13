@@ -54,11 +54,18 @@ def main() -> int:
             "known_conflicts": as_list(topic.get("known_conflicts")),
             "independent_source_pair": as_list(topic.get("source_pair")),
             "required_evidence_types": as_list(topic.get("evidence_types")),
-            "required_sections": [
+            "required_coverage": [
                 "问题、触发点与结论摘要", "数据范围与时间线", "从现象到抽象原则", "竞争假设",
                 "跨层机制与关键证据", "价值迁移与利益相关方", "短中长期影响", "二阶效应与反馈",
                 "历史或横向比较", "反证、哲学边界与局限", "概率性结论", "确认与证伪信号", "来源"
             ],
+            "style_contract": {
+                "voice": "自然、克制、有作者判断的中文财经写作",
+                "coverage_is_not_heading_template": True,
+                "avoid_formulaic_transitions": True,
+                "avoid_false_symmetry": True,
+                "end_on_concrete_consequence_or_test": True,
+            },
             "article_length_chinese_chars": {"minimum": 3000, "maximum": 5000},
             "deadline": deadline,
             "created_at": now_iso(),
