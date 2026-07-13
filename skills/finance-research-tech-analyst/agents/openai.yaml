@@ -1,4 +1,4 @@
 interface:
   display_name: "科技产业与前沿战略分析"
   short_description: "拆解科技赛道、企业战略、产业边界变化与长期价值迁移路径"
-  default_prompt: "Use $finance-research-tech-analyst to analyze technology markets, strategic shifts, and frontier insight candidates."
+  default_prompt: "使用 $finance-research-tech-analyst 分析科技市场、战略变化和前沿洞悉候选。"

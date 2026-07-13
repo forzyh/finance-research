@@ -1,48 +1,47 @@
-# Commodities causal map
+# 商品因果图
 
-## Evidence layers
+## 证据层
 
-| Layer | Evidence | Typical question |
+| 层次 | 证据 | 典型问题 |
 |---|---|---|
-| Event | Official releases, regulators, port or pipeline notices, two independent major reports | What actually happened and when? |
-| Physical | Output, exports, vessel traffic, inventory, utilization, basis, spot premium, freight, insurance | Did availability or delivery change? |
-| Curve | M1-M2, M1-M6, calendar spreads, regional spreads, cracks, processing margins | Is stress concentrated in the near term or product chain? |
-| Financial | Price, volume, open interest, options skew, positioning, ETF flows | Is the move hedging, short covering, trend following, or new conviction? |
-| Cross-asset | Rates, dollar, inflation breakevens, equities, credit, volatility, gold, yen, franc | Is the shock local, inflationary, deflationary, or systemic? |
+| 事件 | 官方发布、监管信息、港口或管线通知、两份独立重要报道 | 实际发生了什么，何时发生？ |
+| 实物 | 产量、出口、船舶流量、库存、开工率、基差、现货升水、运费、保险 | 可得性或交付是否变化？ |
+| 曲线 | M1-M2、M1-M6、跨期价差、区域价差、裂解价差、加工利润 | 压力集中在近期还是产业链某环节？ |
+| 金融 | 价格、成交量、持仓量、期权偏度、仓位、ETF 资金 | 波动来自套保、空头回补、趋势交易还是新判断？ |
+| 跨资产 | 利率、美元、通胀盈亏平衡、股票、信用、波动率、黄金、日元、瑞郎 | 冲击是局部、通胀性、通缩性还是系统性？ |
 
-## Required source discipline
+## 来源纪律
 
-- Use two independent sources for every promoted event candidate.
-- Count source families, not URLs. Syndicated copies and circular citations count once.
-- Prefer exchanges, agencies, port or shipping authorities, companies, central banks, and statistical bodies for primary facts.
-- Use major wires for independently reported chronology and disputes.
-- Treat fast-news as discovery only.
+- 每个晋级事件候选必须有两个独立来源。
+- 计算来源家族，不计算 URL；同源稿和循环引用只算一次。
+- 一手事实优先采用交易所、政府机构、港口或航运主管部门、公司、央行和统计机构。
+- 使用主要通讯社独立报道的时间线和争议。
+- 快讯只用于发现线索。
 
-## Domain checks
+## 分领域检查
 
-### Energy
+### 能源
 
-Check production, exports, shipping choke points, refinery runs, cracks, product inventories, freight, war-risk insurance, spare capacity, strategic stocks, and prompt spreads.
+检查产量、出口、航运咽喉、炼厂开工、裂解价差、成品库存、运费、战争险、闲置产能、战略储备和近月价差。
 
-### Precious metals
+### 贵金属
 
-Check real yields, dollar, central-bank flows, ETF flows, futures positioning, margin pressure, volatility, and competing havens before assigning a geopolitical cause.
+归因于地缘因素前，检查实际利率、美元、央行流向、ETF 资金、期货仓位、保证金压力、波动率和其他避险资产。
 
-### Base and ferrous metals
+### 有色与黑色
 
-Check mine or smelter supply, treatment charges, inventories, import arbitrage, construction/manufacturing demand, policy, and currency effects.
+检查矿山或冶炼供给、加工费、库存、进口套利、建筑/制造需求、政策和汇率影响。
 
-### Agriculture and livestock
+### 农产品与养殖
 
-Check weather, acreage, yield, crop progress, exports, feed costs, herd or flock data, disease, slaughter, storage, basis, and seasonality.
+检查天气、种植面积、单产、作物进度、出口、饲料成本、存栏、疫病、屠宰、仓储、基差和季节性。
 
-## Safe inference pattern
+## 安全推断模板
 
-Write: “The observed combination is more consistent with hypothesis A than B as of the cutoff, but physical data X and positioning data Y remain missing.”
+可写：“截至观察截止点，现有组合与假设 A 的一致程度高于假设 B，但仍缺少实物数据 X 和仓位数据 Y。”
 
-Avoid: “Price X proves that market participants know event Y will be short-lived.”
+不可写：“价格 X 证明市场参与者知道事件 Y 只会短期持续。”
 
-## Geopolitical confirmation tests
+## 地缘假设确认测试
 
-For a constrained-escalation hypothesis, seek an official or mediated negotiation schedule, limited target selection, stable physical flows, and non-widening cross-asset stress. Falsify it with expanded official objectives, damage to critical infrastructure, persistent export decline, rising freight or insurance costs, stronger prompt backwardation, and broad credit or funding stress.
-
+检验“有限升级”假设时，寻找官方或第三方调停的谈判日程、有限目标选择、稳定实物流和没有扩散的跨资产压力。若官方目标扩大、关键基础设施受损、出口持续下降、运费或保险成本上升、近月现货溢价增强，以及信用或融资压力普遍扩散，则该假设被削弱或证伪。

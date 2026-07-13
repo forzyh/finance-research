@@ -1,53 +1,53 @@
-# Topic scoring rubric
+# 选题评分表
 
-## Fixed 100-point scale
+## 固定百分制
 
-| Criterion | Maximum | High-score test |
+| 维度 | 最高分 | 高分条件 |
 |---|---:|---|
-| `structural_importance` | 20 | Changes an important constraint, capability, institution, value chain, profit pool, or allocation of power—not merely a daily price |
-| `explanatory_leverage` | 15 | One well-framed question can explain several observations and yield a reusable principle rather than restating headlines |
-| `evidence_availability` | 15 | Independent dual-source facts plus technical, corporate, policy, market, historical, or scientific evidence are obtainable |
-| `mechanism_testability` | 15 | Competing mechanisms imply distinct observable outcomes and expose intermediate links |
-| `cross_layer_impact` | 15 | Connects at least three layers such as technology architecture, firm strategy, industry structure, capital markets, policy, labor, consumers, or geopolitics |
-| `historical_comparability` | 10 | Has a relevant historical, cross-sectional, business-model, or technology-transition comparison without forcing analogy |
-| `future_falsifiability` | 10 | Specifies observable checks across suitable near-, medium-, or long-term horizons; it need not resolve next session |
-| **Total** | **100** | |
+| `structural_importance` | 20 | 改变重要约束、能力、制度、价值链、利润池或权力分配，而不只是日内价格 |
+| `explanatory_leverage` | 15 | 一个定义良好的问题能解释多个观察并产生可复用原则，而不是复述标题 |
+| `evidence_availability` | 15 | 可取得双独立来源事实，以及技术、公司、政策、市场、历史或科学证据 |
+| `mechanism_testability` | 15 | 竞争机制导向不同的可观察结果，并暴露中间环节 |
+| `cross_layer_impact` | 15 | 连接至少三个层次，如技术架构、企业战略、产业结构、资本市场、政策、劳动者、消费者或地缘 |
+| `historical_comparability` | 10 | 有相关历史、横向、商业模式或技术迁移比较，且不强行类比 |
+| `future_falsifiability` | 10 | 在合适的短中长期给出可观察检查，不必下一交易日就解决 |
+| **合计** | **100** | |
 
-Scores may be integers or half points, but each must remain between zero and its fixed maximum. Include a criterion-specific rationale; do not award points for prose quality.
+分数可为整数或半分，但每项必须在零到固定上限之间。逐项给出理由，不得因文笔好而加分。
 
-## Hard threshold
+## 硬门槛
 
-- `score_total >= 70`: eligible for ranking if all gates pass.
-- `score_total < 70`: reject from 深度洞悉 selection.
-- Never round 69.5 to 70 and never lower the threshold because the news day is quiet.
+- `score_total >= 70`：其他闸门全部通过后可以参与排序。
+- `score_total < 70`：不得进入深度洞悉选题。
+- 不得把69.5四舍五入为70，也不得因为新闻平淡而降低门槛。
 
-## Three origins
+## 三种来源
 
-- `raw_anomaly`: an observable mismatch in price, facts, timing, policy, or related assets.
-- `desk_question`: a mechanism question extracted by a policy, company, technology, commodity, or global desk.
-- `frontier_question`: an emerging pattern whose structural importance can precede clear market pricing, such as frontier-model companies moving into proprietary silicon.
+- `raw_anomaly`：价格、事实、时间、政策或相关资产之间可观察的不匹配。
+- `desk_question`：政策、公司、科技、商品或全球分析台提炼的机制问题。
+- `frontier_question`：结构重要性可能早于明确市场定价的新兴共性，如前沿模型企业进入自研芯片。
 
-All three origins face the same evidence and falsifiability gates. “Interesting future topic” is not sufficient.
+三类来源适用相同的证据与可证伪闸门。“有趣的未来话题”不足以入选。
 
-## Evidence gate
+## 证据闸门
 
-A dual-source candidate requires two independently produced sources, not two URLs. Common ownership, syndication, circular citation, or a reposted press release counts as one family. At least one source must be grade A or B.
+双来源候选需要两个独立生产的来源，而不是两个 URL。共同所有权、同源分发、循环引用或转发同一新闻稿只算一个家族。至少一个来源必须为 A 或 B 级。
 
-## Abstraction test
+## 抽象测试
 
-A high-quality candidate moves through four levels without skipping one:
+高质量候选必须逐层经过：
 
-1. observed trigger;
-2. underlying constraint or incentive;
-3. mechanism and value migration;
-4. economic and social consequences across time.
+1. 已观察触发点；
+2. 底层约束或激励；
+3. 机制与价值迁移；
+4. 跨期限的经济与社会后果。
 
-Reward philosophical leverage only when the abstract principle returns to concrete actors, quantities, decisions, and falsifiers. Do not reward grand language, inevitability claims, or unsupported forecasts.
+只有抽象原则能回到具体主体、数量、决策和证伪条件时，哲学解释力才可得分。宏大措辞、必然性断言或无支持预测不得加分。
 
-## Overlap rule
+## 重叠规则
 
-Use the same `overlap_key` for candidates that ask substantially the same causal question. Retain the highest total. On ties, prefer evidence availability, then mechanism testability, then structural importance, then stable ID.
+实质询问同一因果问题的候选使用相同 `overlap_key`，只保留总分最高者。并列时依次比较证据可得性、机制可检验性、结构重要性和稳定 ID。
 
-## Selection output
+## 选择输出
 
-Select one to three questions. Zero is allowed only when no candidate clears both the hard gates and 70 points. Record rejected candidates and reasons so the workflow can improve collection rather than silently lowering standards.
+选择1–3个问题。没有候选同时通过硬闸门和70分时允许零入选。记录被驳回候选及理由，使工作流改善采集，而不是静默降低标准。

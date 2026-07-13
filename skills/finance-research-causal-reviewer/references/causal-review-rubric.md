@@ -1,86 +1,86 @@
-# Causal review rubric
+# 因果审稿评分表
 
-## Identity and coverage gate
+## 身份与覆盖闸门
 
-Match the audit's `report_id`, `topic_id`, and `author_id` exactly to the report and require a distinct `reviewer_id`. Review every report claim with `material: true` exactly once. Reject audits that omit a material claim, review it more than once, or reference a claim ID absent from the report.
+审稿记录的 `report_id`、`topic_id`、`author_id` 必须与报告完全一致，`reviewer_id` 必须不同。报告中每项 `material: true` 的论断只能且必须审查一次。遗漏重要论断、重复审查或引用报告中不存在的 claim ID 时，整份审稿无效。
 
-## L1 — Fact and source
+## L1——事实与来源
 
-Check:
+检查：
 
-- exact claim wording against sources;
-- two independent sources for material non-trivial facts;
-- primary-source status and source-family independence;
-- observation cutoff and post-cutoff contamination;
-- unresolved time, amount, entity, wording, percentage, or attribution conflicts.
+- 论断原文是否与来源一致；
+- 重要且非显然事实是否有两个独立来源；
+- 是否为一手来源，来源家族是否独立；
+- 观察截止时间，以及是否混入截止时间后的信息；
+- 时间、金额、主体、措辞、百分比或归因冲突是否仍未解决。
 
-Fail when a material fact is unsupported, stale, circularly sourced, or contradicted without disclosure.
+重要事实缺乏支持、数据陈旧、循环引用，或存在未披露反向证据时，本层不通过。
 
-## L2 — Number, time, and comparability
+## L2——数字、时间与可比性
 
-Recompute totals, percentages, growth rates, spreads, cumulative returns, and implied rates. Check calendar versus trading day, local versus UTC time, intraday versus close, futures month and roll, spot versus settlement, nominal versus real, annual versus cumulative, and restated versus original bases.
+复算总量、百分比、增速、价差、累计收益和隐含利率。检查自然日与交易日、本地时间与 UTC、盘中与收盘、期货月份与换月、现货与结算价、名义值与实际值、年化与累计、重述口径与原始口径。
 
-Fail when the correction changes the thesis or when incomparable snapshots create pseudo-precision.
+修正后会改变主论点，或用不可比快照制造伪精确时，本层不通过。
 
-## L3 — Mechanism, abstraction, and scope
+## L3——机制、抽象与边界
 
-Require:
+必须具备：
 
-- cause preceding effect;
-- a plausible mechanism with observed intermediate links;
-- at least one serious alternative explanation;
-- counterevidence and confounders;
-- a benchmark or base rate;
-- confirmation and falsification signals.
-- a complete abstraction ladder from observable trigger to constraint, mechanism, value migration, and economic consequence;
-- consistent units of analysis: do not infer an industry equilibrium from one firm, or a social outcome from a short-term stock reaction;
-- explicit near-, medium-, and long-horizon transitions, including implementation delays and competitor responses;
-- conditional stakeholder effects rather than static winner/loser labels;
-- an earnings and valuation bridge when capital-market consequences are claimed.
+- 原因发生在结果之前；
+- 可信机制和已观察的中间环节；
+- 至少一个有分量的替代解释；
+- 反证与混杂因素；
+- 基准或基础概率；
+- 确认与证伪信号；
+- 从可观察触发点到约束、机制、价值迁移和经济后果的完整抽象阶梯；
+- 一致的分析单位：不得从一家企业推断行业均衡，也不得从短期股价反应推断社会结果；
+- 明确的短中长期转换，包括实施滞后和竞争者反应；
+- 有条件的利益相关方影响，而非静态受益/受损标签；
+- 涉及资本市场后果时，必须写出盈利与估值桥梁。
 
-Downgrade intent claims, “priced in” claims, and single-day causal claims unless direct evidence exists. If prices merely fit a hypothesis, use “consistent with” rather than “proves.”
+没有直接证据时，下调关于意图、“已计价”和单日因果的论断。价格若只是与某假设相符，只能写“与……一致”，不能写“证明”。
 
-For technology-strategy questions, separate announcement, engineering feasibility, production, workload fit, volume adoption, total cost, ecosystem support, and incumbent response. A chain that skips these stages cannot support a strong displacement or valuation conclusion.
+技术战略问题必须区分公告、工程可行性、量产、工作负载适配、规模采用、总成本、生态支持和现有企业反应。跳过这些阶段的链条不能支持强替代或估值结论。
 
-## L4 — Interpretation, philosophy, and publication
+## L4——解释、哲学与发布
 
-Require philosophical framing to name its empirical anchor and limits. Reject “inevitable,” “terminal,” or civilizational claims unless the paper defines necessary conditions, exceptions, time horizon, and falsifiers. Historical analogy may generate hypotheses but cannot supply missing evidence.
+哲学框架必须说明实证锚点和适用边界。文章没有定义必要条件、例外、时间范围和证伪条件时，驳回“必然”“终局”或文明尺度的论断。历史类比可以产生假设，不能补足缺失证据。
 
-Run a distinct human-voice review:
+另行执行真人文风审查：
 
-- flag openings that announce the article or invoke a generic era;
-- flag repeated “值得注意的是、这意味着、本质上、总体而言、首先、其次、最后” used as scaffolding;
-- flag serial “不是A而是B”, equal-length pro/con blocks, identical paragraph shapes, and conclusions repeated in every section;
-- flag abstract nouns without an acting subject, slogan-like headings, and generic future-facing endings;
-- distinguish necessary analytical symmetry from cosmetic symmetry;
-- require exact rewrites that preserve evidence, qualifications, and claim scope.
+- 标出宣布文章内容或泛称某个时代的开头；
+- 标出被反复用作脚手架的“值得注意的是、这意味着、本质上、总体而言、首先、其次、最后”；
+- 标出连续“不是A而是B”、等长正反段落、相同段落形状和每节重复结论；
+- 标出没有行动主体的抽象名词、口号式标题和泛泛展望未来的结尾；
+- 区分分析所需的对称与只为好看的对称；
+- 给出具体改写要求，同时保留证据、限定条件和论断范围。
 
-Set `style_review.verdict` to `pass` only after public-facing prose reads as an authored argument. `publish_full` and `publish_note` cannot ship with `revise`.
+只有公开文字读起来像真实作者的论证，`style_review.verdict` 才能设为 `pass`。`publish_full` 与 `publish_note` 不得在 `revise` 状态下发布。
 
-Ensure public wording distinguishes fact, inference, and judgment; preserves uncertainty; avoids internal fields and workflow jargon; and gives no personalized trading instruction.
+公开表述必须区分事实、推断和判断，保留不确定性，不出现内部字段和工作流术语，也不提供个性化交易指令。
 
-Only an `approved` claim with `summary_eligible: true` can enter the abstract or summary. A `qualified` claim may enter a note only with its exact required qualification and after any material change is re-reviewed.
+只有 `approved` 且 `summary_eligible: true` 的论断可以进入摘要。`qualified` 论断只有带上规定的完整限定语、且实质修改重新审查后，才能进入短评。
 
-## Claim conclusions
+## 单项论断结论
 
-| Conclusion | Meaning | Summary eligible |
+| 结论 | 含义 | 可进入摘要 |
 |---|---|---|
-| `approved` | Supported, correctly scoped, and public-safe | Yes, only if separately marked eligible |
-| `qualified` | Usable only with an explicit limitation in body or note | No |
-| `revise` | Potentially usable after evidence or wording changes and re-review | No |
-| `rejected` | False, unsupported, misleading, or irreparably confounded | No |
+| `approved` | 有证据支持、边界正确且适合公开 | 可以，但还需单独标记为 eligible |
+| `qualified` | 只有正文或短评明确附带限制后才可使用 | 不可以 |
+| `revise` | 补充证据或修改措辞并重审后可能可用 | 不可以 |
+| `rejected` | 错误、无支持、误导或存在无法消除的混杂 | 不可以 |
 
-## Overall four-level verdict
+## 四级总体结论
 
-| Verdict | Use |
+| 结论 | 用途 |
 |---|---|
-| `publish_full` | One flagship 深度洞悉 article; all thesis-critical claims, abstraction steps, and economic-impact bridges approved with no blocking conflict |
-| `publish_note` | A shorter note built from approved claims; depth or causal closure is insufficient for flagship use |
-| `summary_only` | Only approved claim IDs may be used in the summary; no 深度洞悉 article |
-| `reject` | No publication from this report |
+| `publish_full` | 可作为一篇旗舰洞悉；主论点关键论断、抽象步骤和经济影响桥梁全部获准，且无阻断冲突 |
+| `publish_note` | 可用获准论断写成短评；深度或因果闭环不足以支撑旗舰文章 |
+| `summary_only` | 只有获准 claim ID 可进入摘要，不刊发深度洞悉文章 |
+| `reject` | 该报告不得刊发任何内容 |
 
-For `publish_full`, thesis-critical calculations and causal links must pass L1–L3. For any verdict, summary admission remains claim-specific.
+`publish_full` 的关键计算与因果环节必须通过 L1–L3。无论总体结论为何，摘要准入始终逐条论断判断。
 
-## Publication quality score
+## 刊发质量分
 
-For every non-`reject` verdict, assign `publication_quality_score` from 0 to 100 after claim review. Score source integrity, numerical and timestamp comparability, causal closure, counterevidence handling, uncertainty discipline, and public usability. This is a publication-ranking score, not the topic selector's 100-point research-priority score. A `reject` audit may omit it.
+逐条审查完成后，每个非 `reject` 结论都要给出 0–100 的 `publication_quality_score`。评分维度包括来源完整性、数字与时间戳可比性、因果闭环、反证处理、不确定性纪律和公开可用性。这是刊发排序分，不是选题器的百分制研究优先级分。`reject` 可以不提供。

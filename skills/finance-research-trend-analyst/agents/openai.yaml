@@ -1,4 +1,4 @@
 interface:
   display_name: "历史趋势与路径分析"
   short_description: "比较近期与历史市场路径，识别确认、证伪、反转和结构变化"
-  default_prompt: "Use $finance-research-trend-analyst to compare current and historical runs and extract falsifiable path-dependent questions."
+  default_prompt: "使用 $finance-research-trend-analyst 比较当前与历史运行，并提炼可证伪的路径依赖问题。"

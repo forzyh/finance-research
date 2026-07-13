@@ -1,98 +1,98 @@
-# Technology Stock Subsector Taxonomy
+# 科技股细分赛道分类
 
-## Broad Market Lens
+## 整体市场视角
 
-Start with technology risk appetite:
+先判断科技风险偏好：
 
-- US/global: Nasdaq Composite, Nasdaq 100, Philadelphia Semiconductor Index, major platform and AI-infrastructure stocks, US yields, dollar, earnings/guidance, capex plans.
-- Hong Kong/China internet: Hang Seng Tech, major platform companies, buybacks, revenue/margin guidance, regulation, consumption and advertising demand.
-- A-share technology: STAR 50, ChiNext, semiconductor chain, AI compute, software, communications, consumer electronics, robotics, military/cyber when relevant.
+- 美国/全球：纳斯达克综合、纳斯达克100、费城半导体、主要平台与 AI 基础设施股票、美债收益率、美元、业绩/指引、资本开支计划。
+- 港股/中国互联网：恒生科技、主要平台企业、回购、收入/利润率指引、监管、消费与广告需求。
+- A股科技：科创50、创业板、半导体链、AI 算力、软件、通信、消费电子、机器人，以及相关时的军工/网络安全。
 
-## Subsector Map
+## 细分赛道图
 
-### AI Infrastructure
+### AI 基础设施
 
-Includes GPU/ASIC, AI servers, switches, optical modules, PCB, data-center capex, cooling, power equipment, cloud capex suppliers.
+包括 GPU/ASIC、AI 服务器、交换机、光模块、PCB、数据中心资本开支、冷却、电力设备和云资本开支供应商。
 
-Questions:
+问题：
 
-- Is the driver capex, orders, earnings, export controls, supply bottleneck, or pure valuation?
-- Are upstream suppliers confirming the move, or only one leader?
-- Are data-center power/cooling names moving with compute names?
+- 驱动来自资本开支、订单、业绩、出口管制、供给瓶颈，还是纯估值？
+- 上游供应商是否确认，还是只有一个龙头变化？
+- 数据中心电力/冷却是否与算力同步？
 
-### AI Applications And Software
+### AI 应用与软件
 
-Includes model platforms, SaaS, office software, enterprise AI, education/medical/finance AI, agents, data services.
+包括模型平台、SaaS、办公软件、企业 AI、教育/医疗/金融 AI、Agent 和数据服务。
 
-Questions:
+问题：
 
-- Is there evidence of paid adoption, revenue conversion, or only product demos?
-- Are software margins or cloud costs changing the thesis?
-- Are A-share application names following US AI app leaders, or moving on domestic policy?
+- 有付费采用和收入转化证据，还是只有产品演示？
+- 软件利润率或云成本是否改变主论点？
+- A股应用公司跟随美国 AI 应用龙头，还是由国内政策驱动？
 
-### Semiconductors
+### 半导体
 
-Break into design, foundry, memory, equipment, materials, EDA/IP, advanced packaging, testing, domestic substitution, and export-control stories.
+拆分为设计、代工、存储、设备、材料、EDA/IP、先进封装、测试、国产替代和出口管制。
 
-Questions:
+问题：
 
-- Which chain segment moved?
-- Is it demand recovery, price cycle, localization policy, yield/capacity, or export restriction?
-- Are equipment/materials moving together with design/foundry/memory?
+- 产业链哪个环节变化？
+- 来自需求复苏、价格周期、国产化政策、良率/产能，还是出口限制？
+- 设备/材料是否与设计/代工/存储同步？
 
-### Internet Platforms
+### 互联网平台
 
-Includes e-commerce, local services, games, ads, cloud, fintech-like platform services, content platforms.
+包括电商、本地生活、游戏、广告、云、类金融科技平台服务和内容平台。
 
-Questions:
+问题：
 
-- Is the move driven by earnings, margin discipline, buybacks, regulation, consumer demand, or overseas growth?
-- Are platform leaders moving together, or is it company-specific?
+- 波动由业绩、利润纪律、回购、监管、消费需求还是海外增长驱动？
+- 平台龙头同步变化，还是公司特有？
 
-### Consumer Electronics
+### 消费电子
 
-Includes phones, PCs, wearables, MR/AR, components, camera modules, panels, connectors, batteries, product-cycle supply chain.
+包括手机、PC、可穿戴、MR/AR、零部件、摄像模组、面板、连接器、电池和产品周期供应链。
 
-Questions:
+问题：
 
-- Is the signal a new product launch, channel inventory, shipment data, component order, or rumor?
-- Are component suppliers moving before brand-level confirmation?
+- 信号来自新品发布、渠道库存、出货数据、零部件订单还是传闻？
+- 零部件供应商是否先于品牌端确认变化？
 
-### Smart Vehicles And Robotics
+### 智能汽车与机器人
 
-Includes autonomous driving, auto chips, sensors, lidar, intelligent cockpit, vehicle software, humanoid robots, industrial automation.
+包括自动驾驶、汽车芯片、传感器、激光雷达、智能座舱、车载软件、人形机器人和工业自动化。
 
-Questions:
+问题：
 
-- Is the driver delivery/price war, new model/product, policy, robot demo, orders, or parts localization?
-- Is the signal from OEMs, component suppliers, or software/platform companies?
+- 驱动来自交付/价格战、新车型/产品、政策、机器人演示、订单还是零部件国产化？
+- 信号来自整车厂、零部件供应商，还是软件/平台企业？
 
-### Communications And Digital Infrastructure
+### 通信与数字基础设施
 
-Includes optical modules, telecom equipment, satellite internet, cybersecurity, cloud infrastructure, data-center construction, power and cooling.
+包括光模块、通信设备、卫星互联网、网络安全、云基础设施、数据中心建设、电力和冷却。
 
-Questions:
+问题：
 
-- Is telecom/data-center capex confirmed?
-- Are optical/power/cooling moves consistent with AI infrastructure, or separate policy procurement?
+- 通信/数据中心资本开支是否确认？
+- 光模块/电力/冷却与 AI 基础设施一致，还是独立政策采购？
 
-## Output And Research Guidance
+## 输出与研究指引
 
-For post-close reports, prefer:
+盘后报告优先采用：
 
-- One broad technology risk-appetite paragraph.
-- 3-6 subsector bullets or short paragraphs.
-- A concise lane table after the narrative: subsector, status, driver, leading names, confirmation level, next signal.
-- At most the few research questions that expose a material cross-market, supply-chain, price/fundamental, or policy/earnings contradiction.
+- 一段整体科技风险偏好判断；
+- 3–6个细分赛道要点或短段；
+- 叙述后附精简赛道表：赛道、状态、驱动、龙头、确认程度、下一信号；
+- 只保留少数能够暴露重大跨市场、供应链、价格/基本面或政策/业绩矛盾的研究问题。
 
-Avoid treating all technology stocks as a single trade. Divergence is often the story.
+不得把所有科技股视为同一交易；分化本身往往就是主线。
 
-## Candidate Evidence Patterns
+## 候选证据模式
 
-- Path dependence: a selloff or rebound began before the newest headline.
-- Cross-market residual: broad risk, technology duration and semiconductor-specific moves differ materially.
-- Supply-chain disagreement: leaders move but upstream, peers, orders or capex do not confirm.
-- Earnings quality: headline growth conflicts with recurring profit, cash flow, guidance or expectations.
-- Policy repricing: policy wording is familiar but market reaction implies a new implementation or funding expectation.
+- 路径依赖：下跌或反弹早于最新标题开始。
+- 跨市场残差：整体风险、科技久期和半导体特有波动存在重大差异。
+- 供应链冲突：龙头变化，但上游、同行、订单或资本开支没有确认。
+- 业绩质量：标题增长与经常性利润、现金流、指引或预期冲突。
+- 政策重估：政策措辞并不新，但市场反应隐含新的实施或资金预期。
 
-Require competing hypotheses and an explicit benchmark before routing a question to topic selection.
+问题交给选题器前，必须有竞争假设和明确基准。

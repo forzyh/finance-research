@@ -1,61 +1,61 @@
-# Market And Futures Instruments
+# 市场与期货工具表
 
-## Chinese Futures Watchlist
+## 国内期货观察表
 
-The script uses Sina continuous futures symbols when available.
+脚本在可取得时使用新浪连续期货代码。
 
-| Category | Name | Sina symbol | Why it matters |
+| 类别 | 名称 | 新浪代码 | 观察意义 |
 |---|---|---|---|
-| Agricultural | 鸡蛋 | `nf_JD0` | Protein consumption, feed costs, seasonal supply. |
-| Agricultural | 玉米 | `nf_C0` | Feed grain, hog/poultry cost, inflation signal. |
-| Agricultural | 豆粕 | `nf_M0` | Feed protein, soybean import and livestock chain. |
-| Agricultural | 豆一 | `nf_A0` | Domestic soybean chain. |
-| Agricultural | 豆油 | `nf_Y0` | Oils and fats, food inflation. |
-| Agricultural | 棕榈油 | `nf_P0` | Global edible oil and import-cost channel. |
-| Agricultural | 菜粕 | `nf_RM0` | Feed alternative and aquaculture chain. |
-| Agricultural | 白糖 | `nf_SR0` | Food CPI and weather/supply shocks. |
-| Agricultural | 棉花 | `nf_CF0` | Textile/export chain. |
-| Agricultural | 苹果 | `nf_AP0` | Seasonal agricultural price signal. |
-| Agricultural | 生猪 | `nf_LH0` | Protein CPI, feed demand, farming margin. |
-| Black | 螺纹钢 | `nf_RB0` | Construction demand and real-estate chain. |
-| Black | 热卷 | `nf_HC0` | Manufacturing and steel demand. |
-| Black | 铁矿石 | `nf_I0` | Steel cost and China demand. |
-| Black | 玻璃 | `nf_FG0` | Property completion chain. |
-| Black | 纯碱 | `nf_SA0` | Glass and photovoltaic glass costs. |
-| Energy/Chemicals | 上海原油 | `nf_SC0` | Domestic crude benchmark and geopolitics. |
-| Energy/Chemicals | 燃油 | `nf_FU0` | Shipping/energy cost. |
-| Energy/Chemicals | LPG | `nf_PG0` | Petrochemical and residential fuel. |
-| Energy/Chemicals | PTA | `nf_TA0` | Polyester/textile chain. |
-| Energy/Chemicals | 甲醇 | `nf_MA0` | Coal chemical and energy chain. |
-| Metals | 铜 | `nf_CU0` | Global growth and electrification demand. |
-| Metals | 铝 | `nf_AL0` | Power cost, construction, manufacturing. |
-| Metals | 锌 | `nf_ZN0` | Infrastructure and industrial demand. |
-| Metals | 镍 | `nf_NI0` | Stainless steel and batteries. |
-| Precious | 黄金 | `nf_AU0` | Real rates, dollar, risk hedge. |
-| Precious | 白银 | `nf_AG0` | Precious and industrial hybrid. |
+| 农产品 | 鸡蛋 | `nf_JD0` | 蛋白消费、饲料成本、季节供给 |
+| 农产品 | 玉米 | `nf_C0` | 饲料粮、生猪/禽类成本、通胀信号 |
+| 农产品 | 豆粕 | `nf_M0` | 饲料蛋白、大豆进口和养殖链 |
+| 农产品 | 豆一 | `nf_A0` | 国内大豆产业链 |
+| 农产品 | 豆油 | `nf_Y0` | 油脂与食品通胀 |
+| 农产品 | 棕榈油 | `nf_P0` | 全球食用油与进口成本传导 |
+| 农产品 | 菜粕 | `nf_RM0` | 替代饲料与水产养殖链 |
+| 农产品 | 白糖 | `nf_SR0` | 食品 CPI 与天气/供给冲击 |
+| 农产品 | 棉花 | `nf_CF0` | 纺织与出口链 |
+| 农产品 | 苹果 | `nf_AP0` | 季节性农产品价格信号 |
+| 农产品 | 生猪 | `nf_LH0` | 蛋白 CPI、饲料需求、养殖利润 |
+| 黑色 | 螺纹钢 | `nf_RB0` | 建筑需求和地产链 |
+| 黑色 | 热卷 | `nf_HC0` | 制造业和钢材需求 |
+| 黑色 | 铁矿石 | `nf_I0` | 钢材成本和中国需求 |
+| 黑色 | 玻璃 | `nf_FG0` | 地产竣工链 |
+| 黑色 | 纯碱 | `nf_SA0` | 玻璃与光伏玻璃成本 |
+| 能源化工 | 上海原油 | `nf_SC0` | 国内原油基准与地缘因素 |
+| 能源化工 | 燃油 | `nf_FU0` | 航运与能源成本 |
+| 能源化工 | LPG | `nf_PG0` | 石化与居民燃料 |
+| 能源化工 | PTA | `nf_TA0` | 聚酯与纺织链 |
+| 能源化工 | 甲醇 | `nf_MA0` | 煤化工与能源链 |
+| 有色 | 铜 | `nf_CU0` | 全球增长与电气化需求 |
+| 有色 | 铝 | `nf_AL0` | 电力成本、建筑、制造 |
+| 有色 | 锌 | `nf_ZN0` | 基建与工业需求 |
+| 有色 | 镍 | `nf_NI0` | 不锈钢与电池 |
+| 贵金属 | 黄金 | `nf_AU0` | 实际利率、美元、风险对冲 |
+| 贵金属 | 白银 | `nf_AG0` | 贵金属与工业属性并存 |
 
-## Cross-Asset Snapshot Checklist
+## 跨资产快照清单
 
-- Equities: 上证指数, 深成指, 创业板指, 科创50, 恒生指数, 恒生科技, S&P 500, Nasdaq, Dow.
-- Rates: 中债收益率, 美债 2Y/10Y, Fed rate expectations where available.
-- FX: USD/CNY, USD/CNH, dollar index.
-- Commodities: Brent/WTI, Shanghai crude, gold, silver, copper, iron ore.
-- Crypto: BTC and ETH only when there is material news or large price action.
+- 股票：上证指数、深成指、创业板指、科创50、恒生指数、恒生科技、标普500、纳斯达克、道琼斯。
+- 利率：中债收益率、美债2年/10年，可取得时加入美联储利率预期。
+- 汇率：USD/CNY、USD/CNH、美元指数。
+- 商品：Brent/WTI、上海原油、黄金、白银、铜、铁矿石。
+- 加密资产：只有出现重大新闻或大幅波动时才记录 BTC 与 ETH。
 
-For post-close runs, record A-share and Hong Kong close times, domestic-futures day-session time, Europe early-trade time, and US futures/premarket time separately. Never present these asynchronous observations as one simultaneous close.
+盘后运行要分别记录 A股与港股收盘时间、国内期货日盘时间、欧洲早盘时间和美股期指/盘前时间，不得把这些异步观察写成同一时点收盘。
 
-## Interpretation Hints
+## 解释提示
 
-- Agricultural futures need driver checks: weather, disease, feed cost, inventory, imports, policy reserves, spot basis, and seasonality.
-- Industrial futures often transmit through property/infrastructure, manufacturing PMIs, export orders, and inventory.
-- Energy and precious metals often transmit through geopolitics, dollar, rates, shipping, and inflation expectations.
+- 农产品期货需检查天气、疫病、饲料成本、库存、进口、政策储备、现货基差和季节性。
+- 工业品期货通常通过地产/基建、制造业 PMI、出口订单和库存传导。
+- 能源和贵金属通常通过地缘、美元、利率、航运和通胀预期传导。
 
-## Anomaly Checks
+## 异常检查
 
-- Index versus breadth, turnover, size and growth/value spread.
-- Headline severity versus oil, gold, dollar, rates and shipping response.
-- Spot, futures, basis, inventory and physical-market disagreement.
-- A/H technology versus US futures or the preceding US close after aligning sessions.
-- Large gap followed by intraday retracement or failed follow-through.
+- 指数与市场宽度、成交额、大小盘和成长/价值价差之间的背离。
+- 标题严重程度与油、金、美元、利率和航运反应之间的不一致。
+- 现货、期货、基差、库存和实物市场之间的冲突。
+- 对齐时段后，A/H科技与美股期指或此前美股收盘之间的背离。
+- 大幅跳空后盘中回撤，或后续未延续。
 
-An anomaly must preserve the baseline and operands so a research agent can reproduce it.
+异常记录必须保留基准和计算项，使研究 Agent 可以复现。

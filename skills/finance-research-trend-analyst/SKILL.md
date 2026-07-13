@@ -1,52 +1,52 @@
 ---
 name: finance-research-trend-analyst
-description: Compare a finance-research v2 run with the latest 1–7 historical runs, while reading legacy v1 bundles, to identify path dependence, confirmation, falsification, reversal, price-fact divergence, and research-worthy expectation gaps. Use when a post-close report must answer which prior tracking items were confirmed or disproved and which questions should carry into tomorrow.
+description: 将当前 finance-research v2 运行与最近1–7次历史运行比较，同时兼容旧版 v1 bundle，以识别路径依赖、确认、证伪、反转、价格与事实背离以及值得研究的预期差。用于盘后报告回答此前跟踪项哪些得到确认、哪些被推翻、哪些问题应延续到明天。
 ---
 
-# Finance Research Trend Analyst
+# 财经研究趋势分析
 
-## Purpose
+## 目标
 
-Explain how today's close changes the prior narrative. Supply historical evidence to the news desk and research candidate pool without turning repeated mentions into truth.
+解释当天收盘如何改变此前叙事，为新闻台和研究候选池提供历史证据，但不能把反复出现的说法当成事实。
 
-## Procedure
+## 流程
 
-1. Read `references/trend-rubric.md`.
-2. Accept v2 bundles and legacy bundles. For legacy input, read `fact_cards` or `news_collection.items`, existing snapshot fields, stock/technology observations, trends, verified events, and watchlists when present.
-3. Store new bundles under `work/finance-research-runs/YYYY-MM-DD/`; use timestamped subdirectories for same-day reruns.
-4. Run `scripts/compare_runs.py --current <bundle> --runs-dir work/finance-research-runs --history 7 --json --bundle-output <updated-bundle>`. Point `--runs-dir` to a legacy run root when importing old history. The script atomically writes `run_comparison` and `desk_briefs.trend.machine_comparison` while preserving existing analyst-authored observations and candidates.
-5. Compare the latest 1–3 runs for immediate path and up to 7 runs for weekly context.
-6. Test every carried item against current facts and prices. Label confirmed, weakened, reversed, falsified, unchanged, or pending.
-7. Detect path dependence: whether today's move began before the newest headline, whether a rebound failed, or whether reaction broadened or narrowed.
-8. Generate a candidate question only when history reveals a material contradiction or unresolved mechanism.
+1. 阅读 `references/trend-rubric.md`。
+2. 接受 v2 和旧版 bundle。读取旧版时，在存在的情况下提取 `fact_cards` 或 `news_collection.items`、原有快照字段、个股/科技观察、趋势、已核验事件和观察清单。
+3. 新 bundle 存放在 `work/finance-research-runs/YYYY-MM-DD/`；同日重跑使用带时间戳的子目录。
+4. 运行 `scripts/compare_runs.py --current <bundle> --runs-dir work/finance-research-runs --history 7 --json --bundle-output <updated-bundle>`。导入旧历史时把 `--runs-dir` 指向旧运行根目录。脚本原子写入 `run_comparison` 和 `desk_briefs.trend.machine_comparison`，同时保留分析师已有观察与候选。
+5. 最近1–3次运行用于判断即时路径，最多7次用于一周背景。
+6. 用当前事实和价格检验每个延续项，标记为已确认、减弱、反转、证伪、不变或待定。
+7. 识别路径依赖：当天波动是否早于最新标题、反弹是否失败、反应范围是扩散还是收窄。
+8. 只有历史比较显示重大矛盾或未解决机制时，才生成候选问题。
 
-## v2 Outputs
+## v2 输出
 
-Merge:
+合并写入：
 
-- `schema_version`: write `2` for normalized output.
-- `trend_observations`.
-- `run_comparison`: history files, windows, cold-start status, and machine comparisons.
-- `desk_briefs.trend`: confirmed, falsified, and carry-forward lists.
-- `research_candidates`: append trend-origin candidates when warranted.
+- `schema_version`：规范输出写 `2`；
+- `trend_observations`；
+- `run_comparison`：历史文件、窗口、冷启动状态和机器比较；
+- `desk_briefs.trend`：已确认、已证伪和延续清单；
+- `research_candidates`：必要时追加趋势来源候选。
 
-### Trend observation
+### 趋势观察
 
-Require:
+必须包含：
 
-- `observation_id`, `trend`, and `status`: `strengthening`, `weakening`, `reversal`, `confirmed`, `falsified`, `unchanged`, or `pending`.
-- `current_evidence_ids`, `historical_evidence`, and exact comparison window.
-- `affected_assets`, `price_or_sentiment_change`, and `path_read`.
-- `alternative_explanations`, `confidence`, `confirmation_signal`, and `falsification_signal`.
+- `observation_id`、`trend` 和 `status`：`strengthening`、`weakening`、`reversal`、`confirmed`、`falsified`、`unchanged` 或 `pending`；
+- `current_evidence_ids`、`historical_evidence` 和精确比较窗口；
+- `affected_assets`、`price_or_sentiment_change` 和 `path_read`；
+- `alternative_explanations`、`confidence`、`confirmation_signal` 和 `falsification_signal`。
 
-### Trend research candidate
+### 趋势研究候选
 
-Use the canonical DTO: `candidate_id`, `origin: desk_question`, `question_type: market_anomaly`, `research_question`, `observable_trigger`, `structural_tension`, at least three `required_lenses`, `analysis_horizons`, `impact_map`, `evidence_types`, `competing_hypotheses`, `source_pair`, `benchmark_plan`, `confirmation_signals`, `falsification_signals`, and `overlap_key`. Also preserve `why_now`, `seed_fact_ids`, the historical anomaly or expectation gap, affected assets, and evidence gaps. Set `verification_status: pending`, `base_verified: false`, and an empty `source_pair` until `$finance-research-fact-verifier` performs the atomic verification update.
+使用规范 DTO：`candidate_id`、`origin: desk_question`、`question_type: market_anomaly`、`research_question`、`observable_trigger`、`structural_tension`、至少三个 `required_lenses`、`analysis_horizons`、`impact_map`、`evidence_types`、`competing_hypotheses`、`source_pair`、`benchmark_plan`、`confirmation_signals`、`falsification_signals` 和 `overlap_key`。同时保留 `why_now`、`seed_fact_ids`、历史异常或预期差、受影响资产和证据缺口。在 `$finance-research-fact-verifier` 完成原子核验更新前，设 `verification_status: pending`、`base_verified: false`，并令 `source_pair` 为空。
 
-## Guardrails
+## 硬性边界
 
-- Treat missing history as a cold start.
-- Never promote an old unverified claim because it recurs.
-- Separate observable sequence from inferred mechanism.
-- Do not use mention counts alone as evidence of market importance.
-- Make tomorrow's follow-up measurable wherever possible.
+- 历史缺失按冷启动处理。
+- 旧的未核验论断不能因为重复出现而升级。
+- 可观察顺序与推断机制必须分开。
+- 不得仅以提及次数证明市场重要性。
+- 明日跟踪尽可能使用可测量条件。

@@ -1,4 +1,4 @@
 interface:
   display_name: "每日财经晚报洞悉主编"
   short_description: "合成自然、克制、有作者判断的晚报与洞悉长文，清除模板化表达"
-  default_prompt: "Use $finance-research-evening-editor to edit verified market and insight material into natural, specific Chinese financial journalism without formulaic AI prose."
+  default_prompt: "使用 $finance-research-evening-editor 将已核验的市场与洞悉材料编辑成自然、具体、不带模板腔的中文财经报道。"

@@ -1,4 +1,4 @@
 interface:
   display_name: "政策、制度与宏观研究台"
   short_description: "提炼政策机制、制度变化、执行约束与中长期经济影响问题"
-  default_prompt: "Use $finance-research-policy-desk to produce evidence-backed policy, institutional, and macro insight candidates."
+  default_prompt: "使用 $finance-research-policy-desk 生成有证据支撑的政策、制度和宏观洞悉候选。"

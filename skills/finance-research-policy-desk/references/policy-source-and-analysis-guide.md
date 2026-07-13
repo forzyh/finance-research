@@ -1,44 +1,43 @@
-# Policy source and analysis guide
+# 政策来源与分析指南
 
-## Source hierarchy
+## 来源层级
 
-| Grade | Examples | Proper use |
+| 等级 | 示例 | 正确用途 |
 |---|---|---|
-| A | Laws, official policy texts, ministries, central banks, fiscal budgets, regulators, statistical agencies, legislative records | Establish exact wording, dates, scope, amounts, and legal status |
-| B | Reuters, AP, major financial newspapers, independently reported interviews | Confirm chronology, implementation, disputes, and market context |
-| C | Trade associations, recognized institutes, sector specialists | Add domain mechanics and implementation detail |
-| D | Fast-news feeds, reposts, social posts | Discover leads only; never complete the dual-source gate |
+| A | 法律、政策原文、部委、央行、财政预算、监管机构、统计机构、立法记录 | 确认准确措辞、日期、范围、金额和法律状态 |
+| B | Reuters、AP、主要财经报刊、独立采访 | 确认时间线、实施、争议和市场背景 |
+| C | 行业协会、认可的研究机构、领域专家 | 补充行业机制和实施细节 |
+| D | 快讯、转载、社交帖子 | 只发现线索，不能完成双来源闸门 |
 
-Two URLs are not automatically two sources. Treat common ownership, verbatim syndication, circular citation, or one press release republished elsewhere as one source family. At least one source in a candidate pair must be grade A or B.
+两个 URL 不自动等于两个来源。共同所有权、原文转载、循环引用或同一新闻稿的多处发布按一个来源家族处理。候选来源组合中至少一个必须是 A 或 B 级。
 
-## Policy decomposition
+## 政策拆解
 
-For each policy, record:
+每项政策记录：
 
-1. **Authority:** issuing body and legal or administrative status.
-2. **Instrument:** rule, tax, subsidy, credit, procurement, quota, standard, enforcement, guidance, or target.
-3. **Scale:** nominal amount and denominator; annual versus cumulative; central versus local funding.
-4. **Timing:** announcement, effective date, application window, and first measurable checkpoint.
-5. **Novelty:** new instrument, parameter change, extension, integration, or restatement.
-6. **Transmission:** instrument to household, firm, sector, price, earnings, rates, FX, commodity, or risk appetite.
-7. **Leakage and constraint:** eligibility, co-funding, capacity, compliance, price offset, substitution, or implementation lag.
+1. **权威性：** 发布主体及法律或行政状态。
+2. **工具：** 规则、税收、补贴、信贷、采购、配额、标准、执法、指导或目标。
+3. **规模：** 名义金额与分母；年度或累计；中央或地方资金。
+4. **时间：** 公告日、生效日、申请窗口和首个可测检查点。
+5. **新意：** 新工具、参数变化、延期、整合或重述。
+6. **传导：** 从工具到家庭、企业、行业、价格、盈利、利率、汇率、商品或风险偏好。
+7. **泄漏与约束：** 资格、配套资金、产能、合规、价格抵消、替代或实施滞后。
 
-## Quantitative checks
+## 量化检查
 
-- Compare a target with the latest verified base and compute the implied annual rate.
-- Compare announced money with GDP, fiscal spending, sector revenue, loan stock, or the intended beneficiary base.
-- Distinguish nominal from real values and cumulative from annual flows.
-- Label extrapolations as stress tests, not forecasts.
-- Record unresolved denominator, calendar, revision, and currency issues.
+- 将目标与最新已核验基数比较，计算隐含年化增速。
+- 将公告金额与 GDP、财政支出、行业收入、贷款余额或目标受益人基数比较。
+- 区分名义值与实际值、累计流量与年度流量。
+- 外推必须标为压力测试，不得称为预测。
+- 记录未解决的分母、日历、修订和币种问题。
 
-## Candidate evidence classes
+## 候选证据类别
 
-Use at least two: primary policy text, official statistics, budget or funding evidence, implementation records, corporate or sector exposure, market prices, historical analog, expert or industry evidence.
+至少使用两类：政策原文、官方统计、预算或资金证据、实施记录、企业或行业暴露、市场价格、历史类比、专家或行业证据。
 
-## Examples of unsafe promotion
+## 不安全的升级示例
 
-- A planning target is not a funded order.
-- A credit ceiling is not credit demand or disbursement.
-- A named sector is not an earnings beneficiary without eligibility and scale.
-- A one-day stock rally is not proof of policy effectiveness.
-
+- 规划目标不等于有资金支持的订单。
+- 信贷上限不等于信贷需求或实际投放。
+- 没有资格和规模信息时，被点名行业不等于盈利受益者。
+- 单日股价上涨不能证明政策有效。

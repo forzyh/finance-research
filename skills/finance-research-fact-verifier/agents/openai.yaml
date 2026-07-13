@@ -1,4 +1,4 @@
 interface:
   display_name: "财经洞悉事实核验"
   short_description: "核验事实、结构触发点与候选议题证据，控制洞悉研究准入"
-  default_prompt: "Use $finance-research-fact-verifier to verify facts, anomalies, frontier triggers, and candidate eligibility before insight selection."
+  default_prompt: "使用 $finance-research-fact-verifier 在洞悉选题前核验事实、异常、前沿触发点和候选资格。"

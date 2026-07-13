@@ -1,68 +1,68 @@
 ---
 name: finance-research-topic-selector
-description: Score and select one to three evidence-backed finance insight questions from market anomalies, desk questions, and emerging structural developments. Use when Codex must identify researchable shifts in technology, corporate strategy, industrial organization, policy, capital allocation, geopolitics, or society; apply a fixed 100-point rubric and 70-point floor; and choose questions with explanatory leverage and multi-horizon economic consequences without leaking an expected answer.
+description: 从市场异常、分析台问题和新兴结构性变化中评分并选择1–3个有证据支撑的财经洞悉问题。用于识别技术、公司战略、产业组织、政策、资本配置、地缘或社会方面可研究的变化，执行固定百分制与70分门槛，并在不泄露预期答案的前提下选择兼具解释力和跨期限经济后果的问题。
 ---
 
-# Finance Research Topic Selector
+# 财经研究选题器
 
-## Purpose
+## 目标
 
-Choose the smallest set of questions that can materially improve how readers understand the present and the future. Score evidence, explanatory leverage, and researchability—not headline drama or whether the topic already moved today's market.
+选择最少的一组问题，实质提升读者对当下与未来的理解。评分依据是证据、解释力和可研究性，不是标题刺激程度，也不是当天是否已经引发价格变化。
 
-## Required Reference
+## 必读参考
 
-Read [references/topic-scoring-rubric.md](references/topic-scoring-rubric.md) before scoring.
+评分前完整阅读 [references/topic-scoring-rubric.md](references/topic-scoring-rubric.md)。
 
-## Eligibility Before Scoring
+## 评分前资格闸门
 
-Reject a candidate from the scored pool unless all conditions hold:
+以下条件缺一项，就不得进入评分池：
 
-- `base_verified` is true;
-- `source_pair` contains at least two independent source families, with at least one grade A or B source;
-- `origin` is `raw_anomaly`, `desk_question`, or `frontier_question`;
-- `question_type` identifies a market anomaly, strategic shift, technology trajectory, institutional change, business-model transition, or societal transition;
-- an observable trigger exists even when there is no price anomaly;
-- the candidate states a structural tension, such as efficiency versus control, generality versus specialization, openness versus value capture, or scale versus resilience;
-- at least three analytical lenses, explicit near/medium/long horizons, and a stakeholder impact map are present;
-- at least two evidence types and two competing hypotheses exist;
-- a benchmark plan exists;
-- confirmation and falsification signals are non-empty;
-- the research question is causal, comparative, or mechanism-seeking rather than a broad topic label.
+- `base_verified` 为 true；
+- `source_pair` 至少包含两个独立来源家族，且至少一个为 A 或 B 级来源；
+- `origin` 为 `raw_anomaly`、`desk_question` 或 `frontier_question`；
+- `question_type` 指向市场异常、战略变化、技术路径、制度变化、商业模式迁移或社会转型；
+- 即使没有价格异常，也存在可观察触发点；
+- 候选写明结构性矛盾，如效率与控制、通用与专用、开放与价值获取、规模与韧性；
+- 至少有三个分析视角、明确的短中长期范围和利益相关方影响图；
+- 至少有两类证据和两个竞争假设；
+- 存在基准比较方案；
+- 确认和证伪信号非空；
+- 研究问题寻求因果、比较或机制，而不是宽泛主题标签。
 
-Do not rescue a failed gate with a high subjective score.
+不得用高主观分数挽救未通过硬闸门的候选。
 
-## Scoring and Selection
+## 评分与选择
 
-1. Assign each eligible candidate all seven scores and a short rationale per criterion.
-2. Calculate the total out of 100; never normalize or add discretionary points.
-3. Reject every candidate below 70. The 70-point threshold is absolute.
-4. Group material overlaps by `overlap_key`; retain only the highest-scoring question in each group.
-5. Rank remaining candidates by total, evidence availability, mechanism testability, structural importance, then stable `candidate_id`.
-6. Select between one and three questions. If none reaches 70, select none and report the evidence gaps; never lower the threshold to force a topic.
-7. Run `python3 scripts/score_topics.py <candidates.json> --max-topics 3 --output <selection.json>`.
+1. 为每个合格候选给出七项分数，并逐项写简短理由。
+2. 合计满分100，不得归一化或增加自由裁量分。
+3. 低于70分一律淘汰，门槛不得浮动。
+4. 按 `overlap_key` 合并实质重复问题，每组只保留最高分。
+5. 剩余候选依次按总分、证据可得性、机制可检验性、结构重要性和稳定 `candidate_id` 排序。
+6. 选择1–3个问题。没有题目达到70分时可以零入选，并报告证据缺口；不得降分硬凑。
+7. 运行 `python3 scripts/score_topics.py <candidates.json> --max-topics 3 --output <selection.json>`。
 
-## Assignment Packet
+## 任务包
 
-For each selected question, pass:
+每个入选问题传递：
 
-- topic ID, question, score and rationale;
-- question type, observable trigger, structural tension, required lenses, time horizons, and impact map;
-- observation cutoff and verified seed facts;
-- source pair and known conflicts;
-- competing hypotheses without marking an expected winner;
-- required evidence classes and benchmark plan;
-- confirmation and falsification signals;
-- output contract: one 3000–5000 Chinese-character internal paper;
-- deadline and output path supplied by the caller.
+- topic ID、问题、分数和理由；
+- 问题类型、可观察触发点、结构性矛盾、必需视角、时间范围和影响图；
+- 观察截止时间与已核验种子事实；
+- 来源组合和已知冲突；
+- 竞争假设，不标记预期胜出者；
+- 必需证据类别和基准比较方案；
+- 确认与证伪信号；
+- 输出契约：一篇3000–5000字中文内部文章；
+- 调用方提供的截止时间和输出路径。
 
-Do not reveal a preferred conclusion to `$finance-research-deep-dive`.
+不得向 `$finance-research-deep-dive` 泄露偏好的结论。
 
-## Guardrails
+## 硬性边界
 
-- Select questions, not conclusions.
-- Do not require a same-day price anomaly. A frontier question can qualify when several credible actors reveal the same strategic shift and the economic mechanism is researchable.
-- Prefer questions that reveal a general principle and then return to concrete distributional effects. For example, several frontier-model companies designing chips can motivate a question about whether compute vertical integration is a durable stage of model economics, then test implications for accelerators, foundries, packaging, memory, cloud capex, entry barriers, and AI costs.
-- Reject “philosophical” themes that cannot be tied to observed facts, mechanisms, affected actors, time horizons, and falsifiers.
-- Penalize weak source independence inside the evidence-availability score, but still apply the hard dual-source gate first.
-- Do not select several phrasings of the same causal issue.
-- Do not exceed three selected questions.
+- 选择问题，不选择结论。
+- 不要求一定存在当日价格异常。多个可信主体呈现相同战略变化且经济机制可研究时，前沿问题可以入选。
+- 优先选择能够揭示一般原则、又能落回具体分配影响的问题。例如，多家前沿模型企业设计芯片，可以形成“算力纵向一体化是否成为模型经济的持久阶段”这一问题，再检验其对加速器、晶圆代工、封装、存储、云资本开支、进入壁垒和 AI 成本的影响。
+- 无法连接到已观察事实、机制、受影响主体、时间范围和证伪条件的“哲学”主题应予驳回。
+- 来源独立性弱要在证据可得性分中扣分，但首先仍要执行双来源硬闸门。
+- 不得选择同一因果问题的多个改写版本。
+- 入选问题不得超过三个。

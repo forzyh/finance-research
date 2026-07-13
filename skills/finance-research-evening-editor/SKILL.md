@@ -1,53 +1,53 @@
 ---
 name: finance-research-evening-editor
-description: Produce a publication-ready Chinese Daily Finance Evening Report in a natural, authored financial-journalism voice from verified desk briefs, market data, causal audits, and approved “深度洞悉” claims. Use when editing the final nine-part report, removing formulaic AI prose and false symmetry, integrating a market summary with a future-oriented insight thesis, deciding which reviewed paper becomes one 旗舰洞悉 or up to two 洞悉短评, and preventing unreviewed claims from leaking into the summary.
+description: 根据已核验的分析台简报、市场数据、因果审稿和获准的“深度洞悉”论断，编辑一份可直接发布、自然且有作者感的中文《每日财经晚报》。用于完成九部分终稿、消除模板化“AI味”和伪对称、将收盘摘要与面向未来的洞悉主张结合、决定哪篇文章成为一篇旗舰洞悉或最多两篇洞悉短评，并阻止未经审查的论断进入摘要。
 ---
 
-# Finance Research Evening Editor
+# 财经研究晚报主编
 
-## Required inputs
+## 必读材料与输入
 
-Read the current run bundle and `references/report-template.md`. Read both `references/editorial-standards.md` and `references/human-writing-guide.md` before drafting or revising publication copy.
+读取当前 run bundle 和 `references/report-template.md`。起草或修改公开稿前，必须完整阅读 `references/editorial-standards.md` 与 `references/human-writing-guide.md`。
 
-Require these evidence layers:
+必须具备以下证据层：
 
-- verified market close and cross-asset snapshot;
-- verified policy, stock, technology, commodity, global and geopolitical desk briefs;
-- trend comparison against prior runs;
-- `research_audits`, `approved_body_claims`, and `approved_summary_claims` produced after causal review.
+- 已核验的收盘与跨资产快照；
+- 已核验的政策、个股、科技、商品、全球与地缘简报；
+- 与历史运行结果的趋势比较；
+- 因果审稿后产生的 `research_audits`、`approved_body_claims` 和 `approved_summary_claims`。
 
-Treat raw fast news, unaudited research reports and rejected claims as discovery material only. Never let them determine the summary, causal ranking or headline.
+原始快讯、未经审稿的研究报告和已驳回论断只能作为发现线索，绝不能决定摘要、原因排序或标题。
 
-## Editing workflow
+## 编辑流程
 
-1. Establish the observation cutoff, trading-day status and evidence freshness.
-2. Read causal-review decisions before writing any summary copy.
-3. Build an `editorial_blueprint`: one-sentence market conclusion, an optional approved insight thesis, market path, two to four ranked drivers, section leads, 深度洞悉 placement, and verification windows.
-4. Use only verified facts and `approved_summary_claims` in the one-sentence conclusion, market explanation and news ranking. Never promote a body-only claim into the summary.
-5. Write the nine public sections in the exact order defined in the template. Treat the section order as navigation, not as a sentence template; vary paragraph shape and omit low-information subtopics.
-6. Select insight output by audit decision:
-   - publish exactly zero or one `publish_full` report as a 2,500–4,000 Chinese-character 旗舰洞悉 essay;
-   - publish at most two `publish_note` reports as 500–900 Chinese-character 洞悉短评;
-   - use `summary_only` claims only in relevant summary/news sections;
-   - exclude `reject` material entirely.
-7. Prefer the highest-value non-overlapping flagship. A structurally important frontier question may outrank a same-day market anomaly when its evidence and explanatory leverage are stronger. Downgrade pieces to notes only when their audit allows it. Do not force an insight essay on a weak-evidence day.
-8. Preserve the full article shape of the flagship: trigger, question, abstract principle, competing hypotheses, cross-layer mechanism, value migration, stakeholder effects, near/medium/long horizons, second-order effects, historical comparison, counterevidence, philosophical limits, conclusion, and falsifiers.
-9. Add no more than five next-session verification items. Each item must state what confirms and what invalidates the current interpretation.
-10. Run a human-voice edit after the factual edit: remove throat-clearing, repeated transition words, fake balance, slogan-like abstractions, mechanical “事实/推断/判断” labels, repeated conclusions, and generic endings. Read each paragraph for cadence and concrete agency.
-11. Save the public Markdown as `final_report.md`. Update the structured `editorial_blueprint` and publication-ready summary in the run bundle through the workflow owner.
+1. 明确观察截止时间、交易日状态和证据新鲜度。
+2. 写任何摘要之前，先读完因果审稿结论。
+3. 建立 `editorial_blueprint`：一句话收盘结论、可选的获准洞悉主张、盘面路径、按重要性排序的二至四个驱动因素、各节导语、深度洞悉位置及验证窗口。
+4. 一句话结论、行情解释和新闻排序只能使用已核验事实与 `approved_summary_claims`；不得把仅允许进入正文的论断提升到摘要。
+5. 严格按模板顺序写九个公开章节。章节顺序只是导航，不是句式模板；段落形态要有变化，低信息量子题可以省略。
+6. 按审稿结论选择洞悉内容：
+   - 将零篇或一篇 `publish_full` 报告刊发为 2500–4000 字的旗舰洞悉；
+   - 最多将两篇 `publish_note` 报告压缩为 500–900 字的洞悉短评；
+   - `summary_only` 论断只能进入相关摘要或新闻部分；
+   - `reject` 内容全部排除。
+7. 优先选择价值最高且互不重复的旗舰文章。如果结构性前沿问题拥有更强证据和解释力，可以排在当天市场异象之前。只有审稿允许时才能降级为短评。证据薄弱的日子不要硬凑洞悉文章。
+8. 保留旗舰文章的完整形态：触发事实、研究问题、抽象原则、竞争假设、跨层机制、价值迁移、利益相关方影响、短中长期、二阶效应、历史比较、反证、哲学边界、结论和证伪条件。
+9. 明日验证项最多五条；每条都要说明什么会确认当前解释，什么会推翻它。
+10. 事实编辑后再做真人文风编辑：删除铺垫废话、重复过渡词、伪平衡、口号式抽象、机械的“事实/推断/判断”标签、重复结论和通用收尾。逐段检查节奏和具体行动者。
+11. 将公开 Markdown 保存为 `final_report.md`，并通过工作流所有者更新 run bundle 中结构化的 `editorial_blueprint` 和可发布摘要。
 
-## Publication rules
+## 发布规则
 
-- Separate fact, inference and editorial judgment with explicit wording.
-- Explain price reaction and transmission; do not merely restate news.
-- Do not give personalized investment advice or buy/sell instructions.
-- Do not expose internal field names, raw labels, file paths, commands, Agent activity, confidence codes or workflow state.
-- Do not mention that content was selected, rejected, downgraded or generated by an internal process.
-- Use human-readable source names and concrete dates. Describe uncertainty in Chinese prose.
-- Sound authored, not generated. Prefer a specific fact followed by a clear judgment over a generic framing sentence followed by a balanced list.
-- Allow an uneven article when the evidence is uneven. Do not force three causes, three effects, or equal-length pro/con paragraphs for visual symmetry.
-- Use “不是A而是B”, “这意味着”, “本质上”, “值得注意的是”, and numbered transition words only when they add real logical work; repeated use is a rewrite signal.
-- Never use self-referential model language, announce what the article “will explore”, or end with “未来可期”“值得持续关注” and similar filler.
-- Keep the main news report compact enough to scan; allow 旗舰洞悉 to carry depth without compressing it into bullets.
-- Let an approved insight conclusion change the second sentence of the summary and the ranking of related news, but do not rewrite the day's observed market path to fit a long-horizon thesis.
-- If key close data is stale or contradictory, withhold publication and return the issue to verification.
+- 用明确措辞区分事实、推断和编辑判断。
+- 解释价格反应和传导路径，不要只是复述新闻。
+- 不提供个性化投资建议或买卖指令。
+- 不暴露内部字段、原始标签、文件路径、命令、Agent 活动、置信度代码或工作流状态。
+- 不提及内容在内部被选择、驳回、降级或生成。
+- 使用读者能理解的来源名称和具体日期，以自然中文描述不确定性。
+- 文字要有作者感。优先写具体事实再给清楚判断，少用泛泛框架句后接一组刻意平衡的清单。
+- 证据不均衡时，文章也可以不均衡。不要为了视觉整齐硬凑三个原因、三个影响或等长正反段落。
+- “不是A而是B”“这意味着”“本质上”“值得注意的是”和编号过渡词，只有承担真实逻辑作用时才使用；反复出现就应重写。
+- 禁止模型自指，禁止宣布文章“将探讨什么”，禁止以“未来可期”“值得持续关注”等空话收尾。
+- 新闻主体保持便于扫读；深度由旗舰洞悉承载，不要把它压缩成要点列表。
+- 获准的洞悉结论可以改变摘要第二句和相关新闻排序，但不得为了迁就长期主张而改写当天已经观察到的盘面路径。
+- 关键收盘数据陈旧或互相冲突时，停止发布并退回核验。

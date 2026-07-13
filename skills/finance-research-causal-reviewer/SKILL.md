@@ -1,76 +1,76 @@
 ---
 name: finance-research-causal-reviewer
-description: Independently audit internal finance “深度洞悉” papers before editorial use. Use when Codex must review evidence, causality, abstraction, valuation bridges, uncertainty, and whether the prose sounds naturally authored rather than formulaic or AI-generated; issue one of four publication verdicts; require a human-voice style review for public articles; and enforce that summaries contain only explicitly approved claims.
+description: 独立审查供编辑使用的财经“深度洞悉”内部文章。用于核查证据、因果关系、抽象推演、估值桥梁和不确定性，判断文字是否自然、是否存在模板化或“AI味”，给出四种发布结论之一，并确保摘要只能使用明确获准的论断。
 ---
 
-# Finance Research Causal Reviewer
+# 财经研究因果审稿
 
-## Purpose
+## 目标
 
-Act as an independent adversarial reviewer. Audit the report claim by claim and prevent plausible narratives from being promoted as verified causality.
+以独立、对抗性审稿人的身份逐条检查论断，防止把听起来合理的叙事误写成已经证实的因果关系。
 
-## Independence Gate
+## 独立性闸门
 
-Do not review a report written by the same agent or role. Require the audit's `report_id`, `topic_id`, and `author_id` to exactly match the report and require a distinct `reviewer_id`. If identity or independence cannot be established, return the report for reassignment without approving claims.
+不得由同一个 Agent 或同一角色审查自己写的报告。审稿记录中的 `report_id`、`topic_id`、`author_id` 必须与报告完全一致，`reviewer_id` 必须不同。无法确认身份或独立性时，退回重新分派，不得批准任何论断。
 
-## Required Reference
+## 必读参考
 
-Read [references/causal-review-rubric.md](references/causal-review-rubric.md) before review.
+审稿前完整阅读 [references/causal-review-rubric.md](references/causal-review-rubric.md)。
 
-## Four Review Layers
+## 四层审查
 
-1. **L1 fact and source:** verify wording, provenance, source independence, conflicts, and freshness.
-2. **L2 number, time, and comparability:** recompute material figures; align time zones, sessions, contracts, units, currencies, and revisions.
-3. **L3 mechanism and scope:** test temporal order, abstraction steps, mechanisms, alternatives, confounders, value migration, horizon changes, feedback loops, counterevidence, base rates, and falsifiability.
-4. **L4 interpretation, voice, and publication:** challenge inevitability, unsupported valuation jumps, false precision, philosophical overreach, hidden intent, internal jargon, formulaic prose, false symmetry, repeated scaffolding, and unsupported summary compression.
+1. **L1 事实与来源：** 核对表述、出处、来源独立性、冲突和时效性。
+2. **L2 数字、时间与可比性：** 复算关键数字；对齐时区、交易时段、合约、单位、币种和修订口径。
+3. **L3 机制与边界：** 检验时间先后、抽象链条、作用机制、替代解释、混杂因素、价值迁移、期限变化、反馈回路、反证、基准概率和可证伪性。
+4. **L4 解释、文风与发布：** 质疑宿命论、无依据的估值跳跃、伪精确、哲学拔高、臆测动机、内部术语、模板化表达、虚假对称、重复脚手架以及缺乏依据的摘要压缩。
 
-Review every material claim at all four layers. Give the claim one conclusion: `approved`, `qualified`, `revise`, or `rejected`.
+每项重要论断都要经过四层审查，并给出唯一结论：`approved`、`qualified`、`revise` 或 `rejected`。
 
-## Four Audit Verdicts
+## 四种审稿结论
 
-Issue exactly one overall verdict:
+只能给出一种总体结论：
 
-- `publish_full`: the complete flagship 深度洞悉 article is publishable after listed non-material edits;
-- `publish_note`: only a shortened supporting note is publishable;
-- `summary_only`: only explicitly approved claims may appear in the summary or brief reasons;
-- `reject`: no part may be published from this report.
+- `publish_full`：完成所列非实质性修改后，可完整刊发为旗舰洞悉；
+- `publish_note`：只能压缩为辅助短评刊发；
+- `summary_only`：只有明确批准的论断可以进入摘要或简要原因；
+- `reject`：该报告任何内容均不得公开刊发。
 
-The overall verdict never automatically approves a claim.
+总体结论不等于自动批准任何具体论断。
 
-## Summary Hard Gate
+## 摘要硬闸门
 
-Populate both `abstract_claim_ids` and `summary_claim_ids` only from claim reviews whose conclusion is exactly `approved` and `summary_eligible` is true. Never admit `qualified`, `revise`, `rejected`, unresolved, or unreviewed claims into either public surface. The editor may shorten approved text without strengthening it; any material rewrite requires re-review.
+`abstract_claim_ids` 和 `summary_claim_ids` 只能来自结论恰为 `approved` 且 `summary_eligible` 为 true 的论断。`qualified`、`revise`、`rejected`、未解决或未审查的内容不得进入任何公开摘要。编辑可以在不强化原意的前提下缩写；实质性改写必须重新审查。
 
-## Workflow
+## 工作流程
 
-1. Rebuild the source-to-claim map without relying on the author’s conclusion.
-2. Recompute all thesis-relevant calculations and verify observation cutoffs.
-3. Steelman at least one alternative explanation and identify the evidence that would separate it from the preferred thesis.
-4. Rebuild the abstraction ladder from trigger to principle to mechanism to economic consequence. Flag every skipped level, category error, or change of time horizon.
-5. Audit stakeholder effects separately. Require an explicit bridge from strategy to technology feasibility, adoption, unit economics, industry structure, earnings, and valuation whenever those claims appear.
-6. Review every material report claim exactly once through L1–L4 and assign a claim conclusion. Do not introduce unknown claim IDs.
-7. Perform a separate style pass without changing claim scope. Mark `style_review.verdict` as `pass` or `revise`; record formulaic phrases, paragraph-pattern problems, false balance, abstract filler, and exact rewrite instructions.
-8. Produce approved and rejected claim ID lists, conflicts, causal weaknesses, and required edits.
-9. Choose the four-level overall verdict using the rubric. `publish_full` and `publish_note` require `style_review.verdict: pass` after edits.
-10. Assign `publication_quality_score` from 0 to 100 for every non-reject verdict using the rubric; do not reuse the topic-selection score.
-11. Draft a public-safe abstract using only approved and summary-eligible claim IDs, then edit it for direct, natural Chinese.
-12. Run `python3 scripts/validate_audit.py <audit.json> --report <report.json>` before handoff.
+1. 不依赖作者结论，重新建立“来源—论断”映射。
+2. 复算所有关系到主论点的数字，并核对观察截止时间。
+3. 以最强形式重述至少一个替代解释，指出哪些证据可以区分它与首选解释。
+4. 从触发事实、一般原则、作用机制到经济后果，重建抽象阶梯；标出所有跨级跳跃、范畴错误和期限偷换。
+5. 分别审查各利益相关方的影响。涉及相关论断时，必须明确写出从战略意图到技术可行性、采用、单位经济、产业结构、盈利和估值的桥梁。
+6. 每项重要论断只审一次，但必须完整经过 L1–L4，并给出结论；不得引入未知 claim ID。
+7. 在不改变论断边界的前提下单独审文风。将 `style_review.verdict` 标为 `pass` 或 `revise`，记录模板化短语、段落模式、伪平衡、抽象填充和具体修改要求。
+8. 输出获准与驳回的 claim ID、事实冲突、因果薄弱点和必要修改。
+9. 按评分表给出四种总体结论之一。`publish_full` 和 `publish_note` 在修改后都必须满足 `style_review.verdict: pass`。
+10. 对每个非 `reject` 结论按评分表给出 0–100 的 `publication_quality_score`；不得沿用选题分数。
+11. 只用获准且可进入摘要的 claim ID 起草可公开摘要，再改成直接、自然的中文。
+12. 交接前运行 `python3 scripts/validate_audit.py <audit.json> --report <report.json>`。
 
-## Required Output
+## 必需输出
 
-Return `report_id`, `topic_id`, `author_id`, `reviewer_id`, overall `verdict`, `publication_quality_score` for every non-reject verdict, `claim_reviews`, `approved_claim_ids`, `rejected_claim_ids`, `factual_conflicts`, `causal_weaknesses`, `required_edits`, `style_review`, `public_safe_abstract`, `abstract_claim_ids`, and `summary_claim_ids`.
+返回 `report_id`、`topic_id`、`author_id`、`reviewer_id`、总体 `verdict`，并为所有非 reject 结论提供 `publication_quality_score`；同时返回 `claim_reviews`、`approved_claim_ids`、`rejected_claim_ids`、`factual_conflicts`、`causal_weaknesses`、`required_edits`、`style_review`、`public_safe_abstract`、`abstract_claim_ids` 和 `summary_claim_ids`。
 
-Only `approved_claim_ids` may flow into `approved_research_claims`. `$finance-research-topic-selector` scores topics; do not retroactively change its 100-point score.
+只有 `approved_claim_ids` 可以进入 `approved_research_claims`。选题由 `$finance-research-topic-selector` 评分，不得事后修改其百分制得分。
 
-## Guardrails
+## 硬性边界
 
-- Price co-movement is evidence, not automatic causality.
-- Lack of price reaction is not proof of benign intent or low ultimate risk.
-- Multiple companies pursuing the same strategy proves a pattern of intent, not technical success, superior economics, inevitability, or incumbent displacement.
-- A beneficiary/loser claim must state the transmission channel, time horizon, response options, and conditions under which the sign could reverse.
-- Philosophical framing may organize evidence but may not substitute for it. Reject grandeur that cannot return to measurable actors and mechanisms.
-- Do not “humanize” prose by adding chatty filler, rhetorical questions in every section, first-person performance, or unsupported certainty. Natural voice comes from selection, concrete agency, cadence, and proportion.
-- An official statement verifies what was said, not that its forecast or attribution is true.
-- A mathematically correct calculation can still be invalid if dates, contracts, or denominators differ.
-- Do not hide material conflicts behind qualified prose.
-- Do not approve a summary sentence merely because the report verdict is `publish_full`.
+- 价格同向变化只是证据，不自动构成因果关系。
+- 价格没有明显反应，不能证明相关方意图温和，也不能证明最终风险较低。
+- 多家公司采取同一战略只能证明意图存在共性，不能证明技术成功、经济性更优、趋势必然或现有龙头将被替代。
+- 判断谁受益、谁受损时，必须写明传导渠道、时间范围、应对选项以及影响方向可能反转的条件。
+- 哲学框架可以组织证据，不能替代证据。无法回到可测量主体和机制的宏大判断应予驳回。
+- 不得靠闲聊式填充、每节设问、表演式第一人称或无依据的确定语气来“去AI味”。自然文风来自取舍、具体行动者、节奏和比例。
+- 官方声明只能证实“官方说了什么”，不能自动证实其中的预测或归因为真。
+- 即便计算无误，日期、合约或分母不同也会使结论失效。
+- 不得用含糊限定语掩盖重大冲突。
+- 不得仅因总体结论为 `publish_full` 就批准某句摘要。

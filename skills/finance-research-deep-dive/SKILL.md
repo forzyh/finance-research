@@ -1,83 +1,83 @@
 ---
 name: finance-research-deep-dive
-description: Produce natural, authored Chinese “深度洞悉” papers for selected market, strategic, technological, institutional, business-model, or societal questions. Use when Codex must move from an observed trigger to an abstract principle, test competing mechanisms, trace value migration and second-order effects across time, avoid formulaic AI prose and visible research scaffolding, and deliver a 3,000–5,000-character evidence-led paper with an auditable claim ledger.
+description: 为入选的市场、战略、技术、制度、商业模式或社会问题撰写自然、有作者感的中文“深度洞悉”。用于从可观察触发点提炼一般原则，检验竞争机制，追踪跨期限的价值迁移和二阶影响，避免模板化“AI味”和外露的研究脚手架，并交付一篇3000–5000字、以证据为主且论断可审计的文章。
 ---
 
-# Finance Research 深度洞悉
+# 财经研究深度洞悉
 
-## Purpose
+## 目标
 
-Write one internal insight paper per selected question. The paper is evidence for editorial review, not publishable copy and not a defense of a predetermined answer. It may begin with today's market, but it must not be confined to today's market.
+每个入选问题分别撰写一篇内部洞悉文章。文章是供编辑审查的研究材料，不是可直接发布的成稿，也不是为预设答案辩护。可以从当天市场切入，但不能被当天盘面限制。
 
-## Required Reference
+## 必读参考
 
-Read [references/internal-paper-contract.md](references/internal-paper-contract.md) before research or writing.
+研究或写作前完整阅读 [references/internal-paper-contract.md](references/internal-paper-contract.md)。
 
-## Inputs
+## 输入要求
 
-Require an assignment packet containing:
+任务包必须包含：
 
-- immutable `report_id`, `topic_id`, and `author_id` values plus the research question;
-- observation cutoff and verified seed facts;
-- independent source pair and known conflicts;
-- competing hypotheses and required evidence classes;
-- question type, observable trigger, structural tension, required analytical lenses, time horizons, and stakeholder impact map;
-- benchmark, confirmation, and falsification plans;
-- output location and deadline.
+- 不可变的 `report_id`、`topic_id`、`author_id` 和研究问题；
+- 观察截止时间及已核验的种子事实；
+- 独立来源组合和已知冲突；
+- 竞争假设与必需证据类别；
+- 问题类型、可观察触发点、结构性矛盾、必需分析视角、时间范围和利益相关方影响图；
+- 基准比较、确认与证伪方案；
+- 输出位置和截止时间。
 
-Copy `report_id`, `topic_id`, and `author_id` unchanged into the report. Reject or return an incomplete assignment if any identity field is absent, if it leaks an expected conclusion, lacks two independent sources, or omits the cutoff.
+将 `report_id`、`topic_id`、`author_id` 原样写入报告。身份字段缺失、任务包泄露预期结论、缺少两个独立来源或没有截止时间时，必须拒绝或退回补充。
 
-## Research Workflow
+## 研究流程
 
-1. Reconfirm every seed fact at the stated cutoff; refresh unstable facts before using them.
-2. Build a chronology that distinguishes announcement, market session, settlement, close, and later update.
-3. Abstract the event into a general tension or constraint. State the smallest reusable principle that could explain more than this one case.
-4. Expand to at least three competing explanations, including a null, bargaining-option, implementation, or non-event mechanism where appropriate.
-5. Analyze at least three relevant lenses: technology architecture, unit economics, industrial organization, corporate strategy, capital markets, policy/geopolitics, labor/consumers, history, or philosophy.
-6. Gather discriminating evidence rather than more examples of the same signal. Separate company statements, actual investment, technical feasibility, adoption, economics, and market pricing.
-7. Compare with a historical, cross-sectional, consensus, technology-transition, or business-model benchmark.
-8. Map the causal chain and value migration link by link. Mark observed, inferred, missing, lagged, and confounded links.
-9. Build near-, medium-, and long-horizon consequences. Identify first-order effects, second-order responses, feedback loops, beneficiaries, losers, bottlenecks, and possible equilibrium changes.
-10. Apply a philosophical lens to scarcity, control, dependence, specialization, coordination, standardization, or power only after the empirical mechanism is established. Label normative claims and metaphors.
-11. Seek counterevidence and state what each hypothesis cannot explain. Treat “inevitable” as a thesis requiring unusually strong evidence.
-12. Form a probabilistic conclusion with explicit uncertainty and conditions for revision.
-13. Write a 3000–5000 Chinese-character internal article. Use the research contract as coverage, not as a visible form: combine adjacent ideas, vary paragraph length, and let the evidence determine emphasis. Do not expose every analytical field as a heading.
-14. Perform a human-voice edit. Replace generic transitions with factual links, remove false symmetry and repeated “不是A而是B” constructions, name actors and actions, and stop on a concrete consequence or open question rather than a slogan.
-15. Build a claim ledger. Do not mark any claim `approved`; only `$finance-research-causal-reviewer` may approve claims.
-16. Run `python3 scripts/validate_research_report.py <report.json>`.
+1. 以任务包规定的截止时间重新确认每项种子事实；不稳定事实必须刷新后才能使用。
+2. 建立事件时间线，区分公告、交易时段、结算、收盘和后续更新。
+3. 从事件中提炼一般矛盾或约束，写出能够解释多个案例的最小可复用原则。
+4. 扩展出至少三个竞争解释；适用时纳入零效应、谈判筹码、实施落差或非事件机制。
+5. 至少选择三个相关视角分析：技术架构、单位经济、产业组织、公司战略、资本市场、政策与地缘、劳动者与消费者、历史或哲学。
+6. 搜集能够区分假设的证据，不要只堆叠同类信号。区分公司表态、实际投资、技术可行性、采用情况、经济性和市场定价。
+7. 与历史、横向样本、市场共识、技术迁移或商业模式基准比较。
+8. 逐环节绘制因果链和价值迁移，标明哪些环节已观察、属推断、仍缺失、存在滞后或受混杂因素影响。
+9. 分别推演短期、中期和长期后果，识别一阶影响、二阶反应、反馈回路、受益者、受损者、瓶颈和可能的均衡变化。
+10. 只有在实证机制成立后，才能用哲学视角讨论稀缺、控制、依赖、专业化、协调、标准化或权力；规范性判断和比喻必须标明。
+11. 主动寻找反证，说明每个假设解释不了什么。“必然”本身就是需要异常强证据的命题。
+12. 形成概率性结论，明确不确定性和修改结论的条件。
+13. 写一篇 3000–5000 字的中文内部文章。研究契约用于保证覆盖面，不应变成外露表格：合并相邻观点，变化段落长度，让证据决定篇幅，不要把每个分析字段都写成标题。
+14. 做一次真人文风编辑。用事实连接替代万能过渡，删除伪对称和反复出现的“不是A而是B”，写明行动者和动作，以具体后果或未决问题收束，不喊口号。
+15. 建立论断台账。不得把任何论断标为 `approved`；只有 `$finance-research-causal-reviewer` 可以批准。
+16. 运行 `python3 scripts/validate_research_report.py <report.json>`。
 
-## Required Output
+## 必需输出
 
-Return a report object containing:
+返回一个报告对象，包含：
 
-- `report_id`, `topic_id`, `author_id`, `research_question`, `observation_cutoff`, and `article`;
-- `hypotheses`, `chronology`, `evidence`, `counterevidence`, and `benchmark`;
-- `causal_map`, `limitations`, and `probabilistic_conclusion`;
-- `question_type`, `abstract_principle`, `time_horizon_map`, `stakeholder_impact_map`, `second_order_effects`, and `philosophical_lens`;
-- `confirmation_signals` and `falsification_signals`;
-- `claims` and `sources` with stable IDs.
+- `report_id`、`topic_id`、`author_id`、`research_question`、`observation_cutoff` 和 `article`；
+- `hypotheses`、`chronology`、`evidence`、`counterevidence` 和 `benchmark`；
+- `causal_map`、`limitations` 和 `probabilistic_conclusion`；
+- `question_type`、`abstract_principle`、`time_horizon_map`、`stakeholder_impact_map`、`second_order_effects` 和 `philosophical_lens`；
+- `confirmation_signals` 和 `falsification_signals`；
+- 带稳定 ID 的 `claims` 和 `sources`。
 
-The article must explain the question, not merely list information. Use the structure in the reference and keep facts, inferences, and judgments distinguishable in prose.
+文章必须解释问题，不能只罗列信息。按参考文档保证结构，并在行文中让事实、推断和判断保持可区分。
 
-## Claim Discipline
+## 论断纪律
 
-- Cite every material factual claim to two independent sources.
-- Give every causal inference supporting evidence, counterevidence, and an identified missing link or confounder.
-- Treat a price pattern as evidence about probabilities, not proof of intent or cause.
-- Treat company announcements as evidence of strategy, not proof of technical success, cost advantage, volume adoption, or incumbent displacement.
-- For valuation implications, expose the bridge from industry structure to revenue, margins, duration, capital intensity, and multiple; do not jump from “competition increases” to a target valuation.
-- Keep evidentiary caution inside the relevant sentence. Do not append the same “仍需观察/不能证明” disclaimer to every paragraph.
-- Tag a possible summary sentence with `summary_candidate: true`; this is a nomination, not approval.
-- Preserve unresolved conflicts for the reviewer instead of silently choosing a convenient version.
+- 每项重要事实论断都要引用两个独立来源。
+- 每项因果推断都要给出支持证据、反证，并指出缺失环节或混杂因素。
+- 价格形态只能作为概率证据，不能证明意图或因果。
+- 公司公告只能证明战略意图，不能证明技术成功、成本优势、规模采用或现有龙头将被替代。
+- 涉及估值时，必须写出从产业结构到收入、利润率、持续期、资本强度和估值倍数的桥梁；不得从“竞争加剧”直接跳到目标估值。
+- 把证据边界写在相关句子里，不要在每段末尾机械追加“仍需观察/不能证明”。
+- 可能进入摘要的句子可标记 `summary_candidate: true`，但这只是提名，不是批准。
+- 保留未解决冲突供审稿人判断，不得悄悄选择对结论最方便的版本。
 
-## Guardrails
+## 硬性边界
 
-- Do not exceed 5000 or fall below 3000 counted characters.
-- Do not collapse several selected questions into one paper.
-- Do not convert an official target into realized spending, orders, or earnings.
-- Do not infer political intent from market prices alone.
-- Do not use “必经之路”, “终局”, or “必然” without defining the domain, time horizon, necessary conditions, and plausible exceptions.
-- Do not mistake an evocative analogy for a historical base rate.
-- Do not open with “在当今……时代”, “本文将”, or a generic industry backdrop. Start with the concrete trigger, conflict, or unanswered question.
-- Do not force equal space for all hypotheses after the evidence has clearly separated them. Fairness requires accurate weighting, not visual symmetry.
-- Do not let the author perform the final causal audit of the same paper.
+- 正文计数不得少于 3000 字或超过 5000 字。
+- 不得把多个入选问题合并成一篇文章。
+- 不得把官方目标写成已经发生的支出、订单或利润。
+- 不得只凭市场价格推断政治意图。
+- 使用“必经之路”“终局”或“必然”时，必须定义适用领域、时间范围、必要条件和可信例外。
+- 不得把形象类比当成历史基准概率。
+- 不得以“在当今……时代”“本文将”或泛泛行业背景开头；直接从具体触发点、冲突或未决问题开始。
+- 证据已经明显区分各假设后，不要强迫它们获得相同篇幅。公平是准确赋权，不是视觉对称。
+- 作者不得为自己的文章执行最终因果审稿。

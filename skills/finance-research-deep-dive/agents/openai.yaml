@@ -1,4 +1,4 @@
 interface:
   display_name: "财经深度洞悉"
   short_description: "撰写证据扎实、节奏自然、有作者判断且没有模板腔的深度洞悉文章"
-  default_prompt: "Use $finance-research-deep-dive to write a natural, authored 深度洞悉 paper with concrete mechanisms, uneven evidence weighting, and no formulaic AI prose."
+  default_prompt: "使用 $finance-research-deep-dive 撰写机制具体、证据权重自然且没有模板腔的深度洞悉文章。"

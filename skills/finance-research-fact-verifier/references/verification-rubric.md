@@ -1,65 +1,65 @@
-# Finance Fact Verification Rubric
+# 财经事实核验评分表
 
-## Source Grade
+## 来源等级
 
-| Grade | Source type | Examples |
+| 等级 | 来源类型 | 示例 |
 |---|---|---|
-| A | Official or primary | Central banks, statistical agencies, exchange filings, company announcements, SEC, HKEXnews. |
-| B | Wire or major mainstream finance media | Reuters, AP, CNBC, MarketWatch, major financial newspapers. |
-| C | Specialist or industry media | Sector media, brokerage notes, trade associations, commodity consultancies. |
-| D | Fast-news feeds and social platforms | 7x24 feeds, reposts, forums, social media. |
+| A | 官方或一手来源 | 央行、统计机构、交易所文件、公司公告、SEC、港交所披露易 |
+| B | 通讯社或主流财经媒体 | Reuters、AP、CNBC、MarketWatch、主要财经报刊 |
+| C | 专业或行业媒体 | 垂直媒体、券商报告、行业协会、商品咨询机构 |
+| D | 快讯和社交平台 | 7x24信息流、转载、论坛、社交媒体 |
 
-## News Value Score
+## 新闻价值分
 
-Score each event from 1 to 10:
+每个事件按 1–10 分评价：
 
-- Novelty: Is there new information or just repetition?
-- Impact breadth: Does it affect one company, one sector, or broad risk appetite?
-- Surprise: Is it meaningfully different from consensus or recent pricing?
-- Market reaction: Have stocks, rates, FX, commodities, or futures moved?
-- Trackability: Are there concrete follow-up signals?
+- 新颖性：存在新增信息，还是只在重复？
+- 影响范围：影响一家企业、一个行业，还是整体风险偏好？
+- 意外程度：与共识或近期定价是否存在实质差异？
+- 市场反应：股票、利率、汇率、商品或期货是否变化？
+- 可跟踪性：是否有具体后续信号？
 
-## Confidence
+## 置信度
 
-- High: primary source confirms the fact, or multiple reliable independent sources match.
-- Medium: one reliable source plus consistent market/data evidence, or two non-primary sources match.
-- Low: fast-news-only, social-only, unclear source, or unresolved conflict.
+- High：一手来源确认，或多个可靠独立来源一致。
+- Medium：一个可靠来源加一致的市场/数据证据，或两个非一手来源一致。
+- Low：只有快讯、只有社交媒体、来源不清或冲突未解决。
 
-## Conflict Handling
+## 冲突处理
 
-List conflicts before writing:
+写作前列出：
 
-- Time conflict
-- Amount or percentage conflict
-- Policy wording conflict
-- Entity/company/ticker conflict
-- Price or market reaction conflict
+- 时间冲突；
+- 金额或百分比冲突；
+- 政策措辞冲突；
+- 主体、公司或股票代码冲突；
+- 价格或市场反应冲突。
 
-When conflicts remain, use the most primary source for the factual claim and mark other versions as unresolved.
+冲突仍未解决时，事实论断采用最一手来源，并将其他版本标为未决。
 
-## Market Reaction Checks
+## 市场反应检查
 
-Before claiming an event is "priced in" or "driving the market", check at least one relevant observable:
+声称事件“已计价”或“驱动市场”前，至少检查一项相关可观察指标：
 
-- Equity index, sector index, ETF, or representative stock.
-- Bond yield or rate futures.
-- FX rate or dollar index.
-- Commodity or domestic futures contract.
-- Volume, open interest, basis, or inventory when available.
+- 股票指数、行业指数、ETF 或代表性个股；
+- 债券收益率或利率期货；
+- 汇率或美元指数；
+- 商品或国内期货合约；
+- 可取得时的成交量、持仓量、基差或库存。
 
-Align the quote session and disclosure time. A later close cannot prove a reaction to information released after that close.
+对齐报价时段和披露时间。收盘后才发布的信息不能用此前收盘价证明市场反应。
 
-## Research Candidate Pre-selection Gate
+## 研究候选预选闸门
 
-The verifier may mark a candidate `eligible` only when:
+只有满足以下条件，核验器才可把候选标为 `eligible`：
 
-- The seed facts and market timestamps survive verification.
-- The claimed anomaly is observable against a named baseline.
-- At least two distinct evidence types are realistically obtainable.
-- At least two competing explanations are meaningfully different.
-- A historical, cross-sectional, expectation, or mechanism benchmark is feasible.
-- Confirmation and falsification signals are measurable.
+- 种子事实与市场时间戳通过核验；
+- 所称异常相对明确基准可被观察；
+- 至少两类不同证据确实可以取得；
+- 至少两个竞争解释存在实质差异；
+- 历史、横向、预期或机制基准可行；
+- 确认与证伪信号可测量。
 
-Use `needs_evidence` when the question is promising but one requirement is missing. Use `duplicate` for substantial overlap and identify the overlap group. Use `rejected` for false premises, stale data, unresolvable conflicts, or questions that cannot be tested.
+问题有潜力但缺少一项要求时使用 `needs_evidence`；实质重复时使用 `duplicate` 并指出重叠组；前提错误、数据陈旧、冲突无法解决或问题不可检验时使用 `rejected`。
 
-Do not assign the final 100-point topic score. Verification determines eligibility and claim scope; the topic selector ranks eligible questions.
+不得给出最终百分制选题分。核验只决定资格和论断边界，合格问题由选题器排序。

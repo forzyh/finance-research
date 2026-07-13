@@ -1,60 +1,60 @@
-# Stock Hotspot Rubric
+# 热点个股分析表
 
-## Candidate Sources
+## 候选来源
 
-- 7x24 feeds with stock tags: 财联社, 东方财富, 新浪财经, 同花顺.
-- Company announcements: 上交所, 深交所, 北交所, 港交所, SEC, company IR.
-- Post-close editorial sources: exchange close summaries, 财联社/证券时报/e公司复盘, company filings, and reliable global market coverage.
-- Market data: top gainers/losers, turnover leaders, sector leaders, unusual volume, repeated limit-up/limit-down names.
-- Prior run bundles: names repeatedly appearing across recent runs.
+- 带股票标签的7x24信息流：财联社、东方财富、新浪财经、同花顺。
+- 公司公告：上交所、深交所、北交所、港交所、SEC、公司 IR。
+- 盘后编辑来源：交易所收盘摘要、财联社/证券时报/e公司复盘、公司文件和可靠全球市场报道。
+- 市场数据：涨跌幅榜、成交额榜、板块龙头、异常成交量、连续涨停/跌停个股。
+- 历史 run bundle：最近多次运行反复出现的个股。
 
-## Stock-Level Questions
+## 个股层问题
 
-For each hot stock, answer:
+每只热点个股回答：
 
-1. What exactly happened?
-2. Is the driver confirmed by company/official/exchange source, or only by fast-news/rumor?
-3. Did price move before or after the information?
-4. Is this stock leading a theme, confirming an existing theme, or warning of speculation/risk?
-5. Are peers moving too?
-6. Is there a related futures/commodity, rate, FX, or policy driver?
+1. 具体发生了什么？
+2. 驱动因素是否得到公司、官方或交易所确认，还是只有快讯/传闻？
+3. 价格变化发生在信息公开之前还是之后？
+4. 个股是在引领主题、确认既有主题，还是提示炒作/风险？
+5. 同行是否同步变化？
+6. 是否存在相关期货/商品、利率、汇率或政策驱动？
 
-## Theme Extraction
+## 主题提炼
 
-Classify stock clusters:
+个股集群分类：
 
-- `leader_confirmation`: leading stocks and peers move with confirmed driver.
-- `theme_diffusion`: news starts from one name and spreads across sector/chain.
-- `rumor_heat`: price moves before confirmation or relies on social/fast-news only.
-- `risk_repricing`: inquiry letters, failed deals, earnings miss, regulatory risk.
-- `macro_sensitive`: stock moves mainly reflect rates, FX, commodities, or global risk appetite.
-- `idiosyncratic`: company-specific, not enough evidence for sector trend.
+- `leader_confirmation`：龙头和同行在已确认驱动下同步变化。
+- `theme_diffusion`：新闻从一个个股扩散到板块或产业链。
+- `rumor_heat`：价格先于确认变化，或只依赖社交媒体/快讯。
+- `risk_repricing`：问询函、交易失败、业绩不及预期、监管风险。
+- `macro_sensitive`：个股主要反映利率、汇率、商品或全球风险偏好。
+- `idiosyncratic`：公司特有，证据不足以推断板块趋势。
 
-## Technology Stock Routing
+## 科技股分流
 
-When a hot stock belongs to technology, do not stop at a generic `科技股` theme. Assign a likely lane and hand it to `$finance-research-tech-analyst`:
+热点个股属于科技时，不得停留在笼统的 `科技股` 标签。分配到具体赛道并交给 `$finance-research-tech-analyst`：
 
-- AI infrastructure: GPU/ASIC, AI servers, optical modules, switches, data-center power/cooling.
-- AI applications/software: SaaS, enterprise AI, model platforms, vertical AI tools.
-- Semiconductors: design, foundry, memory, equipment, materials, EDA/IP, advanced packaging.
-- Internet platforms: e-commerce, local services, games, ads, cloud, buybacks, regulation.
-- Consumer electronics: phone/PC/wearables/MR supply chain.
-- Smart vehicles/robotics: autonomous driving, auto chips, sensors, humanoid robots, industrial automation.
-- Digital infrastructure/cybersecurity: telecom equipment, satellite internet, cybersecurity, cloud infra.
+- AI 基础设施：GPU/ASIC、AI 服务器、光模块、交换机、数据中心电力/冷却。
+- AI 应用/软件：SaaS、企业 AI、模型平台、垂直 AI 工具。
+- 半导体：设计、代工、存储、设备、材料、EDA/IP、先进封装。
+- 互联网平台：电商、本地生活、游戏、广告、云、回购、监管。
+- 消费电子：手机/PC/可穿戴/MR 供应链。
+- 智能车/机器人：自动驾驶、汽车芯片、传感器、人形机器人、工业自动化。
+- 数字基础设施/网络安全：通信设备、卫星互联网、网络安全、云基础设施。
 
-## Evening Research Output
+## 晚报研究输出
 
-Stock analysis should support two paths:
+个股分析服务两条路径：
 
-- A concise public "重点新闻与热点个股" section with 3-8 developed names or clusters.
-- Research candidates when chronology, peer evidence, fundamentals and price expose a testable expectation gap.
+- 公开稿中精简的“重点新闻与热点个股”，包含3–8个展开分析的个股或集群。
+- 当时间线、同行证据、基本面和价格暴露可检验预期差时，生成研究候选。
 
-## Research Candidate Gate
+## 研究候选闸门
 
-Ask before emitting a candidate:
+输出候选前检查：
 
-1. Is the gap observable rather than rhetorical?
-2. Can at least two competing explanations survive initial review?
-3. Are there two independent evidence types, such as filings plus price/flow data?
-4. Is a historical, peer, supply-chain or expectation benchmark feasible?
-5. Can tomorrow or a named future event confirm or falsify the preferred explanation?
+1. 预期差是否可观察，而不是修辞？
+2. 初步审查后是否仍有至少两个竞争解释？
+3. 是否有两类独立证据，如公告加价格/资金数据？
+4. 历史、同行、产业链或预期基准是否可行？
+5. 明天或明确的未来事件能否确认或证伪首选解释？

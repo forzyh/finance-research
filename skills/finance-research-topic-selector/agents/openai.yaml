@@ -1,4 +1,4 @@
 interface:
   display_name: "深度洞悉选题器"
   short_description: "从异常、分析台和前沿信号中筛选一至三个高价值洞悉问题"
-  default_prompt: "Use $finance-research-topic-selector to score anomaly, desk, and frontier questions and select up to three evidence-backed insight topics."
+  default_prompt: "使用 $finance-research-topic-selector 为异常、分析台和前沿问题评分，并选出最多三个有证据支撑的洞悉题目。"

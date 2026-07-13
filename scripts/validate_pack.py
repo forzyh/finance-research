@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -10,6 +11,23 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VALIDATOR = Path.home() / ".codex/skills/.system/skill-creator/scripts/quick_validate.py"
+CHINESE_RE = re.compile(r"[\u3400-\u9fff]")
+ENGLISH_HEADINGS = re.compile(
+    r"^#{1,6}\s+(?:Purpose|Procedure|Workflow|Inputs?|Outputs?|Required|Guardrails|"
+    r"Handoff|Publication|Candidate|Source|Scoring|Pipeline|Timing|Deterministic)",
+    re.MULTILINE | re.IGNORECASE,
+)
+
+
+def check_chinese_document(path: Path, errors: list[str]) -> None:
+    text = path.read_text(encoding="utf-8")
+    if not CHINESE_RE.search(text):
+        errors.append(f"中文文档缺少中文内容: {path.relative_to(ROOT)}")
+    match = ENGLISH_HEADINGS.search(text)
+    if match:
+        errors.append(
+            f"中文文档仍含英文说明标题: {path.relative_to(ROOT)}: {match.group(0)}"
+        )
 
 
 def main() -> int:
@@ -32,9 +50,15 @@ def main() -> int:
         print(f"[{name}] {result.stdout.strip() or result.stderr.strip()}")
         if result.returncode:
             errors.append(f"validation failed: {name}")
+        check_chinese_document(skill / "SKILL.md", errors)
+        for reference in sorted((skill / "references").glob("*.md")):
+            check_chinese_document(reference, errors)
         yaml = skill / "agents/openai.yaml"
-        if not yaml.exists() or f"${name}" not in yaml.read_text(encoding="utf-8"):
+        yaml_text = yaml.read_text(encoding="utf-8") if yaml.exists() else ""
+        if f"${name}" not in yaml_text:
             errors.append(f"default_prompt does not mention ${name}")
+        if not CHINESE_RE.search(yaml_text):
+            errors.append(f"Agent 界面提示不是中文: {name}")
         if any(skill.rglob("__pycache__")):
             errors.append(f"generated cache found: {name}")
     if errors:

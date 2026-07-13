@@ -1,82 +1,82 @@
-# 深度洞悉 internal paper contract
+# 深度洞悉内部文章契约
 
-## Identity chain
+## 身份链
 
-Require the assignment to provide immutable `report_id`, `topic_id`, and `author_id` values. Copy all three values exactly into the structured report. Do not synthesize, rename, or replace an identifier during research; return an assignment missing any identity value before writing.
+任务包必须提供不可变的 `report_id`、`topic_id` 和 `author_id`。三个值原样复制到结构化报告。研究过程中不得生成、重命名或替换标识；缺少任一身份值时，写作前退回任务包。
 
-## Length
+## 篇幅
 
-Write 3000–5000 Chinese-character equivalents in the `article` field. Count Chinese characters individually and English words or standalone numbers as one equivalent each. Exclude structured metadata and source records from the limit.
+`article` 字段写 3000–5000 个中文等价字符。每个汉字计一个，英文单词或独立数字各计一个；结构化元数据和来源记录不计入篇幅。
 
-## Analytical coverage
+## 分析覆盖
 
-The following items must be covered, but they are not a mandatory heading list. Combine them into four to seven natural sections when that reads better. Do not make the public article look like a completed questionnaire.
+下列内容必须覆盖，但不是强制标题清单。根据行文需要合并成四至七个自然章节，不要让公开文章像填完的问卷。
 
-1. **Question, trigger, and provisional answer** — state the cutoff, question type, and what newly became observable.
-2. **Verified chronology** — distinguish ideas, announcements, investment, technical milestones, adoption, earnings effects, and price response.
-3. **From phenomenon to principle** — identify the underlying constraint or strategic tension and state an abstract principle that can travel beyond the case.
-4. **Competing hypotheses** — use at least three, including a null, bargaining-option, or implementation-gap explanation.
-5. **Mechanism across lenses** — connect the relevant technical architecture, unit economics, firm incentives, industry structure, institutions, and capital markets.
-6. **Value migration and stakeholder map** — explain which capabilities become scarce, who captures value, who loses bargaining power, and which complements benefit.
-7. **Time-horizon map** — separate near-term announcements/capex, medium-term adoption/economics, and long-term equilibrium or social effects.
-8. **Second-order effects and feedback loops** — include competitor responses, supply-chain adaptation, standards, regulation, labor, consumers, and capital allocation where relevant.
-9. **Benchmark or base rate** — compare with history, peers, prior integration cycles, technology transitions, consensus, or same-session evidence.
-10. **Counterevidence, breakpoints, and alternatives** — state what the preferred thesis cannot explain and where the chain may fail.
-11. **Philosophical interpretation** — discuss scarcity, autonomy, specialization, coordination, dependence, or power as an interpretation grounded in the mechanism; distinguish empirical, normative, and metaphorical claims.
-12. **Probabilistic conclusion and future checks** — rank hypotheses and give confirmation/falsification windows suitable to the topic, not only the next trading day.
+1. **问题、触发点与暂定回答**——说明截止时间、问题类型和新出现的可观察事实。
+2. **已核验时间线**——区分想法、公告、投资、技术里程碑、采用、盈利影响和价格反应。
+3. **从现象到原则**——识别底层约束或战略矛盾，提炼能解释其他案例的一般原则。
+4. **竞争假设**——至少三个，包括零效应、谈判期权或实施落差解释。
+5. **跨视角机制**——连接相关技术架构、单位经济、企业激励、产业结构、制度和资本市场。
+6. **价值迁移与利益相关方图**——解释哪些能力变得稀缺、谁获得价值、谁失去议价权、哪些互补方受益。
+7. **时间范围图**——区分短期公告/资本开支、中期采用/经济性和长期均衡或社会影响。
+8. **二阶效应与反馈回路**——适用时纳入竞争者反应、供应链适应、标准、监管、劳动者、消费者和资本配置。
+9. **基准或基础概率**——与历史、同行、既往一体化周期、技术迁移、市场共识或同交易时段证据比较。
+10. **反证、断点与替代解释**——说明首选论点解释不了什么，以及链条可能在哪里断裂。
+11. **哲学解释**——在机制基础上讨论稀缺、自主、专业化、协调、依赖或权力，区分实证、规范和比喻性论断。
+12. **概率性结论与未来检查**——排列假设权重，并给出适合该主题的确认/证伪窗口，不限于下一交易日。
 
-## Authored voice
+## 作者感
 
-Write like a knowledgeable person making a case to another knowledgeable person. Begin with the fact or tension that made the question worth asking. Let one strong example carry more weight than a list of five weak examples. Use concrete subjects and verbs. Vary sentence and paragraph length. A short sentence may carry the conclusion.
+像一个懂行的人向另一个懂行的人陈述判断。以使问题值得追问的事实或矛盾开头。一条强证据可以比五个弱例子占更大篇幅。使用具体主语和动词，变化句子与段落长度；结论可以用短句落下。
 
-Avoid announcing the essay, summarizing every section twice, or manufacturing balance with “一方面、另一方面”. Do not repeat “值得注意的是、这意味着、本质上、总体而言” as connective tissue. Avoid serial “不是A而是B” formulations. Put uncertainty next to the claim it limits, then move on.
+不要宣布文章要写什么，不要每节总结两次，也不要用“一方面、另一方面”制造平衡。不要反复以“值得注意的是、这意味着、本质上、总体而言”连接段落，避免连续“不是A而是B”。把不确定性贴在它限制的论断旁，然后继续推进。
 
-The philosophy section should feel earned by the preceding evidence. Do not change tone into a grand speech. End with a concrete breakpoint, stakeholder consequence, or unresolved choice.
+哲学部分必须由前文证据自然推出，不能突然变成宏大演讲。以具体断点、利益相关方后果或未决选择收束。
 
-## Abstraction discipline
+## 抽象纪律
 
-Use the ladder `trigger → constraint/incentive → mechanism → value migration → economic/social consequence`. Every move upward must preserve the observable facts below it; every move downward must name concrete actors and measurable effects.
+沿 `trigger → constraint/incentive → mechanism → value migration → economic/social consequence` 的阶梯推演。每次向上抽象都要保留下层可观察事实；每次向下落地都要写明具体主体和可测影响。
 
-For example, several frontier-model companies developing proprietary accelerators can motivate a broader thesis about compute becoming a strategic control point. The paper must still test whether the motivation is cost, hardware-model co-design, supply assurance, bargaining leverage, data-center power, or geopolitics; distinguish design intent from viable volume deployment; and trace conditional effects on accelerator vendors, foundries, advanced packaging, memory, cloud capex, model costs, and entry barriers.
+例如，多家前沿模型公司开发自有加速器，可以引出“算力正成为战略控制点”的更一般命题。但文章仍须检验动机究竟是成本、软硬协同、供应保障、议价能力、数据中心电力还是地缘因素；区分设计意图与可行的规模部署；并追踪其对加速器厂商、晶圆代工、先进封装、存储、云资本开支、模型成本和进入壁垒的条件性影响。
 
-## Structured hypothesis record
+## 结构化假设记录
 
-Each hypothesis should contain:
+每个假设应包含：
 
-- `hypothesis_id` and statement;
-- mechanism;
-- supporting evidence IDs;
-- counterevidence IDs;
-- missing evidence;
-- predicted observations;
-- current relative weight expressed in prose or a bounded probability range.
+- `hypothesis_id` 和假设表述；
+- 作用机制；
+- 支持证据 ID；
+- 反证 ID；
+- 缺失证据；
+- 预测的可观察结果；
+- 以文字或有界概率区间表达的当前相对权重。
 
-Probabilities are analytical estimates, not facts. If used, make ranges sum coherently and explain their sensitivity.
+概率是分析估计，不是事实。使用时各区间总和应自洽，并解释敏感性。
 
-## Claim ledger
+## 论断台账
 
-Each claim requires:
+每项论断必须包含：
 
-- `claim_id` and exact text;
-- `claim_type`: `fact`, `inference`, or `judgment`;
-- `material`: whether it changes the thesis;
-- `source_ids` and `supporting_evidence_ids`;
-- `counterevidence_ids` for causal inferences;
-- `uncertainty_or_limit`;
-- `summary_candidate`: true or false.
+- `claim_id` 和准确原文；
+- `claim_type`：`fact`、`inference` 或 `judgment`；
+- `material`：是否会改变主论点；
+- `source_ids` 和 `supporting_evidence_ids`；
+- 因果推断所需的 `counterevidence_ids`；
+- `uncertainty_or_limit`；
+- `summary_candidate`：true 或 false。
 
-The author must leave claims as drafts. Approval belongs exclusively to the independent causal reviewer.
+作者必须把论断保留为草稿，只有独立因果审稿人可以批准。
 
-## Source record
+## 来源记录
 
-Record source ID, publisher, source family, grade, title, URL, publication time, retrieval time, and supported fact IDs. Explain conflicts involving time, percentage, entity, contract, currency, revision, or source wording.
+记录来源 ID、发布者、来源家族、等级、标题、URL、发布时间、检索时间和所支持的 fact ID。解释时间、百分比、主体、合约、币种、修订或来源措辞冲突。
 
-## Unacceptable shortcuts
+## 不可接受的推理捷径
 
-- “Asset X rose after event Y, therefore Y caused X.”
-- “Gold did not rise, therefore the market expects peace.”
-- “A target names an industry, therefore orders will follow.”
-- “Strong earnings and a falling stock prove positioning caused the decline.”
-- “Several firms announced chips, therefore every model company must vertically integrate.”
-- “Custom silicon hurts the incumbent, therefore its valuation must fall.”
-- “The historical analogy feels similar, therefore the same equilibrium will follow.”
+- “资产 X 在事件 Y 后上涨，所以 Y 导致 X。”
+- “黄金没有上涨，所以市场预期和平。”
+- “目标文件提到某行业，所以订单必然到来。”
+- “业绩强但股价下跌，证明仓位导致了下跌。”
+- “多家公司宣布芯片，因此所有模型公司都必须纵向一体化。”
+- “定制芯片冲击现有龙头，因此其估值必然下降。”
+- “历史类比感觉相似，因此会走向同一均衡。”

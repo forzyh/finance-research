@@ -1,4 +1,4 @@
 interface:
   display_name: "全球商品与地缘洞悉台"
   short_description: "研究商品、地缘、贸易体系与全球经济结构的长期变化问题"
-  default_prompt: "Use $finance-research-global-commodities-desk to produce evidence-backed commodities, geopolitical, and structural insight candidates."
+  default_prompt: "使用 $finance-research-global-commodities-desk 生成有证据支撑的商品、地缘和结构性洞悉候选。"

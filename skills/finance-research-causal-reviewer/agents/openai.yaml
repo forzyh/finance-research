@@ -1,4 +1,4 @@
 interface:
   display_name: "洞悉因果、抽象与风格审稿"
   short_description: "独立审查事实因果、抽象边界和终稿中的模板化写作痕迹"
-  default_prompt: "Use $finance-research-causal-reviewer to audit evidence, causal scope, abstraction, and whether the prose reads as naturally authored Chinese."
+  default_prompt: "使用 $finance-research-causal-reviewer 审查证据、因果边界、抽象链条和中文文稿的真人感。"

@@ -1,17 +1,17 @@
 ---
 name: finance-research-publisher
-description: Render the nine-part Chinese finance evening report, including a naturally written long-form “深度洞悉” essay and insight notes, into a polished responsive HTML page; publish it to Lark Miaoda with internet-public no-login access; and send a short URL-only cover email. Use only after factual, causal, abstraction, human-voice editorial, and publication checks have passed, or for local preview and delivery validation without sending.
+description: 将九部分中文财经晚报（含自然书写的长篇“深度洞悉”和洞悉短评）渲染为精致的响应式 HTML 页面，发布到飞书妙搭并设为互联网公开、免登录访问，再发送只含在线 URL 的短封面邮件。仅用于事实、因果、抽象、真人文风编辑和发布检查全部通过后，或用于不实际发送的本地预览与投递验证。
 ---
 
-# Finance Research Publisher
+# 财经研究发布器
 
-## Inputs
+## 输入
 
-Require a publication-ready `final_report.md` and run bundle version 2. Read `references/html-style.md` before changing layout. The public report must already have passed editorial and factual review.
+必须提供可直接发布的 `final_report.md` 和版本2的 run bundle。修改版式前完整阅读 `references/html-style.md`。公开报告必须已经通过编辑与事实审查。
 
-## Local rendering
+## 本地渲染
 
-Run from the current report directory:
+在当前报告目录运行：
 
 ```bash
 scripts/render_report_html.py \
@@ -20,20 +20,20 @@ scripts/render_report_html.py \
   --output report.html
 ```
 
-For an explicitly non-publishable shadow preview, add `--preview`. This flag never bypasses deployment or email gates.
+明确不可发布的影子预览可增加 `--preview`；该参数绝不能绕过部署或邮件闸门。
 
-For a delivery cover preview, add `--email-md sender_body.md`. Before a public URL exists, the email file is a preview only and must not be sent.
+预览投递封面时增加 `--email-md sender_body.md`。公开 URL 生成前，邮件文件仅供预览，不得发送。
 
-The renderer validates the nine required sections, creates a fixed editorial navigation, emphasizes the three-part summary, renders market quotes from reader-safe bundle data, and gives 旗舰洞悉 a long-form essay layout. It must never invent a missing section or expose raw bundle structures.
+渲染器要验证九个必需章节，生成固定编辑导航，突出三部分摘要，从适合读者的数据中渲染行情，并为旗舰洞悉提供长文版式。不得虚构缺失章节或暴露原始 bundle 结构。
 
-Run `scripts/qa_rendered_html.js --html report.html --output html_qa.json --screenshot-dir html_qa` with a Node runtime that provides Playwright. Require both 1440px desktop and 390px mobile checks to pass before deployment.
+用带 Playwright 的 Node 运行环境执行 `scripts/qa_rendered_html.js --html report.html --output html_qa.json --screenshot-dir html_qa`。部署前必须同时通过 1440px 桌面端和 390px 移动端检查。
 
-## Publication sequence
+## 发布顺序
 
-Only run this sequence after `publication_checks` confirms fresh close data, completed review and publishable copy:
+只有 `publication_checks` 确认收盘数据新鲜、审查完整且文稿可发布后，才能执行：
 
-1. Render and visually inspect `report.html` on desktop and mobile.
-2. Publish the page:
+1. 渲染 `report.html`，并分别在桌面端与移动端目检。
+2. 发布页面：
 
 ```bash
 scripts/publish_to_lark.py \
@@ -44,8 +44,8 @@ scripts/publish_to_lark.py \
   --deploy-json lark_deploy.json
 ```
 
-3. Confirm the deployment record contains a non-empty HTTP(S) URL and confirms public scope with login disabled. If either check fails, stop.
-4. Regenerate the short cover with the public URL:
+3. 确认部署记录包含非空 HTTP(S) URL，且访问范围为互联网公开并关闭登录要求。任一检查失败都必须停止。
+4. 使用公开 URL 重新生成短封面：
 
 ```bash
 scripts/render_report_html.py \
@@ -56,7 +56,7 @@ scripts/render_report_html.py \
   --online-url "<public-url>"
 ```
 
-5. Send only the Markdown cover. The sender script independently verifies that the deployment is public, login-free, anonymously reachable and identical to the email URL:
+5. 只发送 Markdown 封面。发送脚本会独立验证部署为公开、免登录、匿名可访问，且与邮件 URL 完全一致：
 
 ```bash
 scripts/send_with_sender.py \
@@ -68,15 +68,15 @@ scripts/send_with_sender.py \
   --to "recipient@example.com"
 ```
 
-Do not attach `report.html`.
+不得附加 `report.html`。
 
-## Hard gates
+## 硬闸门
 
-- Never send before the public no-login URL is confirmed.
-- Keep the email to title, date/window, a 100–300 Chinese-character introduction and one online URL.
-- Do not include the full report, Markdown source, tables or attachments in the email.
-- Reject public copy containing internal field names, paths, commands, raw codes, Python/JSON structures, Agent/process wording or English workflow states.
-- Reject copy that fails the human-voice gate: model self-reference, canned article announcements, generic era framing, repeated mechanical transitions, serial fake contrasts, or slogan endings. Do not mistake passing the static check for a completed editorial read.
-- Display market rows only as reader-facing name, price, change and percentage. Skip malformed rows.
-- Preserve facts, inference boundaries, sources and disclaimers; do not add investment advice.
-- Keep publishing and sending scripts inert during local preview or validation work.
+- 公开免登录 URL 未确认前绝不发送邮件。
+- 邮件只保留标题、日期/窗口、100–300字导读和一个在线 URL。
+- 邮件不得包含完整报告、Markdown 源文、表格或附件。
+- 公开文稿出现内部字段、路径、命令、原始代码、Python/JSON 结构、Agent/流程措辞或英文工作流状态时，必须驳回。
+- 未通过真人文风闸门的文稿必须驳回，包括模型自指、套路式文章预告、泛泛时代背景、重复机械过渡、连续伪对比或口号结尾。静态检查通过不等于完成编辑目检。
+- 行情行只展示读者可理解的名称、价格、涨跌额和涨跌幅；格式异常的行直接跳过。
+- 保留事实、推断边界、来源和免责声明，不得添加投资建议。
+- 本地预览或验证期间，发布与发送脚本必须保持不执行外部写入。

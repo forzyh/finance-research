@@ -1,59 +1,59 @@
 ---
 name: finance-research-policy-desk
-description: Research Chinese and global macro policy, regulation, fiscal, monetary, industrial, consumption, health, trade, and geopolitical-policy developments for finance briefings. Use when Codex must turn policy releases and market reactions into independently double-sourced research candidates, quantify policy scale and novelty, distinguish plans from funded implementation, and hand qualified questions to the finance research topic selector.
+description: 为财经简报研究中国及全球宏观政策、监管、财政、货币、产业、消费、卫生、贸易和地缘政策动态。用于把政策发布和市场反应转化为有两个独立来源支持的研究候选，量化政策规模与新意，区分规划与有资金支持的实施，并将合格问题交给财经研究选题器。
 ---
 
-# Finance Research Policy Desk
+# 财经研究政策分析台
 
-## Purpose
+## 目标
 
-Produce evidence packets and research questions, not finished commentary. Require two independent sources for every candidate and keep single-source items on a watchlist.
+生产证据包和研究问题，不直接写成评论成稿。每个候选必须有两个独立来源；单一来源事项留在观察清单。
 
-## Required References
+## 必读参考
 
-Read [references/policy-source-and-analysis-guide.md](references/policy-source-and-analysis-guide.md) before collecting or interpreting policy evidence.
+采集或解释政策证据前，完整阅读 [references/policy-source-and-analysis-guide.md](references/policy-source-and-analysis-guide.md)。
 
-## Workflow
+## 工作流程
 
-1. Set an explicit observation cutoff and jurisdiction.
-2. Start from primary policy texts, regulator releases, budget documents, statistical releases, speeches, or legislative records.
-3. Add an independent second source that confirms the material fact or supplies a separately produced implementation or market-reaction check. Do not count syndicated copies, reposts, or two pages from one source family as independent.
-4. Separate each item into:
-   - announced objective;
-   - binding rule or funded instrument;
-   - implementation parameter;
-   - observed economic or market reaction;
-   - unresolved assumption.
-5. Quantify scale against a relevant denominator, prior policy, historical baseline, or market consensus. Label estimates and stress tests.
-6. Build at least two competing hypotheses and a benchmark plan. Include explicit confirmation and falsification signals.
-7. Emit a candidate only after the dual-source and base-verification gates pass. Use `frontier_question` when a rule, institution, or long-horizon policy shift changes incentives before measurable market impact; otherwise use `desk_question`. Place incomplete items in `watchlist`.
-8. Run `python3 scripts/validate_desk_packet.py <packet.json>` before handoff.
+1. 明确观察截止时间和司法辖区。
+2. 从政策原文、监管发布、预算文件、统计数据、讲话或立法记录等一手材料开始。
+3. 补充第二个独立来源，用于确认重要事实，或独立检验实施进度和市场反应。同源转载、转发或同一来源家族的两个页面不算独立来源。
+4. 将每项材料拆分为：
+   - 已宣布目标；
+   - 有约束力的规则或有资金支持的工具；
+   - 实施参数；
+   - 已观察的经济或市场反应；
+   - 尚未解决的假设。
+5. 以相关分母、既有政策、历史基准或市场共识量化规模，估算和压力测试必须标明。
+6. 建立至少两个竞争假设和一套基准比较方案，写明确认与证伪信号。
+7. 只有通过双来源和基础核验闸门后才能输出候选。规则、制度或长期政策在可测市场影响出现前已经改变激励时，使用 `frontier_question`；其他情况用 `desk_question`。不完整事项进入 `watchlist`。
+8. 交接前运行 `python3 scripts/validate_desk_packet.py <packet.json>`。
 
-## Candidate Gate
+## 候选闸门
 
-Every candidate must include the workflow candidate fields plus:
+每个候选除统一字段外还必须包含：
 
-- `observation_cutoff` with timezone;
-- `base_verified: true`;
-- `question_type`, `observable_trigger`, `structural_tension`, at least three `required_lenses`, `analysis_horizons`, and `impact_map`;
-- `source_pair` containing at least two independent source records;
-- `verified_facts`, where every material fact cites at least two independent `source_ids`;
-- at least two `evidence_types` and two `competing_hypotheses`;
-- a quantitative `benchmark_plan`;
-- non-empty `confirmation_signals` and `falsification_signals`;
-- `policy_stage`, `novelty_assessment`, `implementation_gap`, and `affected_assets`.
+- 带时区的 `observation_cutoff`；
+- `base_verified: true`；
+- `question_type`、`observable_trigger`、`structural_tension`、至少三个 `required_lenses`、`analysis_horizons` 和 `impact_map`；
+- 至少包含两个独立来源记录的 `source_pair`；
+- `verified_facts`，每项重要事实至少引用两个独立 `source_ids`；
+- 至少两类 `evidence_types` 和两个 `competing_hypotheses`；
+- 可量化的 `benchmark_plan`；
+- 非空的 `confirmation_signals` 与 `falsification_signals`；
+- `policy_stage`、`novelty_assessment`、`implementation_gap` 和 `affected_assets`。
 
-Use `origin: desk_question` or `frontier_question`. Structural candidates must also state the governing tension, affected institutions and groups, three analytical lenses, and near/medium/long horizons. Do not assign the 100-point editorial score; `$finance-research-topic-selector` owns scoring and the 70-point threshold.
+使用 `origin: desk_question` 或 `frontier_question`。结构性候选还必须说明主导矛盾、受影响的机构与群体、三个分析视角和短中长期范围。不得给出百分制编辑分；评分和70分门槛由 `$finance-research-topic-selector` 负责。
 
-## Handoff
+## 交接
 
-Write a compact desk packet with `desk`, `observation_cutoff`, `candidates`, and `watchlist`. Preserve source IDs and exact timestamps so later agents can audit claims without reconstructing provenance.
+输出包含 `desk`、`observation_cutoff`、`candidates` 和 `watchlist` 的精简分析台材料包。保留来源 ID 和精确时间戳，使后续 Agent 无需重建出处即可审查论断。
 
-## Guardrails
+## 硬性边界
 
-- Treat a target, plan, consultation, quota, budget authorization, appropriation, tender, and completed spending as different facts.
-- Never infer policy strength from headline wording alone.
-- Never call a policy new without comparison to prior rules or programs.
-- Never infer causality from a same-day market move alone.
-- Keep policy facts, quantitative inference, and desk judgment visibly separate.
-- Do not publish internal field names or confidence labels in reader-facing copy.
+- 目标、规划、征求意见、配额、预算授权、实际拨款、招标和已完成支出是不同事实，必须分别处理。
+- 不得只凭标题措辞判断政策力度。
+- 未与既有规则或项目比较前，不得声称政策“全新”。
+- 不得只凭同日市场变化推断因果。
+- 政策事实、量化推断和分析台判断要清楚分开。
+- 面向读者的文字不得出现内部字段或置信度标签。
