@@ -1,6 +1,6 @@
 ---
 name: finance-research-workflow
-description: Orchestrate a post-close Chinese finance research report from broad news and market intake through four analysis desks, dual-source research-topic selection, one-to-three isolated deep-research agents, causal review, summary backflow, editorial assembly, HTML QA, public Lark publication, and URL-only email delivery. Use for the complete Daily Finance Evening Report research workflow, shadow runs, historical replays, or stage recovery under a 120-minute deadline.
+description: Orchestrate a post-close Chinese finance report with a “深度洞悉” track, from broad finance/frontier intake through four analysis desks, three-origin insight selection, one-to-three isolated insight agents, causal and abstraction review, summary backflow, editorial assembly, HTML QA, public Lark publication, and URL-only email delivery. Use for the complete Daily Finance Evening Report workflow, frontier-issue analysis, shadow runs, historical replays, or stage recovery under a 120-minute deadline.
 ---
 
 # Finance Research Workflow
@@ -15,15 +15,15 @@ The workflow owns orchestration and gates. Domain skills own analysis. The publi
 
 1. Create the run directory with `scripts/init_run.py --runs-dir <runs-dir> --date YYYY-MM-DD`.
 2. Load one to seven prior bundles. Normalize legacy bundles with `scripts/normalize_bundle.py` before trend comparison.
-3. Run `$finance-research-news-intake` and `$finance-research-market-snapshot`. Generate `fact_cards`, `market_snapshot`, and `raw_anomalies`.
+3. Run `$finance-research-news-intake` and `$finance-research-market-snapshot`. Generate `fact_cards`, `market_snapshot`, `raw_anomalies`, and `frontier_questions`. Frontier discovery includes technology, corporate strategy, institutions, business models, demographics, science, and socioeconomic change, not only priced financial anomalies.
 4. Run the four desks in parallel when slots allow: `$finance-research-policy-desk`, `$finance-research-stock-analyst`, `$finance-research-tech-analyst`, and `$finance-research-global-commodities-desk`.
 5. Run `$finance-research-trend-analyst` and `$finance-research-fact-verifier`. Base verification may reject or reduce the weight of research candidates.
-6. Merge raw anomalies with questions proposed by the four desks. Run `scripts/normalize_candidates.py`, let `$finance-research-topic-selector` fill the canonical scores and rationales, then run `scripts/select_topics.py`; select zero to three eligible, non-overlapping topics. Never force a topic below the gate.
-7. Run `scripts/build_assignments.py`. Spawn one isolated research agent per selected topic. Give each agent only its assignment packet, verified seed facts, observation cutoff, and `$finance-research-deep-dive`. Do not provide an expected conclusion.
-8. Require every research agent to return a complete internal report and machine-readable claims. Late or incomplete reports cannot become the flagship article.
-9. Give each report and its sources to a separate causal-review pass using `$finance-research-causal-reviewer`. New facts and causal claims must be approved before entering either the summary or public article.
+6. Merge raw anomalies, desk questions, and frontier questions. Run `scripts/normalize_candidates.py`, let `$finance-research-topic-selector` fill the canonical scores and rationales, then run `scripts/select_topics.py`; select zero to three eligible, non-overlapping topics. Never force a topic below the gate or require a same-day price move.
+7. Run `scripts/build_assignments.py`. Spawn one isolated insight agent per selected topic. Give each agent only its assignment packet, verified seed facts, observation cutoff, and `$finance-research-deep-dive` (the internal skill ID for 深度洞悉). Do not provide an expected conclusion.
+8. Require every insight agent to return a complete internal report and machine-readable claims, including the abstract principle, multi-horizon impact map, value migration, second-order effects, and philosophical limits. Late or incomplete reports cannot become the flagship article.
+9. Give each report and its sources to a separate causal-review pass using `$finance-research-causal-reviewer`. New facts, causal claims, abstraction steps, winner/loser implications, and valuation bridges must be approved before entering either the summary or public article.
 10. Run `scripts/merge_research.py` to collect audit verdicts and approved claims. Use only `approved_summary_claims` when generating the summary; `approved_research_claims` is a compatibility alias and must be identical.
-11. Run `$finance-research-evening-editor`. Publish at most one full flagship article and two research notes; retain the required “核心深挖” section with a restrained empty state when no report qualifies.
+11. Run `$finance-research-evening-editor`. Publish at most one full “旗舰洞悉” article and two “洞悉短评”; retain the required “深度洞悉” section with a restrained empty state when no report qualifies.
 12. Run `scripts/finalize_content.py`, then `scripts/validate_publication.py`. Only then invoke `$finance-research-publisher`. Require an anonymous, no-login public URL before sending the URL-only cover email.
 
 ## Timing and degradation
@@ -35,7 +35,7 @@ The workflow owns orchestration and gates. Domain skills own analysis. The publi
 - T+95–105: rendering, visual QA, public-access check, and delivery.
 - T+120: hard stop. Exclude late reports from publication.
 
-If no topic passes, publish the verified market and news report without a forced flagship. If critical trading-day closes are stale, mark the run ineligible and do not publish. If public access fails, do not send email.
+If no topic passes, publish the verified market and news report without a forced flagship. A high-quality frontier topic may remain open across multiple runs; its confirmation window need not be the next session. If critical trading-day closes are stale, mark the run ineligible and do not publish. If public access fails, do not send email.
 
 ## Deterministic scripts
 

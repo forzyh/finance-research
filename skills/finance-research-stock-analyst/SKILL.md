@@ -18,7 +18,8 @@ Explain what selected stocks reveal about company fundamentals, sector structure
 5. Verify the company-level driver with filings, exchange material, company IR, or reliable independent evidence. Keep rumors separate.
 6. Compare leaders, peers, laggards, and supply-chain names before classifying sector diffusion.
 7. Classify the read as `leader_confirmation`, `theme_diffusion`, `risk_repricing`, `speculation_retreat`, `macro_sensitive`, or `idiosyncratic`.
-8. Extract a research question only when the stock evidence exposes a material expectation gap or contradiction that needs hypothesis testing.
+8. Extract a market research question when the stock evidence exposes a material expectation gap or contradiction that needs hypothesis testing.
+9. Extract a `frontier_question` when several companies or one systemically important company reveal a potentially durable change in firm boundaries, technology control, capital intensity, business model, ecosystem power, or industry value capture. Require independent evidence beyond management narrative.
 
 ## v2 Outputs
 
@@ -28,6 +29,7 @@ Merge:
 - `stock_observations`: 3–8 high-signal observations.
 - `desk_briefs.stock_events`: desk-level summary, evidence gaps, and next-session checks.
 - `research_candidates`: append stock-desk question candidates.
+- `frontier_questions`: append company-strategy questions that meet the structural gate.
 
 ### Stock observation
 
@@ -45,6 +47,7 @@ Require:
 Require:
 
 - `candidate_id`, `origin: desk_question`, `research_question`, and `why_now`.
+- `question_type`, `observable_trigger`, `structural_tension`, at least three `required_lenses`, `analysis_horizons`, and `impact_map`.
 - `seed_fact_ids`, `anomaly_or_expectation_gap`, and `affected_assets`.
 - `competing_hypotheses`: at least two.
 - `evidence_types`: identify distinct types, not just source count.
@@ -55,6 +58,8 @@ Require:
 Do not emit `stock_desk`, `alternative_hypotheses`, or `evidence_types_available` aliases in new v2 candidates. `$finance-research-fact-verifier` owns the atomic update of `base_verified` and `source_pair`.
 
 Do not assign the final 100-point selection score; `$finance-research-topic-selector` owns scoring after verifier review.
+
+For a `frontier_question`, use `origin: frontier_question` and replace the expectation-gap requirement with a concrete strategic trigger. Trace implications beyond the focal stock to competitors, complements, suppliers, customers, capital requirements, regulation, and possible social effects.
 
 ## Handoffs
 

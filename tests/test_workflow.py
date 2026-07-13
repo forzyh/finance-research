@@ -39,6 +39,12 @@ def candidate(identifier: str, score: int = 80, **extra):
         "title": identifier,
         "research_question": f"为什么{identifier}出现异常定价？",
         "origin": "raw_anomaly",
+        "question_type": "market_anomaly",
+        "observable_trigger": f"{identifier}出现可观察变化",
+        "structural_tension": "效率与韧性之间的权衡",
+        "required_lenses": ["产业结构", "公司战略", "资本市场"],
+        "analysis_horizons": {"near": "一个季度", "medium": "一至三年", "long": "三年以上"},
+        "impact_map": ["上游供应商", "平台企业", "终端用户"],
         "base_verified": True,
         "source_pair": [
             {"publisher": "官方来源", "source_family": "official", "grade": "A"},
@@ -81,6 +87,27 @@ class WorkflowTests(unittest.TestCase):
         self.assertTrue(rows[0]["base_verified"])
         self.assertEqual(rows[0]["competing_hypotheses"], ["供应风险", "仓位因素"])
 
+    def test_frontier_source_normalizes_as_frontier_question(self):
+        bundle = {
+            "raw_anomalies": [],
+            "frontier_questions": [{
+                "candidate_id": "chip-vertical-integration",
+                "research_question": "模型企业为何持续进入AI芯片设计？",
+                "question_type": "technology_trajectory",
+                "observable_trigger": "多家公司公布自研芯片计划",
+                "structural_tension": "通用生态效率与垂直控制之间的权衡",
+                "required_lenses": ["技术架构", "产业经济", "公司战略"],
+                "analysis_horizons": {"near": "一年", "medium": "三年", "long": "五年以上"},
+                "impact_map": ["芯片设计", "晶圆代工", "模型企业"],
+            }],
+            "research_candidates": [],
+            "candidate_verification": [],
+            "desk_briefs": {},
+        }
+        rows, errors = normalize_candidates.normalize_bundle_candidates(bundle)
+        self.assertEqual(errors, [])
+        self.assertEqual(rows[0]["origin"], "frontier_question")
+
     def test_normalize_legacy_bundle(self):
         old = {"fact_cards": [{"id": "f1"}], "market_snapshot": [{"asset": "上证"}], "stock_observations": [{"stock": "甲"}]}
         new = normalize_bundle.normalize(old)
@@ -106,13 +133,28 @@ class WorkflowTests(unittest.TestCase):
         result = select_topics.select([candidate("不足", 40)], 3)
         self.assertEqual(result["selected_research_topics"], [])
 
+    def test_frontier_question_can_pass_without_price_anomaly(self):
+        row = candidate(
+            "模型企业自研芯片",
+            88,
+            origin="frontier_question",
+            question_type="technology_trajectory",
+            research_question="前沿模型企业自研芯片是否反映算力正在成为必须内化的战略控制点？",
+            observable_trigger="多家模型与云企业持续公布自研AI芯片、编译器和部署计划",
+            structural_tension="通用生态的规模效率与垂直整合的控制力之间的权衡",
+            required_lenses=["技术架构", "产业经济", "公司战略", "资本市场"],
+            impact_map=["加速器厂商", "晶圆代工", "先进封装", "云平台", "模型开发者"],
+        )
+        result = select_topics.select([row], 3)
+        self.assertEqual(result["selected_research_topics"][0]["candidate_id"], "模型企业自研芯片")
+
     def test_publication_content_gate(self):
         with tempfile.TemporaryDirectory() as temp:
             report = Path(temp) / "report.md"
             report.write_text(
                 "# 每日财经晚报\n## 一句话总结\n" + "市场结构分化。" * 80 +
                 "\n## 当天大盘行情走势\n## 为什么会这样走\n## 今天重点新闻与热点个股事件\n## 科技股与细分赛道"
-                "\n## 商品与期货\n## 世界经济与地缘形势\n## 核心深挖\n## 明日验证清单与来源\n",
+                "\n## 商品与期货\n## 世界经济与地缘形势\n## 深度洞悉\n## 明日验证清单与来源\n",
                 encoding="utf-8",
             )
             bundle = normalize_bundle.normalize({})
@@ -132,7 +174,7 @@ class WorkflowTests(unittest.TestCase):
                 "## 一句话总结\n市场分化。\n## 当天大盘行情走势\nA股收盘。\n## 为什么会这样走\n"
                 "### 原因一｜风险偏好\n风险偏好变化。\n## 今天重点新闻与热点个股事件\n新闻。\n"
                 "## 科技股与细分赛道\n科技。\n## 商品与期货\n商品。\n## 世界经济与地缘形势\n全球。\n"
-                "## 核心深挖\n当日没有达到刊发标准的独立研究。\n## 明日验证清单与来源\n### 明日验证清单\n验证。\n### 主要来源\n公开来源。\n",
+                "## 深度洞悉\n当日没有达到刊发标准的独立洞悉。\n## 明日验证清单与来源\n### 明日验证清单\n验证。\n### 主要来源\n公开来源。\n",
                 encoding="utf-8",
             )
             bundle = normalize_bundle.normalize({})
@@ -147,6 +189,45 @@ class WorkflowTests(unittest.TestCase):
                 [sys.executable, str(renderer), "--input", str(report), "--bundle", str(bundle_path), "--output", str(html)],
                 text=True, capture_output=True,
             )
+            self.assertNotEqual(blocked.returncode, 0)
+
+    def test_insight_report_validator_enforces_multi_horizon_contract(self):
+        with tempfile.TemporaryDirectory() as temp:
+            report_path = Path(temp) / "report.json"
+            report = {
+                "report_id": "r1", "topic_id": "t1", "author_id": "a1",
+                "research_question": "模型企业为何进入AI芯片设计？",
+                "question_type": "technology_trajectory",
+                "observation_cutoff": "2026-07-14T00:00:00+08:00",
+                "article": "洞" * 3000,
+                "hypotheses": ["成本与协同", "供应与议价", "战略期权而非替代"],
+                "chronology": ["公告", "开发", "部署"],
+                "evidence": ["公司披露"], "counterevidence": ["生态与良率约束"],
+                "benchmark": "云厂商历史垂直整合",
+                "causal_map": ["工作负载→设计→部署→成本"],
+                "limitations": ["缺少规模部署数据"],
+                "probabilistic_conclusion": "垂直整合更可能先形成议价与补充能力，而非立即全面替代。",
+                "abstract_principle": "当通用投入成为核心瓶颈，领先企业会尝试内化关键控制点。",
+                "time_horizon_map": {"near": "研发与资本开支", "medium": "部署与单位经济", "long": "行业边界与价值分配"},
+                "stakeholder_impact_map": ["加速器厂商", "晶圆代工", "模型企业"],
+                "second_order_effects": ["竞争者调整产品与定价"],
+                "philosophical_lens": {"principle": "控制与专业化的张力", "empirical_anchor": "自研芯片投入与部署", "limits": "不能由意图推断成功"},
+                "confirmation_signals": ["规模部署与单位成本披露"],
+                "falsification_signals": ["项目停滞或经济性持续不达标"],
+                "claims": [{
+                    "claim_id": "c1", "text": "多家公司正在投入自研AI芯片。", "claim_type": "fact", "material": True,
+                    "source_ids": ["s1", "s2"], "supporting_evidence_ids": ["e1"], "counterevidence_ids": [],
+                    "uncertainty_or_limit": "投入不等于规模成功", "summary_candidate": True,
+                }],
+                "sources": [{"source_id": "s1"}, {"source_id": "s2"}],
+            }
+            report_path.write_text(json.dumps(report), encoding="utf-8")
+            validator = ROOT / "skills/finance-research-deep-dive/scripts/validate_research_report.py"
+            passed = subprocess.run([sys.executable, str(validator), str(report_path)], text=True, capture_output=True)
+            self.assertEqual(passed.returncode, 0, passed.stdout + passed.stderr)
+            del report["philosophical_lens"]
+            report_path.write_text(json.dumps(report), encoding="utf-8")
+            blocked = subprocess.run([sys.executable, str(validator), str(report_path)], text=True, capture_output=True)
             self.assertNotEqual(blocked.returncode, 0)
 
     def test_delivery_gate_requires_public_single_url(self):

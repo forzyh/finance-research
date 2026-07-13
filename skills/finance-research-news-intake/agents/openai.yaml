@@ -1,4 +1,4 @@
 interface:
-  display_name: "Finance Research News Intake"
-  short_description: "采集并规范化财经事实，同时发现可验证的原始新闻与价格异常"
-  default_prompt: "Use $finance-research-news-intake to collect source-traceable fact cards and raw anomalies for a post-close research run."
+  display_name: "财经与前沿信息采集"
+  short_description: "采集财经事实、市场异常与前沿结构信号，形成可核验的洞悉候选题"
+  default_prompt: "Use $finance-research-news-intake to collect source-traceable facts, market anomalies, and emerging structural questions."

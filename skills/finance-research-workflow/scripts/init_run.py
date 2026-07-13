@@ -42,6 +42,7 @@ def main() -> int:
         "market_snapshot": {"as_of": None, "session_labels": [], "snapshot_cards": []},
         "desk_briefs": {"policy_news": {}, "stock_events": {}, "technology": {}, "global_commodities": {}},
         "raw_anomalies": [],
+        "frontier_questions": [],
         "trend_observations": [],
         "verified_events": [],
         "research_candidates": [],

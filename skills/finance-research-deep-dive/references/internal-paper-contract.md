@@ -1,4 +1,4 @@
-# Internal paper contract
+# 深度洞悉 internal paper contract
 
 ## Identity chain
 
@@ -10,16 +10,24 @@ Write 3000–5000 Chinese-character equivalents in the `article` field. Count Ch
 
 ## Article structure
 
-1. **Research question and provisional answer** — state the cutoff and avoid certainty beyond evidence.
-2. **Verified chronology** — show what changed before and after the event.
-3. **The anomaly** — identify what is inconsistent across price, fundamentals, policy, history, or related assets.
-4. **Competing hypotheses** — use at least three, including a null or non-event explanation.
-5. **Evidence that discriminates** — explain why each observation favors or weakens a hypothesis.
-6. **Benchmark or base rate** — compare with history, consensus, peer assets, prior policy, or the same session.
-7. **Causal map and breakpoints** — separate observed links from inferred links and identify confounders.
-8. **Counterevidence and alternative explanations** — state what the preferred hypothesis does not explain.
-9. **Probabilistic conclusion** — rank hypotheses without claiming hidden intent or certainty.
-10. **Next checks** — list confirmation and falsification signals with time windows.
+1. **Question, trigger, and provisional answer** — state the cutoff, question type, and what newly became observable.
+2. **Verified chronology** — distinguish ideas, announcements, investment, technical milestones, adoption, earnings effects, and price response.
+3. **From phenomenon to principle** — identify the underlying constraint or strategic tension and state an abstract principle that can travel beyond the case.
+4. **Competing hypotheses** — use at least three, including a null, bargaining-option, or implementation-gap explanation.
+5. **Mechanism across lenses** — connect the relevant technical architecture, unit economics, firm incentives, industry structure, institutions, and capital markets.
+6. **Value migration and stakeholder map** — explain which capabilities become scarce, who captures value, who loses bargaining power, and which complements benefit.
+7. **Time-horizon map** — separate near-term announcements/capex, medium-term adoption/economics, and long-term equilibrium or social effects.
+8. **Second-order effects and feedback loops** — include competitor responses, supply-chain adaptation, standards, regulation, labor, consumers, and capital allocation where relevant.
+9. **Benchmark or base rate** — compare with history, peers, prior integration cycles, technology transitions, consensus, or same-session evidence.
+10. **Counterevidence, breakpoints, and alternatives** — state what the preferred thesis cannot explain and where the chain may fail.
+11. **Philosophical interpretation** — discuss scarcity, autonomy, specialization, coordination, dependence, or power as an interpretation grounded in the mechanism; distinguish empirical, normative, and metaphorical claims.
+12. **Probabilistic conclusion and future checks** — rank hypotheses and give confirmation/falsification windows suitable to the topic, not only the next trading day.
+
+## Abstraction discipline
+
+Use the ladder `trigger → constraint/incentive → mechanism → value migration → economic/social consequence`. Every move upward must preserve the observable facts below it; every move downward must name concrete actors and measurable effects.
+
+For example, several frontier-model companies developing proprietary accelerators can motivate a broader thesis about compute becoming a strategic control point. The paper must still test whether the motivation is cost, hardware-model co-design, supply assurance, bargaining leverage, data-center power, or geopolitics; distinguish design intent from viable volume deployment; and trace conditional effects on accelerator vendors, foundries, advanced packaging, memory, cloud capex, model costs, and entry barriers.
 
 ## Structured hypothesis record
 
@@ -59,3 +67,6 @@ Record source ID, publisher, source family, grade, title, URL, publication time,
 - “Gold did not rise, therefore the market expects peace.”
 - “A target names an industry, therefore orders will follow.”
 - “Strong earnings and a falling stock prove positioning caused the decline.”
+- “Several firms announced chips, therefore every model company must vertically integrate.”
+- “Custom silicon hurts the incumbent, therefore its valuation must fall.”
+- “The historical analogy feels similar, therefore the same equilibrium will follow.”

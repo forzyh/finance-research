@@ -1,6 +1,6 @@
 ---
 name: finance-research-causal-reviewer
-description: Independently audit internal finance research before editorial use. Use when Codex must review source independence, factual and numerical accuracy, timestamp comparability, causal sufficiency, counterevidence, uncertainty, and public wording; issue one of four publication verdicts; and enforce that summaries contain only claims explicitly marked approved.
+description: Independently audit internal finance “深度洞悉” papers before editorial use. Use when Codex must review source independence, factual and numerical accuracy, abstraction quality, mechanism sufficiency, time-horizon and stakeholder reasoning, valuation bridges, second-order effects, philosophical overreach, counterevidence, uncertainty, and public wording; issue one of four publication verdicts; and enforce that summaries contain only explicitly approved claims.
 ---
 
 # Finance Research Causal Reviewer
@@ -21,8 +21,8 @@ Read [references/causal-review-rubric.md](references/causal-review-rubric.md) be
 
 1. **L1 fact and source:** verify wording, provenance, source independence, conflicts, and freshness.
 2. **L2 number, time, and comparability:** recompute material figures; align time zones, sessions, contracts, units, currencies, and revisions.
-3. **L3 causality:** test temporal order, mechanism, alternatives, confounders, counterevidence, base rates, and falsifiability.
-4. **L4 publication and summary gate:** remove hidden intent, false certainty, internal jargon, and unsupported compression.
+3. **L3 mechanism and scope:** test temporal order, abstraction steps, mechanisms, alternatives, confounders, value migration, horizon changes, feedback loops, counterevidence, base rates, and falsifiability.
+4. **L4 interpretation and publication:** challenge inevitability, unsupported valuation jumps, false precision, philosophical overreach, hidden intent, internal jargon, and unsupported summary compression.
 
 Review every material claim at all four layers. Give the claim one conclusion: `approved`, `qualified`, `revise`, or `rejected`.
 
@@ -30,7 +30,7 @@ Review every material claim at all four layers. Give the claim one conclusion: `
 
 Issue exactly one overall verdict:
 
-- `publish_full`: the complete flagship deep dive is publishable after listed non-material edits;
+- `publish_full`: the complete flagship 深度洞悉 article is publishable after listed non-material edits;
 - `publish_note`: only a shortened supporting note is publishable;
 - `summary_only`: only explicitly approved claims may appear in the summary or brief reasons;
 - `reject`: no part may be published from this report.
@@ -46,12 +46,14 @@ Populate both `abstract_claim_ids` and `summary_claim_ids` only from claim revie
 1. Rebuild the source-to-claim map without relying on the author’s conclusion.
 2. Recompute all thesis-relevant calculations and verify observation cutoffs.
 3. Steelman at least one alternative explanation and identify the evidence that would separate it from the preferred thesis.
-4. Review every material report claim exactly once through L1–L4 and assign a claim conclusion. Do not introduce unknown claim IDs.
-5. Produce approved and rejected claim ID lists, conflicts, causal weaknesses, and required edits.
-6. Choose the four-level overall verdict using the rubric.
-7. Assign `publication_quality_score` from 0 to 100 for every non-reject verdict using the rubric; do not reuse the topic-selection score.
-8. Draft a public-safe abstract using only approved and summary-eligible claim IDs.
-9. Run `python3 scripts/validate_audit.py <audit.json> --report <report.json>` before handoff.
+4. Rebuild the abstraction ladder from trigger to principle to mechanism to economic consequence. Flag every skipped level, category error, or change of time horizon.
+5. Audit stakeholder effects separately. Require an explicit bridge from strategy to technology feasibility, adoption, unit economics, industry structure, earnings, and valuation whenever those claims appear.
+6. Review every material report claim exactly once through L1–L4 and assign a claim conclusion. Do not introduce unknown claim IDs.
+7. Produce approved and rejected claim ID lists, conflicts, causal weaknesses, and required edits.
+8. Choose the four-level overall verdict using the rubric.
+9. Assign `publication_quality_score` from 0 to 100 for every non-reject verdict using the rubric; do not reuse the topic-selection score.
+10. Draft a public-safe abstract using only approved and summary-eligible claim IDs.
+11. Run `python3 scripts/validate_audit.py <audit.json> --report <report.json>` before handoff.
 
 ## Required Output
 
@@ -63,6 +65,9 @@ Only `approved_claim_ids` may flow into `approved_research_claims`. `$finance-re
 
 - Price co-movement is evidence, not automatic causality.
 - Lack of price reaction is not proof of benign intent or low ultimate risk.
+- Multiple companies pursuing the same strategy proves a pattern of intent, not technical success, superior economics, inevitability, or incumbent displacement.
+- A beneficiary/loser claim must state the transmission channel, time horizon, response options, and conditions under which the sign could reverse.
+- Philosophical framing may organize evidence but may not substitute for it. Reject grandeur that cannot return to measurable actors and mechanisms.
 - An official statement verifies what was said, not that its forecast or attribution is true.
 - A mathematically correct calculation can still be invalid if dates, contracts, or denominators differ.
 - Do not hide material conflicts behind qualified prose.

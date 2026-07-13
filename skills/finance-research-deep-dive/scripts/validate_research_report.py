@@ -14,6 +14,8 @@ REQUIRED = {
     "report_id", "topic_id", "author_id", "research_question", "observation_cutoff", "article",
     "hypotheses", "chronology", "evidence", "counterevidence", "benchmark",
     "causal_map", "limitations", "probabilistic_conclusion",
+    "question_type", "abstract_principle", "time_horizon_map", "stakeholder_impact_map",
+    "second_order_effects", "philosophical_lens",
     "confirmation_signals", "falsification_signals", "claims", "sources",
 }
 
@@ -50,6 +52,16 @@ def main() -> int:
         errors.append(f"article length is {count}; required range is 3000-5000")
     if len(report.get("hypotheses", [])) < 3:
         errors.append("hypotheses must contain at least three competing explanations")
+    horizons = report.get("time_horizon_map", {})
+    if not isinstance(horizons, dict) or not {"near", "medium", "long"}.issubset(horizons):
+        errors.append("time_horizon_map must contain near, medium, and long")
+    if len(report.get("stakeholder_impact_map", [])) < 2:
+        errors.append("stakeholder_impact_map must contain at least two affected actors")
+    if len(report.get("second_order_effects", [])) < 1:
+        errors.append("second_order_effects cannot be empty")
+    lens = report.get("philosophical_lens", {})
+    if not isinstance(lens, dict) or not lens.get("principle") or not lens.get("empirical_anchor") or not lens.get("limits"):
+        errors.append("philosophical_lens requires principle, empirical_anchor, and limits")
     if len(report.get("confirmation_signals", [])) < 1:
         errors.append("confirmation_signals cannot be empty")
     if len(report.get("falsification_signals", [])) < 1:

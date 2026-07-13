@@ -1,5 +1,4 @@
 interface:
-  display_name: "Finance Research Workflow"
-  short_description: "编排收盘后财经深度研究、审稿与发布全流程"
-  default_prompt: "Use $finance-research-workflow to orchestrate a post-close finance research report through topic selection, deep research, causal review, editing, and publication gates."
-
+  display_name: "每日财经深度洞悉工作流"
+  short_description: "编排收盘晚报、前沿洞悉、独立审稿、网页发布与投递全流程"
+  default_prompt: "Use $finance-research-workflow to orchestrate a post-close report with market analysis, frontier insight research, causal review, and publication gates."

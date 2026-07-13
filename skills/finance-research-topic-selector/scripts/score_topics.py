@@ -10,13 +10,19 @@ from pathlib import Path
 
 
 MAXIMA = {
-    "market_importance": 20,
-    "anomaly": 15,
-    "evidence_availability": 20,
-    "causal_testability": 15,
-    "cross_asset_breadth": 10,
-    "novelty": 10,
-    "next_session_falsifiability": 10,
+    "structural_importance": 20,
+    "explanatory_leverage": 15,
+    "evidence_availability": 15,
+    "mechanism_testability": 15,
+    "cross_layer_impact": 15,
+    "historical_comparability": 10,
+    "future_falsifiability": 10,
+}
+
+ORIGINS = {"raw_anomaly", "desk_question", "frontier_question"}
+QUESTION_TYPES = {
+    "market_anomaly", "strategic_shift", "technology_trajectory",
+    "institutional_change", "business_model_transition", "societal_transition",
 }
 
 
@@ -42,10 +48,22 @@ def gate_failures(candidate: dict) -> list[str]:
         failures.append("base_verification_failed")
     if not source_gate(candidate):
         failures.append("independent_dual_source_failed")
-    if candidate.get("origin") not in {"raw_anomaly", "desk_question"}:
+    if candidate.get("origin") not in ORIGINS:
         failures.append("invalid_origin")
+    if candidate.get("question_type") not in QUESTION_TYPES:
+        failures.append("invalid_question_type")
     if not candidate.get("research_question"):
         failures.append("missing_research_question")
+    if not candidate.get("observable_trigger"):
+        failures.append("missing_observable_trigger")
+    if not candidate.get("structural_tension"):
+        failures.append("missing_structural_tension")
+    if len(candidate.get("required_lenses", [])) < 3:
+        failures.append("fewer_than_three_analytical_lenses")
+    if not candidate.get("analysis_horizons"):
+        failures.append("missing_analysis_horizons")
+    if not candidate.get("impact_map"):
+        failures.append("missing_impact_map")
     if len(candidate.get("evidence_types", [])) < 2:
         failures.append("fewer_than_two_evidence_types")
     if len(candidate.get("competing_hypotheses", [])) < 2:
@@ -84,8 +102,8 @@ def rank_key(candidate: dict):
     return (
         -candidate["score_total"],
         -scores["evidence_availability"],
-        -scores["causal_testability"],
-        -scores["market_importance"],
+        -scores["mechanism_testability"],
+        -scores["structural_importance"],
         str(candidate.get("candidate_id", "")),
     )
 

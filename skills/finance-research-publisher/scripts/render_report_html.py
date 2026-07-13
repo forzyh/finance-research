@@ -19,7 +19,7 @@ SECTIONS = [
     ("科技股与细分赛道", "tech", "05"),
     ("商品与期货", "commodities", "06"),
     ("世界经济与地缘形势", "global", "07"),
-    ("核心深挖", "deep", "08"),
+    ("深度洞悉", "deep", "08"),
     ("明日验证清单与来源", "tomorrow", "09"),
 ]
 
@@ -31,6 +31,8 @@ ALIASES = {
     "重点新闻与热点个股事件": "今天重点新闻与热点个股事件",
     "世界经济、地缘形势分析": "世界经济与地缘形势",
     "世界经济与地缘形势分析": "世界经济与地缘形势",
+    "核心深挖": "深度洞悉",
+    "深度探索": "深度洞悉",
     "明日跟踪清单与来源": "明日验证清单与来源",
 }
 
@@ -433,21 +435,25 @@ def render_drivers(lines):
 
 def render_deep(lines):
     groups = split_h3(lines)
-    flagship_count = sum(1 for group in groups if group["title"].startswith("旗舰研究"))
-    note_count = sum(1 for group in groups if group["title"].startswith("研究短评"))
+    flagship_count = sum(1 for group in groups if group["title"].startswith("旗舰洞悉"))
+    note_count = sum(1 for group in groups if group["title"].startswith("洞悉短评"))
     if flagship_count > 1:
-        raise ValueError("核心深挖最多刊发一篇旗舰研究")
+        raise ValueError("深度洞悉最多刊发一篇旗舰洞悉")
     if note_count > 2:
-        raise ValueError("核心深挖最多刊发两篇研究短评")
+        raise ValueError("深度洞悉最多刊发两篇洞悉短评")
     output = []
     for group in groups:
         title = group["title"]
         if not title:
             output.append(markdown_blocks(group["lines"]))
             continue
-        article_class = "flagship" if title.startswith("旗舰研究") else ("research-note" if title.startswith("研究短评") else "research-block")
+        if title.startswith("旗舰研究"):
+            title = "旗舰洞悉" + title[len("旗舰研究"):]
+        elif title.startswith("研究短评"):
+            title = "洞悉短评" + title[len("研究短评"):]
+        article_class = "flagship" if title.startswith("旗舰洞悉") else ("research-note" if title.startswith("洞悉短评") else "research-block")
         output.append(
-            f'<article class="{article_class}"><div class="article-kicker">{esc("旗舰研究" if article_class == "flagship" else "研究短评" if article_class == "research-note" else "研究观察")}</div>'
+            f'<article class="{article_class}"><div class="article-kicker">{esc("旗舰洞悉" if article_class == "flagship" else "洞悉短评" if article_class == "research-note" else "洞悉观察")}</div>'
             f'<h3>{inline_markdown(title)}</h3>{markdown_blocks(group["lines"])}</article>'
         )
     return "\n".join(output)
@@ -460,7 +466,7 @@ def section_map(sections):
 def render_section(title, anchor, number, lines):
     if title == "为什么会这样走":
         body = render_drivers(lines)
-    elif title == "核心深挖":
+    elif title == "深度洞悉":
         body = render_deep(lines)
     else:
         body = markdown_blocks(lines)

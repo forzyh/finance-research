@@ -16,6 +16,8 @@ REQUIRED = {
     "base_verified", "source_pair", "verified_facts", "market_evidence",
     "physical_evidence", "cross_asset_checks", "known_data_gaps",
     "affected_assets",
+    "question_type", "observable_trigger", "structural_tension", "required_lenses",
+    "analysis_horizons", "impact_map",
 }
 
 
@@ -54,14 +56,16 @@ def validate_source_pair(candidate: dict, prefix: str, errors: list[str]) -> set
 def validate_candidate(candidate: dict, index: int) -> list[str]:
     prefix = f"candidates[{index}]"
     errors = [f"{prefix}.{field} is required" for field in sorted(REQUIRED) if not nonempty(candidate.get(field))]
-    if candidate.get("origin") != "desk_question":
-        errors.append(f"{prefix}.origin must be desk_question")
+    if candidate.get("origin") not in {"desk_question", "frontier_question"}:
+        errors.append(f"{prefix}.origin must be desk_question or frontier_question")
     if candidate.get("base_verified") is not True:
         errors.append(f"{prefix}.base_verified must be true")
     if len(candidate.get("evidence_types", [])) < 2:
         errors.append(f"{prefix}.evidence_types requires at least two classes")
     if len(candidate.get("competing_hypotheses", [])) < 2:
         errors.append(f"{prefix}.competing_hypotheses requires at least two hypotheses")
+    if len(candidate.get("required_lenses", [])) < 3:
+        errors.append(f"{prefix}.required_lenses requires at least three lenses")
     source_ids = validate_source_pair(candidate, prefix, errors)
     facts = candidate.get("verified_facts", [])
     fact_ids = set()

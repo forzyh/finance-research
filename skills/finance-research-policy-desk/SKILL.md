@@ -26,7 +26,7 @@ Read [references/policy-source-and-analysis-guide.md](references/policy-source-a
    - unresolved assumption.
 5. Quantify scale against a relevant denominator, prior policy, historical baseline, or market consensus. Label estimates and stress tests.
 6. Build at least two competing hypotheses and a benchmark plan. Include explicit confirmation and falsification signals.
-7. Emit a candidate only after the dual-source and base-verification gates pass. Otherwise place it in `watchlist` with the missing evidence.
+7. Emit a candidate only after the dual-source and base-verification gates pass. Use `frontier_question` when a rule, institution, or long-horizon policy shift changes incentives before measurable market impact; otherwise use `desk_question`. Place incomplete items in `watchlist`.
 8. Run `python3 scripts/validate_desk_packet.py <packet.json>` before handoff.
 
 ## Candidate Gate
@@ -35,6 +35,7 @@ Every candidate must include the workflow candidate fields plus:
 
 - `observation_cutoff` with timezone;
 - `base_verified: true`;
+- `question_type`, `observable_trigger`, `structural_tension`, at least three `required_lenses`, `analysis_horizons`, and `impact_map`;
 - `source_pair` containing at least two independent source records;
 - `verified_facts`, where every material fact cites at least two independent `source_ids`;
 - at least two `evidence_types` and two `competing_hypotheses`;
@@ -42,7 +43,7 @@ Every candidate must include the workflow candidate fields plus:
 - non-empty `confirmation_signals` and `falsification_signals`;
 - `policy_stage`, `novelty_assessment`, `implementation_gap`, and `affected_assets`.
 
-Use `origin: desk_question`. Do not assign the 100-point editorial score; `$finance-research-topic-selector` owns scoring and the 70-point threshold.
+Use `origin: desk_question` or `frontier_question`. Structural candidates must also state the governing tension, affected institutions and groups, three analytical lenses, and near/medium/long horizons. Do not assign the 100-point editorial score; `$finance-research-topic-selector` owns scoring and the 70-point threshold.
 
 ## Handoff
 
@@ -56,4 +57,3 @@ Write a compact desk packet with `desk`, `observation_cutoff`, `candidates`, and
 - Never infer causality from a same-day market move alone.
 - Keep policy facts, quantitative inference, and desk judgment visibly separate.
 - Do not publish internal field names or confidence labels in reader-facing copy.
-

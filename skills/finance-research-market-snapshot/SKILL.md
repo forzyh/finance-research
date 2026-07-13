@@ -1,6 +1,6 @@
 ---
 name: finance-research-market-snapshot
-description: Build a post-close cross-asset and futures snapshot plus observable market-anomaly signals for the finance-research v2 workflow. Use when a Chinese evening report or deep-research run needs A-share and Hong Kong closes, style and breadth, turnover and flows, Europe early trade, US premarket or futures, rates, FX, commodities, crypto, or Chinese agricultural, black, energy, metals, and precious futures.
+description: Build a post-close cross-asset and futures snapshot plus observable market-anomaly signals for the finance-research v2 workflow. Use when a Chinese evening report or 深度洞悉 run needs A-share and Hong Kong closes, style and breadth, turnover and flows, Europe early trade, US premarket or futures, rates, FX, commodities, crypto, or Chinese agricultural, black, energy, metals, and precious futures.
 ---
 
 # Finance Research Market Snapshot
@@ -47,7 +47,7 @@ Require `comparison_id`, `label`, `left_snapshot_id`, `right_snapshot_id`, formu
 
 ### Market anomaly
 
-Use the canonical candidate DTO: `candidate_id`, `research_question`, `origin: raw_anomaly`, `evidence_types`, `competing_hypotheses`, `source_pair`, `benchmark_plan`, `confirmation_signals`, `falsification_signals`, and `overlap_key`. Also preserve `title`, `observed_pattern`, `comparison_baseline`, `seed_fact_ids`, `affected_assets`, `why_unusual`, and `evidence_gaps`. Set `verification_status: pending`, `base_verified: false`, and an empty `source_pair` until `$finance-research-fact-verifier` atomically verifies the candidate.
+Use the canonical candidate DTO: `candidate_id`, `research_question`, `origin: raw_anomaly`, `question_type: market_anomaly`, `observable_trigger`, `structural_tension`, at least three `required_lenses`, `analysis_horizons`, `impact_map`, `evidence_types`, `competing_hypotheses`, `source_pair`, `benchmark_plan`, `confirmation_signals`, `falsification_signals`, and `overlap_key`. Also preserve `title`, `observed_pattern`, `comparison_baseline`, `seed_fact_ids`, `affected_assets`, `why_unusual`, and `evidence_gaps`. Set `verification_status: pending`, `base_verified: false`, and an empty `source_pair` until `$finance-research-fact-verifier` atomically verifies the candidate.
 
 ## Required Coverage
 

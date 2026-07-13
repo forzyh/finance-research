@@ -10,7 +10,7 @@ from _common import as_list, load_json
 
 
 REQUIRED_FIELDS = (
-    "schema_version", "run_metadata", "fact_cards", "market_snapshot", "desk_briefs", "raw_anomalies",
+    "schema_version", "run_metadata", "fact_cards", "market_snapshot", "desk_briefs", "raw_anomalies", "frontier_questions",
     "trend_observations", "verified_events", "research_candidates", "selected_research_topics",
     "research_reports", "research_audits", "approved_body_claims", "approved_summary_claims",
     "approved_research_claims", "editorial_blueprint", "publication_checks",
@@ -71,8 +71,8 @@ def content_checks(bundle: dict, report_path: Path, errors: list[str]) -> None:
         fail(errors, "public report is missing or too short")
         return
     text = report_path.read_text(encoding="utf-8")
-    flagship_count = len(re.findall(r"^###\s+旗舰研究(?:｜|—|\s|$)", text, flags=re.MULTILINE))
-    note_count = len(re.findall(r"^###\s+研究短评(?:｜|—|\s|$)", text, flags=re.MULTILINE))
+    flagship_count = len(re.findall(r"^###\s+旗舰洞悉(?:｜|—|\s|$)", text, flags=re.MULTILINE))
+    note_count = len(re.findall(r"^###\s+洞悉短评(?:｜|—|\s|$)", text, flags=re.MULTILINE))
     if flagship_count != (1 if flagship else 0):
         fail(errors, "public flagship count does not match editorial blueprint")
     if note_count != len(as_list(blueprint.get("research_notes"))):

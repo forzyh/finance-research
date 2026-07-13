@@ -1,4 +1,4 @@
 interface:
-  display_name: "Finance Research Tech Analyst"
-  short_description: "拆解全球科技风险偏好与细分赛道，并识别可检验的预期差研究题"
-  default_prompt: "Use $finance-research-tech-analyst to map technology risk appetite, subsector evidence, and deep-research candidates."
+  display_name: "科技产业与前沿战略分析"
+  short_description: "拆解科技赛道、企业战略、产业边界变化与长期价值迁移路径"
+  default_prompt: "Use $finance-research-tech-analyst to analyze technology markets, strategic shifts, and frontier insight candidates."

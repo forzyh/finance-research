@@ -1,4 +1,4 @@
 interface:
-  display_name: "全球商品研究台"
-  short_description: "Build double-sourced global commodity candidates"
-  default_prompt: "Use $finance-research-global-commodities-desk to produce dual-source commodities and geopolitical research candidates."
+  display_name: "全球商品与地缘洞悉台"
+  short_description: "研究商品、地缘、贸易体系与全球经济结构的长期变化问题"
+  default_prompt: "Use $finance-research-global-commodities-desk to produce evidence-backed commodities, geopolitical, and structural insight candidates."

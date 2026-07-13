@@ -142,9 +142,9 @@ def main() -> int:
         }
         (topic_dir / "assignment.json").write_text(json.dumps(assignment, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         maxima = {
-            "market_importance": 20, "anomaly": 15, "evidence_availability": 20,
-            "causal_testability": 15, "cross_asset_breadth": 10, "novelty": 10,
-            "next_session_falsifiability": 10,
+            "structural_importance": 20, "explanatory_leverage": 15, "evidence_availability": 15,
+            "mechanism_testability": 15, "cross_layer_impact": 15, "historical_comparability": 10,
+            "future_falsifiability": 10,
         }
         scores = {key: round(maximum * 0.82, 2) for key, maximum in maxima.items()}
         canonical_candidates.append({
@@ -152,6 +152,12 @@ def main() -> int:
             "title": topic["research_question"],
             "research_question": topic["research_question"],
             "origin": "desk_question" if topic_id == "consumption-policy" else "raw_anomaly",
+            "question_type": "institutional_change" if topic_id == "consumption-policy" else "market_anomaly",
+            "observable_trigger": topic["research_question"],
+            "structural_tension": "短期定价与长期基本面约束之间的张力",
+            "required_lenses": ["市场定价", "产业结构", "政策或公司战略"],
+            "analysis_horizons": {"near": "下一交易时段", "medium": "未来两个季度", "long": "一至三年"},
+            "impact_map": ["资产价格", "产业链企业", "政策与终端需求"],
             "seed_fact_ids": [row.get("id") for row in selected[:12]],
             "source_pair": evidence_sources[:4],
             "evidence_types": ["price_path", "primary_or_official_fact", "cross_asset_or_cross_section", "historical_or_base_rate"],

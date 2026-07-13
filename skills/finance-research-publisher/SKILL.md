@@ -1,6 +1,6 @@
 ---
 name: finance-research-publisher
-description: Render the nine-part Chinese finance research evening report, including a long flagship essay and research notes, into a polished responsive HTML page; publish it to Lark Miaoda with internet-public no-login access; and send a short URL-only cover email. Use only after final editorial and publication checks have passed, or for local HTML preview and delivery validation without sending.
+description: Render the nine-part Chinese finance evening report, including a long-form “深度洞悉” essay and insight notes, into a polished responsive HTML page; publish it to Lark Miaoda with internet-public no-login access; and send a short URL-only cover email. Use only after factual, causal, abstraction, editorial, and publication checks have passed, or for local HTML preview and delivery validation without sending.
 ---
 
 # Finance Research Publisher
@@ -24,7 +24,7 @@ For an explicitly non-publishable shadow preview, add `--preview`. This flag nev
 
 For a delivery cover preview, add `--email-md sender_body.md`. Before a public URL exists, the email file is a preview only and must not be sent.
 
-The renderer validates the nine required sections, creates a fixed editorial navigation, emphasizes the three-part summary, renders market quotes from reader-safe bundle data, and gives flagship research a long-form article layout. It must never invent a missing section or expose raw bundle structures.
+The renderer validates the nine required sections, creates a fixed editorial navigation, emphasizes the three-part summary, renders market quotes from reader-safe bundle data, and gives 旗舰洞悉 a long-form essay layout. It must never invent a missing section or expose raw bundle structures.
 
 Run `scripts/qa_rendered_html.js --html report.html --output html_qa.json --screenshot-dir html_qa` with a Node runtime that provides Playwright. Require both 1440px desktop and 390px mobile checks to pass before deployment.
 

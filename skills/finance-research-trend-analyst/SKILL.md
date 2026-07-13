@@ -41,7 +41,7 @@ Require:
 
 ### Trend research candidate
 
-Use the canonical DTO: `candidate_id`, `origin: desk_question`, `research_question`, `evidence_types`, `competing_hypotheses`, `source_pair`, `benchmark_plan`, `confirmation_signals`, `falsification_signals`, and `overlap_key`. Also preserve `why_now`, `seed_fact_ids`, the historical anomaly or expectation gap, affected assets, and evidence gaps. Set `verification_status: pending`, `base_verified: false`, and an empty `source_pair` until `$finance-research-fact-verifier` performs the atomic verification update.
+Use the canonical DTO: `candidate_id`, `origin: desk_question`, `question_type: market_anomaly`, `research_question`, `observable_trigger`, `structural_tension`, at least three `required_lenses`, `analysis_horizons`, `impact_map`, `evidence_types`, `competing_hypotheses`, `source_pair`, `benchmark_plan`, `confirmation_signals`, `falsification_signals`, and `overlap_key`. Also preserve `why_now`, `seed_fact_ids`, the historical anomaly or expectation gap, affected assets, and evidence gaps. Set `verification_status: pending`, `base_verified: false`, and an empty `source_pair` until `$finance-research-fact-verifier` performs the atomic verification update.
 
 ## Guardrails
 

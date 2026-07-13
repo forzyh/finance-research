@@ -118,6 +118,10 @@ def main() -> int:
                 "article_path": report.get("article_path"),
                 "article": report.get("article"),
                 "public_abstract": audit.get("public_safe_abstract") or report.get("abstract"),
+                "question_type": report.get("question_type"),
+                "abstract_principle": report.get("abstract_principle"),
+                "time_horizon_map": report.get("time_horizon_map"),
+                "stakeholder_impact_map": report.get("stakeholder_impact_map"),
             })
 
     full = sorted((row for row in eligible if row["verdict"] == "publish_full"), key=lambda row: (-row["publication_quality_score"], row["report_id"]))
@@ -135,6 +139,17 @@ def main() -> int:
         "flagship": flagship[0] if flagship else None,
         "research_notes": public_notes,
         "summary_claim_ids": [row["claim_id"] for row in summary_claims],
+        "insight_thesis_claim_ids": [row["claim_id"] for row in summary_claims],
+        "insight_topics": [
+            {
+                "report_id": row["report_id"],
+                "topic_id": row["topic_id"],
+                "question_type": row.get("question_type"),
+                "abstract_principle": row.get("abstract_principle"),
+                "time_horizon_map": row.get("time_horizon_map"),
+            }
+            for row in eligible
+        ],
         "research_merged_at": now_iso(),
     }
     bundle.setdefault("run_metadata", {})["status"] = "research_audited"

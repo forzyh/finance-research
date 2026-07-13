@@ -1,4 +1,4 @@
 interface:
-  display_name: "Finance Research Fact Verifier"
-  short_description: "核验事实、行情、异常与研究候选，并控制选题和发布准入"
-  default_prompt: "Use $finance-research-fact-verifier to verify v2 facts, market data, anomalies, and candidate eligibility before topic selection."
+  display_name: "财经洞悉事实核验"
+  short_description: "核验事实、结构触发点与候选议题证据，控制洞悉研究准入"
+  default_prompt: "Use $finance-research-fact-verifier to verify facts, anomalies, frontier triggers, and candidate eligibility before insight selection."

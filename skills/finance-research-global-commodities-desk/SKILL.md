@@ -22,14 +22,15 @@ Read [references/commodities-causal-map.md](references/commodities-causal-map.md
 5. Compare the current path with a historical or same-session benchmark. Avoid cross-source pseudo-precision.
 6. State at least two competing hypotheses, including a non-event explanation such as positioning, liquidity, contract mechanics, weather, inventory, or macro rates.
 7. Define observable confirmation and falsification signals for the next session.
-8. Promote only double-sourced, base-verified packets. Move unresolved single-source events to `watchlist`.
+8. Promote only double-sourced, base-verified packets. Use `frontier_question` for durable changes in trade architecture, resource security, shipping routes, energy systems, or geopolitical economic order that may precede same-day price confirmation. Move unresolved single-source events to `watchlist`.
 9. Run `python3 scripts/validate_desk_packet.py <packet.json>` before handoff.
 
 ## Candidate Gate
 
 Every candidate must satisfy the shared workflow candidate contract and include:
 
-- `observation_cutoff`, `base_verified: true`, and `origin: desk_question`;
+- `observation_cutoff`, `base_verified: true`, and `origin: desk_question` or `frontier_question`;
+- `question_type`, `observable_trigger`, `structural_tension`, at least three `required_lenses`, `analysis_horizons`, and `impact_map`;
 - an independent `source_pair` with at least one grade A or B source;
 - `verified_facts`, with two source IDs for each material event fact;
 - at least two `evidence_types` and two `competing_hypotheses`;
@@ -61,4 +62,3 @@ Emit `desk: global_commodities`, `observation_cutoff`, `candidates`, and `watchl
 - Do not infer “the market is calm” from gold alone; test rates, dollar, volatility, credit, and other havens.
 - Do not infer “talks will resume” or “conflict is limited” from oil and gold prices alone.
 - Keep facts, mechanism hypotheses, alternative explanations, and judgments separate.
-

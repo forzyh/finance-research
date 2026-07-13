@@ -15,6 +15,12 @@ CANONICAL_FIELDS = {
     "candidate_id",
     "research_question",
     "origin",
+    "question_type",
+    "observable_trigger",
+    "structural_tension",
+    "required_lenses",
+    "analysis_horizons",
+    "impact_map",
     "evidence_types",
     "competing_hypotheses",
     "source_pair",
@@ -66,8 +72,8 @@ def independent_source_pair(pair) -> bool:
 def validate_candidate(candidate: dict) -> list[str]:
     candidate_id = candidate.get("candidate_id", "<missing>")
     errors = [f"{candidate_id}: missing canonical field {field}" for field in sorted(CANONICAL_FIELDS) if field not in candidate]
-    if candidate.get("origin") not in {"raw_anomaly", "desk_question"}:
-        errors.append(f"{candidate_id}: origin must be raw_anomaly or desk_question")
+    if candidate.get("origin") not in {"raw_anomaly", "desk_question", "frontier_question"}:
+        errors.append(f"{candidate_id}: origin must be raw_anomaly, desk_question, or frontier_question")
     return errors
 
 

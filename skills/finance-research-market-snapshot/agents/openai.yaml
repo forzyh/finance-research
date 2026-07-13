@@ -1,4 +1,4 @@
 interface:
-  display_name: "Finance Research Market Snapshot"
-  short_description: "生成收盘跨资产与期货快照，并识别可复现的价格异常信号"
-  default_prompt: "Use $finance-research-market-snapshot to build a time-aligned post-close cross-asset and futures snapshot with observable anomalies."
+  display_name: "跨资产市场快照"
+  short_description: "生成收盘跨资产与期货快照，并识别可复现、可比较的市场异常信号"
+  default_prompt: "Use $finance-research-market-snapshot to build a time-aligned post-close market snapshot and observable anomaly signals."

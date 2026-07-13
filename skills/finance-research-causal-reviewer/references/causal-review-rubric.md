@@ -22,7 +22,7 @@ Recompute totals, percentages, growth rates, spreads, cumulative returns, and im
 
 Fail when the correction changes the thesis or when incomparable snapshots create pseudo-precision.
 
-## L3 — Causality
+## L3 — Mechanism, abstraction, and scope
 
 Require:
 
@@ -32,10 +32,19 @@ Require:
 - counterevidence and confounders;
 - a benchmark or base rate;
 - confirmation and falsification signals.
+- a complete abstraction ladder from observable trigger to constraint, mechanism, value migration, and economic consequence;
+- consistent units of analysis: do not infer an industry equilibrium from one firm, or a social outcome from a short-term stock reaction;
+- explicit near-, medium-, and long-horizon transitions, including implementation delays and competitor responses;
+- conditional stakeholder effects rather than static winner/loser labels;
+- an earnings and valuation bridge when capital-market consequences are claimed.
 
 Downgrade intent claims, “priced in” claims, and single-day causal claims unless direct evidence exists. If prices merely fit a hypothesis, use “consistent with” rather than “proves.”
 
-## L4 — Publication and summary
+For technology-strategy questions, separate announcement, engineering feasibility, production, workload fit, volume adoption, total cost, ecosystem support, and incumbent response. A chain that skips these stages cannot support a strong displacement or valuation conclusion.
+
+## L4 — Interpretation, philosophy, and publication
+
+Require philosophical framing to name its empirical anchor and limits. Reject “inevitable,” “terminal,” or civilizational claims unless the paper defines necessary conditions, exceptions, time horizon, and falsifiers. Historical analogy may generate hypotheses but cannot supply missing evidence.
 
 Ensure public wording distinguishes fact, inference, and judgment; preserves uncertainty; avoids internal fields and workflow jargon; and gives no personalized trading instruction.
 
@@ -54,9 +63,9 @@ Only an `approved` claim with `summary_eligible: true` can enter the abstract or
 
 | Verdict | Use |
 |---|---|
-| `publish_full` | One flagship article; all thesis-critical claims approved and no blocking conflict |
+| `publish_full` | One flagship 深度洞悉 article; all thesis-critical claims, abstraction steps, and economic-impact bridges approved with no blocking conflict |
 | `publish_note` | A shorter note built from approved claims; depth or causal closure is insufficient for flagship use |
-| `summary_only` | Only approved claim IDs may be used in the summary; no deep-dive article |
+| `summary_only` | Only approved claim IDs may be used in the summary; no 深度洞悉 article |
 | `reject` | No publication from this report |
 
 For `publish_full`, thesis-critical calculations and causal links must pass L1–L3. For any verdict, summary admission remains claim-specific.

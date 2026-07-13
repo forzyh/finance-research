@@ -17,7 +17,7 @@ Create the shared factual foundation for the news and research tracks. This skil
 4. Reconcile time, amount, policy wording, entity, unit, price, session, and percentage conflicts. Never hide unresolved differences.
 5. Verify snapshot freshness and session labels before using price reaction as evidence.
 6. Review stock, technology, trend, policy, and commodity/global desk observations against their referenced fact IDs.
-7. Review `raw_anomalies` and `research_candidates`. Confirm that the contrast is observable, alternatives are genuinely distinct, evidence types are available, and proposed confirmation/falsification signals are measurable.
+7. Review `raw_anomalies`, `frontier_questions`, and `research_candidates`. For anomalies, confirm the contrast is observable. For frontier questions, confirm the strategic pattern is real, independently sourced, and more than a single company's messaging. In both cases, require distinct alternatives, available evidence, explicit structural tension, and measurable confirmation/falsification signals.
 8. Mark each candidate `eligible`, `needs_evidence`, `duplicate`, or `rejected`. Provide reasons; do not choose the final 1–3 topics or assign the 100-point score.
 9. Run `python3 scripts/apply_candidate_verification.py --bundle <bundle.json> --results <verification.json> --output <verified-bundle.json>` to atomically update each canonical candidate's `base_verified`, `source_pair`, and `verification_status` together with `candidate_verification`.
 10. Score verified events for editorial value and emit a small unresolved watchlist.
@@ -53,15 +53,15 @@ Require:
 - `source_pair`: the independently verified source records allowed downstream.
 - `verified_seed_fact_ids` and `rejected_seed_fact_ids`.
 - `source_grade_summary` and `market_data_freshness`.
-- `observable_anomaly`: true or false.
+- `observable_trigger`: true or false; an eligible frontier question need not contain a price anomaly.
 - `independent_evidence_types`: list of evidence categories.
 - `competing_hypotheses_valid`: true or false.
 - `benchmark_feasible`, `signals_measurable`, and `overlap_group`.
 - `evidence_gaps` and `allowed_claim_scope`.
 
-Candidates cannot be `eligible` unless the core facts pass, two independent evidence types are plausible, two competing explanations exist, a benchmark is feasible, and confirmation plus falsification signals are concrete.
+Candidates cannot be `eligible` unless the core facts pass, the trigger and structural tension are well defined, two independent evidence types are plausible, two competing explanations exist, a benchmark is feasible, and confirmation plus falsification signals are concrete across an appropriate horizon.
 
-Every input candidate must already use `candidate_id`, `research_question`, `origin: raw_anomaly` or `desk_question`, `evidence_types`, `competing_hypotheses`, `source_pair`, `benchmark_plan`, `confirmation_signals`, `falsification_signals`, and `overlap_key`. For `eligible`, atomically set `base_verified: true`, replace `source_pair` with the verified independent pair, and set `verification_status: eligible`. For every other status, atomically set `base_verified: false` and retain only source records that passed verification. Never update `base_verified` without updating `source_pair` in the same write.
+Every input candidate must already use the canonical fields, including `origin: raw_anomaly`, `desk_question`, or `frontier_question`; `question_type`; `observable_trigger`; `structural_tension`; `required_lenses`; `analysis_horizons`; and `impact_map`. For `eligible`, atomically set `base_verified: true`, replace `source_pair` with the verified independent pair, and set `verification_status: eligible`. For every other status, atomically set `base_verified: false` and retain only source records that passed verification. Never update `base_verified` without updating `source_pair` in the same write.
 
 ## Source and Confidence Rules
 

@@ -11,6 +11,8 @@ ORIGIN_MAP = {
     "raw_anomaly": "raw_anomaly", "raw_news": "raw_anomaly", "raw_market": "raw_anomaly",
     "desk_question": "desk_question", "stock_desk": "desk_question", "tech_desk": "desk_question",
     "trend": "desk_question", "policy_desk": "desk_question", "global_commodities_desk": "desk_question",
+    "frontier_question": "frontier_question", "frontier_signal": "frontier_question",
+    "strategic_frontier": "frontier_question", "emerging_issue": "frontier_question",
 }
 
 
@@ -67,6 +69,12 @@ def normalize_one(item: dict, verification: dict | None = None, forced_origin: s
         "title": pick(item, "title", "headline", default=question),
         "origin": origin,
         "source_origin": raw_origin,
+        "question_type": pick(item, "question_type", default="market_anomaly" if origin == "raw_anomaly" else "strategic_shift"),
+        "observable_trigger": pick(item, "observable_trigger", "observed_pattern", "why_now", default=""),
+        "structural_tension": pick(item, "structural_tension", "underlying_tension", default=""),
+        "required_lenses": as_list(pick(item, "required_lenses", "analytical_lenses", default=[])),
+        "analysis_horizons": deepcopy(pick(item, "analysis_horizons", "time_horizons", default={})),
+        "impact_map": as_list(pick(item, "impact_map", "stakeholder_map", "affected_assets", default=[])),
         "seed_fact_ids": as_list(pick(item, "seed_fact_ids", "fact_ids", "evidence_ids", default=[])),
         "source_pair": source_pair(item) or source_pair(verification),
         "evidence_types": as_list(pick(item, "evidence_types", "evidence_types_available", default=[])),
@@ -80,8 +88,18 @@ def normalize_one(item: dict, verification: dict | None = None, forced_origin: s
         "score_rationale": deepcopy(item.get("score_rationale") or {}),
         "known_conflicts": as_list(pick(verification, "conflicts", default=pick(item, "known_conflicts", "conflicts", default=[]))),
     }
-    if "anomaly_strength" in canonical["scores"] and "anomaly" not in canonical["scores"]:
-        canonical["scores"]["anomaly"] = canonical["scores"].pop("anomaly_strength")
+    legacy_score_map = {
+        "market_importance": "structural_importance",
+        "anomaly": "explanatory_leverage",
+        "anomaly_strength": "explanatory_leverage",
+        "causal_testability": "mechanism_testability",
+        "cross_asset_breadth": "cross_layer_impact",
+        "novelty": "historical_comparability",
+        "next_session_falsifiability": "future_falsifiability",
+    }
+    for old, new in legacy_score_map.items():
+        if old in canonical["scores"] and new not in canonical["scores"]:
+            canonical["scores"][new] = canonical["scores"].pop(old)
     return (canonical if not errors else None), errors
 
 
@@ -95,6 +113,9 @@ def normalize_bundle_candidates(bundle: dict) -> tuple[list[dict], list[dict]]:
     for item in as_list(bundle.get("raw_anomalies")):
         if isinstance(item, dict):
             inputs.append((item, "raw_anomaly"))
+    for item in as_list(bundle.get("frontier_questions")):
+        if isinstance(item, dict):
+            inputs.append((item, "frontier_question"))
     for item in as_list(bundle.get("research_candidates")):
         if isinstance(item, dict):
             inputs.append((item, None))
@@ -103,6 +124,9 @@ def normalize_bundle_candidates(bundle: dict) -> tuple[list[dict], list[dict]]:
             for item in as_list(brief.get("research_candidates")):
                 if isinstance(item, dict):
                     inputs.append((item, "desk_question"))
+            for item in as_list(brief.get("frontier_questions")):
+                if isinstance(item, dict):
+                    inputs.append((item, "frontier_question"))
 
     normalized, errors, seen = [], [], set()
     for item, forced_origin in inputs:

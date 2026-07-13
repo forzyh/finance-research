@@ -1,4 +1,4 @@
 interface:
-  display_name: "财经深度研究"
-  short_description: "Write 3,000-5,000-character internal research papers"
-  default_prompt: "Use $finance-research-deep-dive to write a 3000-5000-character internal research paper for each selected question."
+  display_name: "财经深度洞悉"
+  short_description: "从具体事件提炼一般原则，并推演跨层机制与长期经济影响"
+  default_prompt: "Use $finance-research-deep-dive to write a 3,000-5,000-character 深度洞悉 paper with mechanisms, value migration, horizons, and falsifiers."

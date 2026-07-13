@@ -27,6 +27,7 @@ def normalize(source: dict) -> dict:
                 "global_commodities": deepcopy(source.get("global_commodities_observations") or {}),
             },
             "raw_anomalies": as_list(source.get("raw_anomalies")),
+            "frontier_questions": as_list(source.get("frontier_questions")),
             "trend_observations": as_list(source.get("trend_observations")),
             "verified_events": as_list(source.get("verified_events")),
             "research_candidates": as_list(source.get("research_candidates")),
@@ -55,7 +56,7 @@ def normalize(source: dict) -> dict:
     if not result.get("approved_summary_claims") and result.get("approved_research_claims"):
         result["approved_summary_claims"] = deepcopy(result["approved_research_claims"])
     for key in (
-        "fact_cards", "raw_anomalies", "trend_observations", "verified_events",
+        "fact_cards", "raw_anomalies", "frontier_questions", "trend_observations", "verified_events",
         "research_candidates", "selected_research_topics", "research_reports", "research_audits",
         "approved_body_claims", "approved_summary_claims", "approved_research_claims",
     ):

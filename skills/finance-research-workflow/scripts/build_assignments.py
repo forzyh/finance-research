@@ -13,7 +13,7 @@ def card_id(card: dict) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Build isolated deep-research assignment packets.")
+    parser = argparse.ArgumentParser(description="Build isolated 深度洞悉 assignment packets.")
     parser.add_argument("--bundle", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--minutes", type=int, default=45)
@@ -42,6 +42,12 @@ def main() -> int:
             "report_id": report_id,
             "author_id": author_id,
             "research_question": topic.get("research_question") or topic.get("title"),
+            "question_type": topic.get("question_type"),
+            "observable_trigger": topic.get("observable_trigger"),
+            "structural_tension": topic.get("structural_tension"),
+            "required_lenses": as_list(topic.get("required_lenses")),
+            "analysis_horizons": topic.get("analysis_horizons") or {},
+            "impact_map": as_list(topic.get("impact_map")),
             "topic": topic,
             "observation_cutoff": bundle.get("run_metadata", {}).get("observation_cutoff"),
             "verified_seed_facts": seed_facts,
@@ -49,8 +55,9 @@ def main() -> int:
             "independent_source_pair": as_list(topic.get("source_pair")),
             "required_evidence_types": as_list(topic.get("evidence_types")),
             "required_sections": [
-                "研究问题与结论摘要", "数据范围与时间线", "竞争假设", "机制检验",
-                "跨资产或产业证据", "历史或横向比较", "反证与局限", "概率性结论", "确认与证伪信号", "来源"
+                "问题、触发点与结论摘要", "数据范围与时间线", "从现象到抽象原则", "竞争假设",
+                "跨层机制与关键证据", "价值迁移与利益相关方", "短中长期影响", "二阶效应与反馈",
+                "历史或横向比较", "反证、哲学边界与局限", "概率性结论", "确认与证伪信号", "来源"
             ],
             "article_length_chinese_chars": {"minimum": 3000, "maximum": 5000},
             "deadline": deadline,
