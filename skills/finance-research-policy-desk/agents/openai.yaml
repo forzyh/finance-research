@@ -1,0 +1,4 @@
+interface:
+  display_name: "政策与宏观研究台"
+  short_description: "Build double-sourced policy research candidates"
+  default_prompt: "Use $finance-research-policy-desk to produce dual-source policy and macro research candidates."

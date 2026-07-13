@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finance Research Trend Analyst"
+  short_description: "比较历史路径，识别主题确认、证伪、反转与次日验证信号"
+  default_prompt: "Use $finance-research-trend-analyst to compare current and historical runs and extract falsifiable path-dependent questions."

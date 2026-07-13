@@ -1,0 +1,4 @@
+interface:
+  display_name: "财经研究晚报发布器"
+  short_description: "渲染长篇研究晚报并执行公开链接投递闸门"
+  default_prompt: "Use $finance-research-publisher to render the reviewed nine-part evening report, verify public delivery gates, and create a short URL-only email cover."

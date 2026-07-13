@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.codex/finance-research/run-bundle-v2.schema.json",
+  "title": "Finance Research Run Bundle v2",
+  "type": "object",
+  "required": [
+    "schema_version", "run_metadata", "fact_cards", "market_snapshot", "desk_briefs",
+    "raw_anomalies", "trend_observations", "verified_events", "research_candidates",
+    "selected_research_topics", "research_reports", "research_audits", "approved_body_claims",
+    "approved_summary_claims", "approved_research_claims", "editorial_blueprint", "publication_checks"
+  ],
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "required": [
+        "candidate_id", "research_question", "origin", "source_pair", "evidence_types",
+        "competing_hypotheses", "benchmark_plan", "confirmation_signals", "falsification_signals",
+        "overlap_key", "base_verified", "scores", "score_rationale"
+      ],
+      "properties": {
+        "candidate_id": {"type": "string", "minLength": 1},
+        "research_question": {"type": "string", "minLength": 1},
+        "origin": {"enum": ["raw_anomaly", "desk_question"]},
+        "source_pair": {"type": "array", "minItems": 2, "items": {"type": "object"}},
+        "evidence_types": {"type": "array", "minItems": 2},
+        "competing_hypotheses": {"type": "array", "minItems": 2},
+        "benchmark_plan": {"type": "string", "minLength": 1},
+        "confirmation_signals": {"type": "array", "minItems": 1},
+        "falsification_signals": {"type": "array", "minItems": 1},
+        "overlap_key": {"type": "string", "minLength": 1},
+        "base_verified": {"type": "boolean"},
+        "scores": {"type": "object"},
+        "score_rationale": {"type": "object"}
+      },
+      "additionalProperties": true
+    },
+    "claim": {
+      "type": "object",
+      "required": ["claim_id", "text", "claim_type", "material"],
+      "properties": {
+        "claim_id": {"type": "string", "minLength": 1},
+        "text": {"type": "string", "minLength": 1},
+        "claim_type": {"enum": ["fact", "inference", "judgment"]},
+        "material": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "researchReport": {
+      "type": "object",
+      "required": ["report_id", "topic_id", "author_id", "research_question", "article", "claims", "sources"],
+      "properties": {
+        "report_id": {"type": "string", "minLength": 1},
+        "topic_id": {"type": "string", "minLength": 1},
+        "author_id": {"type": "string", "minLength": 1},
+        "article": {"type": "string", "minLength": 1},
+        "claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+        "sources": {"type": "array", "items": {"type": "object"}}
+      },
+      "additionalProperties": true
+    },
+    "researchAudit": {
+      "type": "object",
+      "required": [
+        "report_id", "topic_id", "author_id", "reviewer_id", "verdict", "claim_reviews",
+        "approved_claim_ids", "rejected_claim_ids", "summary_claim_ids", "abstract_claim_ids"
+      ],
+      "properties": {
+        "report_id": {"type": "string", "minLength": 1},
+        "topic_id": {"type": "string", "minLength": 1},
+        "author_id": {"type": "string", "minLength": 1},
+        "reviewer_id": {"type": "string", "minLength": 1},
+        "verdict": {"enum": ["publish_full", "publish_note", "summary_only", "reject"]},
+        "publication_quality_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "claim_reviews": {"type": "array", "items": {"type": "object"}},
+        "approved_claim_ids": {"type": "array", "items": {"type": "string"}},
+        "rejected_claim_ids": {"type": "array", "items": {"type": "string"}},
+        "summary_claim_ids": {"type": "array", "items": {"type": "string"}},
+        "abstract_claim_ids": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    }
+  },
+  "properties": {
+    "schema_version": {"const": 2},
+    "run_metadata": {"type": "object"},
+    "fact_cards": {"type": "array", "items": {"type": "object"}},
+    "market_snapshot": {
+      "type": "object",
+      "required": ["as_of", "session_labels", "snapshot_cards"],
+      "properties": {
+        "as_of": {"type": ["string", "null"]},
+        "session_labels": {"type": "array", "items": {"type": "string"}},
+        "snapshot_cards": {"type": "array", "items": {"type": "object"}}
+      },
+      "additionalProperties": true
+    },
+    "desk_briefs": {
+      "type": "object",
+      "required": ["policy_news", "stock_events", "technology", "global_commodities"],
+      "properties": {
+        "policy_news": {"type": ["object", "array"]},
+        "stock_events": {"type": ["object", "array"]},
+        "technology": {"type": ["object", "array"]},
+        "global_commodities": {"type": ["object", "array"]}
+      },
+      "additionalProperties": true
+    },
+    "raw_anomalies": {"type": "array", "items": {"type": "object"}},
+    "trend_observations": {"type": "array", "items": {"type": "object"}},
+    "verified_events": {"type": "array", "items": {"type": "object"}},
+    "research_candidates": {"type": "array", "items": {"$ref": "#/$defs/candidate"}},
+    "selected_research_topics": {"type": "array", "maxItems": 3, "items": {"$ref": "#/$defs/candidate"}},
+    "research_reports": {"type": "array", "items": {"$ref": "#/$defs/researchReport"}},
+    "research_audits": {"type": "array", "items": {"$ref": "#/$defs/researchAudit"}},
+    "approved_body_claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+    "approved_summary_claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+    "approved_research_claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+    "editorial_blueprint": {"type": "object"},
+    "publication_checks": {
+      "type": "object",
+      "required": ["publication_eligible", "market_fresh", "market_freshness_details"],
+      "properties": {
+        "publication_eligible": {"type": "boolean"},
+        "market_fresh": {"type": "boolean"},
+        "market_freshness_details": {"type": "object"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

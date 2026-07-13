@@ -1,0 +1,4 @@
+interface:
+  display_name: "财经深度研究"
+  short_description: "Write 3,000-5,000-character internal research papers"
+  default_prompt: "Use $finance-research-deep-dive to write a 3000-5000-character internal research paper for each selected question."

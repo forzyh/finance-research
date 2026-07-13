@@ -1,0 +1,4 @@
+interface:
+  display_name: "财经深挖选题器"
+  short_description: "Score and select one to three research questions"
+  default_prompt: "Use $finance-research-topic-selector to score dual-source candidates out of 100 and select 1-3 topics scoring at least 70."

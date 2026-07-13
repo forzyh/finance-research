@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.validation-deps/
+
+# Generated shadow runs and local QA artifacts
+tests/tmp/
+
+# Publication and delivery artifacts
+**/lark_publish/
+**/lark_deploy.json
+**/delivery.json
+**/sender_body.md
+

@@ -1,0 +1,4 @@
+interface:
+  display_name: "财经研究晚报主编"
+  short_description: "审稿后合成九段式晚报与旗舰研究文章"
+  default_prompt: "Use $finance-research-evening-editor to turn verified close data and approved research claims into a publication-ready nine-part Chinese evening report."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "全球商品研究台"
+  short_description: "Build double-sourced global commodity candidates"
+  default_prompt: "Use $finance-research-global-commodities-desk to produce dual-source commodities and geopolitical research candidates."

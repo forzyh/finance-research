@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finance Research Stock Analyst"
+  short_description: "分析热点个股、公告和交易线索，并提炼可核验的深研问题候选"
+  default_prompt: "Use $finance-research-stock-analyst to analyze information-rich stock events and produce verified research-question candidates."

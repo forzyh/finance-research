@@ -1,0 +1,30 @@
+{
+  "name": "finance-research",
+  "version": 2,
+  "skills": [
+    "finance-research-news-intake",
+    "finance-research-market-snapshot",
+    "finance-research-stock-analyst",
+    "finance-research-tech-analyst",
+    "finance-research-trend-analyst",
+    "finance-research-fact-verifier",
+    "finance-research-evening-editor",
+    "finance-research-publisher",
+    "finance-research-policy-desk",
+    "finance-research-global-commodities-desk",
+    "finance-research-topic-selector",
+    "finance-research-deep-dive",
+    "finance-research-causal-reviewer",
+    "finance-research-workflow"
+  ],
+  "protected_originals": [
+    "finance-news-intake",
+    "finance-market-futures-snapshot",
+    "finance-stock-hotspot-analyst",
+    "finance-tech-sector-analyst",
+    "finance-trend-analyst",
+    "finance-fact-verifier",
+    "finance-morning-report-writer",
+    "finance-report-html-sender"
+  ]
+}

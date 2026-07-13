@@ -1,0 +1,4 @@
+interface:
+  display_name: "财经因果审稿"
+  short_description: "Audit causality and gate approved summary claims"
+  default_prompt: "Use $finance-research-causal-reviewer to issue four-level verdicts and allow only approved claims into the summary."

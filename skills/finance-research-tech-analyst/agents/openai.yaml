@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finance Research Tech Analyst"
+  short_description: "拆解全球科技风险偏好与细分赛道，并识别可检验的预期差研究题"
+  default_prompt: "Use $finance-research-tech-analyst to map technology risk appetite, subsector evidence, and deep-research candidates."
